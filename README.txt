@@ -1,0 +1,1 @@
+This WordPress theme is intended for use by state delegations of the Technology Student Association.
