@@ -1,101 +1,422 @@
-<!doctype html>
+<!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title></title>
-	<meta name="description" content="">
-	<meta name="author" content="">
+    <title>Virginia TSA | News</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet/less" href="less/style.less">    
+    <script src="js/libs/less-1.2.1.min.js" type="text/javascript">
+</script><!-- Use SimpLESS (Win/Linux/Mac) or LESS.app (Mac) to compile your .less files
+    to style.css, and replace the 2 lines above by this one:
+    
+    <link rel="stylesheet/less" href="less/style.css">
+     -->
+    <!-- todo: feedburner feeds -->
+    <!-- todo: rel="prev" & rel="next" -->
+    <!-- todo: feedburner feeds -->
+    <!-- todo: apple icons, windows pin, favicon -->
+    <!-- todo: copy Jason Dreyzehner's smooth scroll from s184.neoarx.com -->
 
-	<meta name="viewport" content="width=device-width">
-
-	<link rel="stylesheet/less" href="less/style.less">
-	<script src="js/libs/less-1.2.1.min.js"></script>
-	
-	<!-- Use SimpLESS (Win/Linux/Mac) or LESS.app (Mac) to compile your .less files
-	to style.css, and replace the 2 lines above by this one:
-
-	<link rel="stylesheet/less" href="less/style.css">
-	 -->
-
-	<script src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
-</head>
-<body>
-<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">Project name</a>
-          <div class="nav-collapse">
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-      </div>
-
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="span4">
-          <h2>Heading</h2>
-           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
-        <div class="span4">
-          <h2>Heading</h2>
-           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-       </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
-      </div>
-
-      <hr>
-
-      <footer>
-        <p>&copy; Company 2012</p>
-      </footer>
-
-    </div> <!-- /container -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-
-<script src="js/libs/bootstrap/transition.js"></script>
-<script src="js/libs/bootstrap/collapse.js"></script>
-
-<script src="js/plugins.js"></script>
-<script src="js/script.js"></script>
-<script>
-	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-	s.parentNode.insertBefore(g,s)}(document,'script'));
+    <script src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js" type="text/javascript">
 </script>
+</head>
 
+<body><div id="page-wrap">
+    <!--[if lt IE 7]><p class=chromeframe>Your browser is somewhat <em>outdated</em>! <a href="http://browsehappy.com/">Please upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to view the internet in all its glory.</p><![endif]-->
+
+    <div id="TSA-Bar">
+    
+    <span class="full-wrap">
+    
+    
+        <a href="#" alt="Home" id="root"><img src="img/TSA-emblem-icon.png" alt="Technology Student Association Emblem">Technology Student Association</a> <!-- TODO: replace wordmark with text, hover effects, blur? -->
+			<ul>
+			
+			
+            <li id="share">
+            
+                <a href="#">Share</a>
+                <div class="hover-box">
+              	  	<div>
+                	    <p>Sharing options</p>
+                    </div>
+                </div>
+            </li>
+
+
+            <li id="stateSelect">
+            
+                <a href="#"><img src="img/flags/virginia.png">Virginia</a>
+                <div class="hover-box">
+	                <div>
+               		  	
+               		  	<h1>Please Select a State Delegations</h1>
+               		  	
+               		  	<ul>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">Virginia</a></li>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">Another State</a></li>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">Virginia</a></li>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">Virginia</a></li>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">Virginia</a></li>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">Another State</a></li>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">Virginia</a></li>
+               		  	</ul>
+               		  	
+               		  	<ul>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">Virginia</a></li>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">Virginia</a></li>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">Virginia</a></li>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">Virginia</a></li>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">Testing Length</a></li>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">United Kingdom</a></li>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">Virginia</a></li>
+               		  	</ul>
+               		  	
+               		  	<ul>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">Another State</a></li>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">One State</a></li>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">Virginia</a></li>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">Distant Land</a></li>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">Another State</a></li>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">Virginia</a></li>
+               		  	<li><a href="#"><img src="img/flags/virginia.png">Another State</a></li>
+               		  	</ul>
+               		 </div>
+                </div>
+            </li>
+            
+            <li id="search"> <!-- TODO: Implement bootstrap typeahead, Google search? plugin or something like http://tutorialzine.com/2010/09/google-powered-site-search-ajax-jquery/ -->
+		        <form action="#">
+		        	<input type="text" placeholder="Search">
+					
+					<!-- TODO: do we want a submit button? Are we hi-tech enough to know to press enter?
+					<input type="submit" value="▶" /> -->
+					
+					
+		   		</form>
+            
+            </li>
+            
+            
+            <!-- TODO: RSS Icon
+            
+            <li id="connect">
+            	<a href="#" class="mail-icon"></a>
+            	<a href="#" class="rss-icon"></a>
+            </li>
+            -->
+            
+        </ul>
+        
+        </span>
+        
+    </div>
+    
+   <div class="full-wrap">
+
+    <aside id="about">
+       <div><a href="#" id="emblem"><img src="img/Virginia-TSA-emblem.png" alt="Virginia TSA Emblem"></a></div> <!-- TODO: emblem hover effect - glow fade in/out? -->
+       <div id="callout">
+        <h1>We are <em>10,000 students</em>, in <em>180 schools</em> across Virginia who believe that technology is the key to a better world.</h1>
+        <p>We prepare our members to thrive in a technical world through competitive events, networking, and leadership opportunities.</p><a href="#">Check out our story</a>
+        </div>
+    </aside>
+
+    <nav id="left-nav">
+        <h1>Virginia TSA</h1>
+        <ul>
+            <li><a href="#" class="current">News</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Leadership</a></li>
+            <li><a href="#">Partners</a></li>
+            <li><a href="#">Resources</a></li>
+        </ul>
+        
+        <h1>Events</h1>
+        <ul>
+            <li><a href="#">Regional Fall Rallies</a></li>
+            <li><a href="#">Leadership Academy</a></li>
+            <li><a href="#">Regional Conferences</a></li>
+            <li><a href="#">Technosphere 2012</a></li>
+        </ul>
+        <a href="#">Calendar of Events</a>
+    </nav>
+
+
+    <div class="content-wrap">
+        <section id="content">
+            
+            
+           <!--  TODO: category selector - select field, javascript replace with html dialog -->
+           
+            <span id="category-selector">View news from:
+            
+            <a href="#">All Regions</a>
+	            <div class="hover-box">
+	            	<div>
+	            	<h1>Please Select a Region</h1>
+	            		<ul>
+	           				 <li><a href="#" class="current">All Regions</a></li>
+	            			 <li><a href="#">Blue Ridge</a></li>
+	           				 <li><a href="#">Northern</a></li>
+	           				 <li><a href="#">Valley</a></li>
+	           				 <li><a href="#">Southwestern</a></li>
+	           				 <li><a href="#">South Central</a></li>
+	           				 <li><a href="#">Tidewater</a></li>
+			            </ul>    
+	 	           </div>
+ 	           </div>
+			</span>
+			
+			<h1>News</h1>
+
+            <article>
+                <header>
+                    <h1>Virginia TSA Sings Pretty</h1>
+                    <p>By <a href="#" rel="author">Jason Dreyzehner</a> | <time pubdate datetime="2012-05-21">May 21, 2012</time> | <a href="#">Southwestern Region</a></p>
+                </header>
+         	   <figure>
+        			<img src="mock-content/singing.jpg" alt="singing" />
+        			<figcaption>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper.</figcaption>
+				</figure>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit. Quisque ultrices gravida pede. Mauris accumsan vulputate tellus. Phasellus condimentum bibendum dolor.</p>
+				<a href="#" class="read-more">Read More</a>
+            </article>
+            
+            
+               <article>
+                <header>
+                    <h1>Northern Region Does Something</h1>
+                    <p>By <a href="#" rel="author">Angela Roller</a> | <time pubdate datetime="2012-05-07">May 7, 2012</time> | <a href="#">Northern Region</a></p>
+                </header>
+         	   <figure>
+        			<img src="mock-content/germans.jpg" alt="germans" />
+        			<figcaption>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper.</figcaption>
+				</figure>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam sit amet elit vitae arcu interdum ullamcorper. Nullam ultrices, nisi quis scelerisque convallis, augue neque tempor enim, et mattis justo nibh eu elit. Quisque ultrices gravida pede. Mauris accumsan vulputate tellus. Phasellus condimentum bibendum dolor. </p>
+				<a href="#" class="read-more">Read More</a>
+            </article>
+            
+		    <nav id="pagination">
+		    <!-- TODO: rel="last" -->
+		    <a rel="next" href="#">Newer Posts</a>
+		        <ul>
+		            <li><a rel="first" class="current" href="#">May</a></li>
+		            <li><a href="#">Apr</a></li>
+		            <li><a href="#">Mar</a></li>
+		            <li class="archiveHover">
+		            
+		            <a href="#">&#8230;</a>
+		            
+		            <div>
+			            <div>
+							<h1>News Archives</h1>
+						    
+						    
+						    <time datetime="2012">
+						    	<span>2012:</span>
+						    <ul>
+						    	<li><a href="#"><time datetime="2012-01">Jan</time></a></li>
+						    	<li><a href="#"><time datetime="2012-02">Feb</time></a></li>
+						    	<li><a href="#"><time datetime="2012-03">Mar</time></a></li>
+						    	<li><a href="#"><time datetime="2012-04">Apr</time></a></li>
+						    	<li><a href="#"><time datetime="2012-05">May</time></a></li>
+						    	<li><a href="#"><time datetime="2012-06">June</time></a></li>
+						    </ul>
+						    </time>
+						    <time datetime="2011">
+							    <span>2011:</span>
+						    <ul>
+						    	<li><a href="#"><time datetime="2012-01">Jan</time></a></li>
+						    	<li><a href="#"><time datetime="2012-02">Feb</time></a></li>
+						    	<li><a href="#"><time datetime="2012-03">Mar</time></a></li>
+						    	<li><time datetime="2012-04">Apr</time></li>
+						    	<li><a href="#"><time datetime="2012-05">May</time></a></li>
+						    	<li><a href="#"><time datetime="2012-06">June</time></a></li>
+						    </ul>
+						    </time>
+						    
+						    
+						    <!-- test 2:
+						    
+						    
+						     <time datetime="2010">
+							    <span>2010:</span>
+							    <ul>
+							    	<li><a href="#"><time datetime="2012-01">Jan</time></a></li>
+							    	<li><a href="#"><time datetime="2012-02">Feb</time></a></li>
+							    	<li><a href="#"><time datetime="2012-03">Mar</time></a></li>
+							    	<li><time datetime="2012-04">Apr</time></li>
+							    	<li><a href="#"><time datetime="2012-05">May</time></a></li>
+							    	<li><a href="#"><time datetime="2012-06">June</time></a></li>
+							    	<li><time datetime="2012-07">July</time></li>
+							    	<li><time datetime="2012-08">Aug</time></li>
+							    	<li><a href="#"><time datetime="2012-09">Sept</time></a></li>
+							    	<li><a href="#"><time datetime="2012-10">Oct</time></a></li>
+							    	<a href="#"><time datetime="2012-11">Nov</time></a></li>
+							    	<li><a href="#"><time datetime="2012-12">Dec</time></a></li>
+							    </ul>	
+						    </time>
+						    
+						    -->
+						    
+						    
+					    	<a href="#">Full Archives</a>
+			            </div>
+		            </div>
+		            
+		            </li>
+		        </ul>
+		    <a rel="prev" href="#">Older Posts</a>
+		    </nav>  
+        </section>
+        
+        <!-- <?php /* TODO: widgetize <article class="widget"> </article>
+         <article class="widget"> </article>   */  ?> -->
+	</div>  
+  </div> 
+    <div id="basement">
+    <div>
+       <div>
+       <div class="basement-line">
+       <a href="#TSA-Bar" class="back-to-top">Back to Top</a>
+    <section id="events">
+    	<h1>Conferences &amp; Events</h1>
+	    <ol>
+		    <li><a href="#">Fall Rallies 
+		    <span><time datetime="2012-10-08">10/8</time></span></a></li>
+		    <li><a href="#">State Leadership Academy
+		    <span><time datetime="2012-11-06">11/6</time> - <time datetime="2012-11-08">11/8</time></span></a></li>
+		    <li><a href="#">Regional Conferences
+		    <span><time datetime="2013-03-10">3/10</time></span></a></li>
+		    <li><a href="#">Technosphere 2013
+		    <span><time datetime="2012-05-29">5/29</time> - <time datetime="2012-06-03">6/3</time></span></a></li>
+		    <li><a href="#">Technosphere 2013 (II)
+		    <span><time datetime="2012-05-29">5/29</time> - <time datetime="2012-06-03">6/3</time></span></a></li>
+   		</ol>
+    	<a href="#">More important dates</a> <!-- TODO:reveal -->
+    </section>
+    
+    <section id="updates">
+    	<h1>Latests Updates</h1>
+	    <ol>
+		    <li><a href="#">Fall Rallies</a></li>
+		    <li><a href="#">State Leadership Academy</a></li>
+		    <li><a href="#">Regional Conferences</a></li>
+		    <li><a href="#">Technosphere 2013</a></li>
+		    <li><a href="#">Another Test</a></li>
+   		</ol>
+    	<a href="#">Previous updates</a>
+    </section>
+    
+    <section  id="archives">
+    	<h1>News Archives</h1>
+	    <time datetime="2012">
+	    	<span>2012:</span>
+	    <ul>
+	    	<li><a href="#"><time datetime="2012-01">Jan</time></a></li>
+	    	<li><a href="#"><time datetime="2012-02">Feb</time></a></li>
+	    	<li><a href="#"><time datetime="2012-03">Mar</time></a></li>
+	    	<li><a href="#"><time datetime="2012-04">Apr</time></a></li>
+	    	<li><a href="#"><time datetime="2012-05">May</time></a></li>
+	    	<li><a href="#"><time datetime="2012-06">June</time></a></li>
+	    </ul>
+	    </time>
+	    <time datetime="2011">
+	    <span>2011:</span>
+	    <ul>
+	    	<li><a href="#"><time datetime="2012-01">Jan</time></a></li>
+	    	<li><a href="#"><time datetime="2012-02">Feb</time></a></li>
+	    	<li><a href="#"><time datetime="2012-03">Mar</time></a></li>
+	    	<li><time datetime="2012-04">Apr</time></li>
+	    	<li><a href="#"><time datetime="2012-05">May</time></a></li>
+	    	<li><a href="#"><time datetime="2012-06">June</time></a></li>
+	    	<li><time datetime="2012-07">July</time></li>
+	    	<li><a href="#"><time datetime="2012-08">Aug</time></a></li>
+	    	<li><a href="#"><time datetime="2012-09">Sept</time></a></li>
+	    	<li><a href="#"><time datetime="2012-10">Oct</time></a></li>
+	    	<li><a href="#"><time datetime="2012-11">Nov</time></a></li>
+	    	<li><time datetime="2012-12">Dec</time></li>
+	    </ul>
+	    </time>
+	    <time datetime="2010">
+	    <span>2010:</span>
+	    <ul>
+	    	<li><a href="#"><time datetime="2012-01">Jan</time></a></li>
+	    	<li><a href="#"><time datetime="2012-02">Feb</time></a></li>
+	    	<li><a href="#"><time datetime="2012-03">Mar</time></a></li>
+	    	<li><time datetime="2012-04">Apr</time></li>
+	    	<li><a href="#"><time datetime="2012-05">May</time></a></li>
+	    	<li><a href="#"><time datetime="2012-06">June</time></a></li>
+	    	<li><time datetime="2012-07">July</time></li>
+	    	<li><time datetime="2012-08">Aug</time></li>
+	    	<li><a href="#"><time datetime="2012-09">Sept</time></a></li>
+	    	<li><a href="#"><time datetime="2012-10">Oct</time></a></li>
+	    	<a href="#"><time datetime="2012-11">Nov</time></a></li>
+	    	<li><a href="#"><time datetime="2012-12">Dec</time></a></li>
+	    </ul>	
+	    </time>
+    	<a href="#">Full Archives</a>
+    </section>
+    
+    <section id="contact">
+    	<h1>Contact Us</h1>
+    	<!-- <p>Please leave us a message, and we'll get back to soon!</p> -->
+		<form method="post" action="#">
+			<input type="text" id="name" name="name" value="" placeholder="Name" required="required" />  
+			<input type="email" id="email" name="email" value="" placeholder="Email" required="required" /> 
+			<textarea id="message" name="message" placeholder="Questions? comments?" required="required" data-minlength="20"></textarea>   
+			<input type="submit" value="Send" id="submit-button" /> 
+		</form>
+		<address>
+		Virginia State University<br>
+		PO Box 9045<br>
+		Petersburg, Virginia 23806<br>
+		phone: (804) 524-4449 | fax: (804) 524-6807<br>
+		<a href="mailto:tsa@vatsa.org">tsa@vatsa.org</a>
+		</address>
+    </section>
+    
+    <section id="partners">
+    <h1>National TSA Partners</h1>
+    <img src="mock-content/national-tsa-partners.png" alt="national-tsa-partners" />
+    </section>
+    
+    <footer>
+        <small class="copyright">&copy;2012 Virginia Association of the Technology Student Association.<br>
+        All Rights Reserved.</small>
+        <a href="#" class="engine"><small>Proudly powered by WordPress. <img src="img/wordpress.png" alt="WordPress Logo"></small></a>
+         <a href="#" class="developer"><small>Developed by the TAG. <img src="img/TSA-TAG-monogram.png" alt="TSA:TAG Monogram"></small></a>
+    </footer>
+    </div>
+  </div>
+</div>
+  
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+    <script src="js/libs/bootstrap/transition.js" type="text/javascript"></script>
+    <script src="js/libs/bootstrap/collapse.js" type="text/javascript"></script>
+    <script src="js/plugins.js" type="text/javascript"></script>
+    <script src="js/lib/bootstrap/bootstrap.js" type="text/javascript"></script>
+    <script src="js/script.js" type="text/javascript"></script>
+    <script type="text/javascript">
+var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+    </div>
 </body>
 </html>

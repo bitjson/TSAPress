@@ -1,22 +1,1076 @@
-@import "bootstrap/bootstrap.less";
+@import "variables.less";
+@import "mixins.less";
+@import "reset.less";
 
-body {
-  padding-top: 60px;
-  padding-bottom: 40px;
-}
+/*
 
-@import "bootstrap/responsive.less";
+Don't forget: 
+
+TODO: external link style (like wikipedia)
+TODO: on :focus - form pops out, expands, font sizes grow
 
 
-/* ===== Primary Styles ========================================================
-   Author:
+*/
+
+
+
+/* ==========================================================================
+                                Primary styles
    ========================================================================== */
 
 
+body {
+	background: #000 @body-background-tile repeat;
+	font-family: @copyFont;
+	color: @darkGray;
+}
+
+a {
+	color: @lightBlue;
+	font-style: italic;
+	font-weight: 700;
+	.transition(text-shadow ease .1s);
+
+}
+a:hover {
+	color: @highlightBlue;
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
 
 
+.time { 									//time style (now mixable)
+	border: 1px solid rgba(30,30,30,.1);
+	.borderRadius(@pillRadius);
+	.boxShadow(~"inset 0 1px 5px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.15)");
+	padding: .05em 1em;
+	vertical-align: middle;
+	font-size: 80%;
+}
+
+.linkOnDark(){
+		font-size: .8em;
+		&:hover{
+			text-shadow: 2px 2px 2px #000;
+		}
+		&:after {
+			content: "…"; // This bit of text is appended after every linkOnDark
+		}
+			
+}
+
+#page-wrap {
+	background: @body-background no-repeat;
+}
+
+.full-wrap, .basement-line, #basement > div > div  {
+		margin:0px auto;
+		text-align:left;
+		display: block;
+	}
+.full-wrap, #basement > div > div  {
+		width: @fullWidth;
+	}
+.content-wrap, .basement-line {
+	width: @centerWidth;
+	float: right;
+	padding: 10px 10px 0 10px;
+}
+
+.content-wrap {
+	background: @wrapper-background-tile-translucent repeat;
+	.borderRadius(@globalRadius @globalRadius 0 0);
+	margin-top: 10px;
+}
+
+.basement-line {
+	width: @centerWidth;
+	float: right;
+	padding: 30px 10px;
+}
 
 
+#TSA-Bar {
+	
+	width: 100%;
+	height: 39px;
+	background: @TSA-bar-background-tile repeat-x;
+	text-align:center;
+	border-bottom: 1px solid @darkGray; //fallback
+	border-bottom: 1px solid rgba(169, 169, 169, 0.3) !important;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+
+	
+	#root {
+		top: 8px;
+		position: absolute;
+		text-transform: uppercase;
+		color: white;
+		font-family: @copyFont;
+		font-style: normal;
+		font-size: 16px;
+		
+		img {
+			vertical-align: middle;
+			margin: 0 5px 5px 0;
+		}
+		
+		&:hover {
+			text-shadow: 0 0 3px rgba(255, 255, 255, 0.4);
+		
+			img {
+				box-shadow: 0 0 2px rgba(255, 255, 255, 0.4);
+				background: rgba(255, 255, 255, 0.4);
+			}
+		}
+		
+	}
+
+	span > ul {
+		
+		@border1: #131313;
+		@border2: #222;
+		
+		@border1Better: rgba(0, 0, 0, 0.2);
+		@border2Better: rgba(255, 255, 255, 0.2);
+	
+		float: right;
+		border-left: 1px solid @border1; //fallback
+    	border-right: 1px solid @border2; //fallback
+    	
+    	border-left: 1px solid @border1Better !important;
+    	border-right: 1px solid @border2Better !important;
+	
+	
+		& > li {
+			float: left;
+			border-color: @border2 @border1 @border1 @border2; //fallback
+			border-color: @border2Better @border1Better @border1Better @border2Better !important;
+			border-style: solid;
+			border-width: 0 1px 0 1px;
+			display: block;
+			height: 39px;
+		
+			& > a {
+			    display: block;
+			    height: 100%;
+			    padding: 8px 10px 0;
+			    text-align: center;
+			    color: white;
+				font-style: normal;
+				text-transform: uppercase;
+				.downArrowAfter();
+				
+				img {
+					margin: -4px 10px 0 10px;
+					vertical-align: middle;
+					border: 1px solid @lightGray;
+
+				}
+				
+				&:hover {
+					color: @TSABlue;
+					border-color: #131313 #222 #222 #131313;
+
+					
+					img {
+						box-shadow: 0 0 1px @lightBlue;
+						border-color: @TSABlue;
+					}
+					
+				}
+				
+			}
+			
+			& > div {
+				margin-top: -500px;
+				display: block;
+				position:absolute;
+				top: 38px;
+			}
+		}
+	
+	
+		& > li:hover { 
+		
+			background-image: @TSA-bar-background-tile-hover;
+			
+			& > div {
+				margin-top:0;
+				opacity: 1;
+			}
+		}
+	
+		& > li > div > div {
+			padding:10px;
+		}
+	
+		
+		#share > div {
+			margin-left: -150px;
+			
+			& > div {
+			width: 250px;
+			}
+		}
+		
+		#stateSelect > div {
+			margin-left: -400px;
+			
+			& > div {
+				width: 580px;
+				padding: 15px;
+				overflow: auto;
+			}
+			
+			h1 {
+				.hoverBox-h1();
+				width: 500px;
+			}
+			
+			ul { 	//separate uls for now because column support is still terrible :( 
+				width: 33%;
+				float: left;
+				
+				li {
+					
+					margin-bottom:	5px; 
+					width: 100%;
+					
+					a {
+						color: @darkBlue;
+						display: block;
+    					height: 23px;
+    					width: 93%;
+    					border: 1px solid transparent;
+    					font-style: normal;
+						
+						&:hover {
+							color: white;
+							background: @TSABlue;
+							border: 1px solid @lightBlue;
+							text-shadow: none;
+
+							
+							img {
+								box-shadow: 0 0 1px @TSABlue;
+								border-color: white;
+							}
+							
+						}
+						
+						img {
+							margin: -4px 10px 0 3px;
+							vertical-align: middle;
+							border: 1px solid @lightGray;
+						}
+					}
+					
+				}
+				
+			}
+			
+			ul:last-child li a {
+				width: 100%;
+			}
+		
+		}	
+	
+		#search {
+			
+			form {
+				margin: 4px 10px 0;
+			}
+			
+			input[type="text"] {
+				.borderRadius (15px);
+			    height: 21px;
+			    padding: 5px 5px 5px 28px;
+			    width: 100px;
+			    .transition(width .2s ease-in-out);
+			    border: 0;
+				box-shadow: inset 1px 1px 1px #777;
+				outline: none;
+				background: #fff @searchIcon no-repeat 9px 8px;
+				font-size: 14px;
+			    
+			    &:focus {
+			    
+			    	width: 240px; 
+			    }
+			 }
+			 
+			 input[type="submit"] {
+			 	.borderRadius (15px);
+			 	width: 25px;
+			 	height: 25px;
+				}
+		}	
+		
+		
+					
+	}
+}
+
+#about {
+	height: 150px;
+	clear: both;
+ 	div {
+		float: left;
+	}
+	#emblem {
+		width: 173px; //makes width 193px
+		height: 105px;
+		padding: 20px 10px;
+		display: block;
+	}
+	#callout {
+		width: 710px; //leaves space for browsers that fail at the box-model
+		font-family: @copyFont;
+		color: #FFF;
+		padding: 25px 25px 0 25px;
+
+		h1 {
+			font-size: 1.05em;
+			font-weight: 700;
+			line-height: 1.25em;
+			margin-bottom: .6em;
+
+			em {
+				color: @highlightBlue;
+				text-shadow: 0 0 1px white, 0 0 1px #85C4F4, 2px 2px 2px black;
+			}
+		}
+		p {
+			font-size: .95em;
+			font-weight: 300;
+			line-height: 1.35em;
+			margin-bottom: .6em;
+		}
+		h1, p {text-shadow: 2px 2px 2px #000;}
+		a {
+			float: right;
+			margin-top: -1em;
+			.linkOnDark();
+		}
+	}
+}
+
+#left-nav h1, #basement section h1  {
+		font-family: @headingFont;
+		font-weight: 800;
+		font-size: 1.4em;
+		color: #FFF;
+		text-shadow: 2px 2px 2px #000;
+		letter-spacing: .05em;
+		margin-bottom: .4em;
+		margin-left: 8px;
+	}
+
+#left-nav {
+	width: 200px;
+	float: left;
+	clear: both;
+	
+	ul{
+		margin-bottom: 1.75em;			
+		li {	
+			a {
+				display: block;
+				.borderRadius(@globalRadius);
+				width: 300px;
+				border: 1px solid transparent;
+				padding: 2px 0 2px 8px;
+				background-color: rgba(0, 0, 0, .13);
+				margin: 5px 0;
+				color: @leftNavColor;
+				.transition(background 0.2s ease-in-out);
+				font-style: normal;
+				font-weight: 400;
+				
+				&:hover, &.current {
+					border: 1px solid @lightBlue;
+					font-weight: 700;
+					text-shadow: -1px -1px 0 @TSABlue;
+					.gradientV(@TSABlue, @darkBlue);
+				}
+			}
+		}
+	}
+	& > a{
+		.linkOnDark();
+		float: right;
+		margin-top: -1.5em;
+		margin-right: 0.4em;
+	}
+}
+	
+#category-selector {			//TODO: fade box in? works on any part of screen? (maybe using display: none / block & opacity ?)
+	
+	color: @midGray;
+    float: right;
+    font-size: 0.8em;
+    font-weight: 300;
+    
+    & > a {
+    	.downArrowAfter();
+    	
+    	&:before {
+    		content: " "; //add a little space bewteen link and label
+		    padding: 5px;
+    	}
+    	
+    }
+    
+	& > div {
+		
+		display: none;		
+		width: 270px;		
+		position:absolute;
+		z-index: 1;
+		margin-left: -75px;
+		
+		& > div {
+			padding: 15px;
+			overflow: auto;
+		}
+		
+		ul{
+			
+			padding: 15px;
+			
+			li{
+				
+				margin-bottom: 5px;
+				
+				a {
+					color: @darkBlue;
+					display: block;
+					height: 23px;
+					width: 100%;
+					border: 1px solid transparent;
+					font-style: normal;
+					text-align: center;
+					font-size: 16px;
+					
+					&:hover {
+						color: white;
+						background: @TSABlue;
+						border: 1px solid @lightBlue;
+						text-shadow: none;
+						
+					}
+				}
+			}
+		}	
+	}
+	
+	h1 {
+			.hoverBox-h1();
+			width: 100%;
+		}
+	
+	&:hover > div {
+			opacity: 1;
+			overflow: auto;
+			
+			display: block;
+			
+		}
+	
+		& > a > div > div {
+			padding:10px;
+		}
+	
+}
+
+.hover-box {
+	.transition(opacity .2s ease-in-out); //TODO: work on fade out effect (must actually move box away to keep hover action restricted to button)
+	opacity: 0;
+	padding:10px;
+	background: @wrapper-background-tile repeat;
+	.borderRadius(@globalRadius);
+}
+
+.hover-box-inner {
+	background-color: #FFF;
+	border:@borderWidth solid @borderColor;
+	.borderRadius(@globalRadius);
+}
+
+.hover-box div {
+	.hover-box-inner;
+}
+
+.hoverBox-h1(){
+		font-family: @copyFont;
+		font-size: 1.3em;
+		display: block;
+		font-weight: 400;
+		color: @TSABlue;
+		.insetText(@TSABlue);
+		border-bottom: 1px dotted @TSABlue;
+		text-transform: uppercase;
+		margin-bottom: 20px;
+}
+
+
+#content {
+	background: #fff;
+	.borderRadius(@globalRadius @globalRadius 0 0);
+	padding: 10px 20px;		
+	
+	a:hover {
+	color: @TSABlue;
+	text-shadow: 1px 1px 1px @lightGray;
+	}
+	
+	& > h1 {
+		font-family: @copyFont;
+		font-size: 2.4em;
+		font-weight: 300;
+		color: @lightBlue;	
+		margin: .15em 0 .3em;
+		.insetText(@lightBlue);
+		
+	}
+	
+	article {     			// All Content Styling
+		
+		margin-bottom: 1em;
+		clear: both;
+		
+		& > header {
+				h1 {
+					font-family: @headingFont;
+					font-weight: 700;
+					font-size: 1.5em;
+					color: @darkGray;
+					margin: 0 0 .1em 0;
+				}
+				p {
+					font-family: @copyFont;
+					font-weight: 400;	
+					font-size: .8em;
+					color: @midGray;
+					margin: 0 0 .8em 0;
+
+				}
+				time {.time;}
+		}
+		figure {
+			display: block;
+			position: relative;
+			overflow: hidden;
+
+			img {	
+				width: 100%;   // /* TODO: responsive images? serve differently to smaller screen sizes via background-image? http://csswizardry.com/2011/07/responsive-images-right-now/ */
+				border: 1px solid @lightGray;
+			}
+			
+			figcaption {
+				position: absolute; 
+				background-color: black;
+				background-color: rgba(0,0,0,0.75); 
+				color: white;
+				padding: 10px 20px; 
+				opacity: 0;
+				.transition(bottom 0.6s ease);
+				left: 0; bottom: -30%;
+			}
+			
+			&:hover figcaption {
+				opacity: 1;
+				bottom: 0;
+			}
+			&:before { 
+
+				content: "▲"; 
+				position: absolute; 
+				background: rgba(0, 0, 0, 0.80); 
+				font-weight: 800; 
+				text-shadow: 0 0 5px black;
+				color: white;
+				
+				width: 24px;
+				height: 24px;
+				
+				.borderRadius(12px);
+				
+				text-align: center;
+				
+				font-size: 12px;
+				line-height: 24px;
+				
+				.transition(background 0.6s ease);
+				
+				opacity: 0.75;
+				
+					
+				bottom: 10px;
+				left: 10px;
+				
+				
+			}
+			&:hover:before {
+				opacity: 0;
+			}
+		
+		}
+		
+		p {
+			line-height: 1.55em;
+			margin: 0.4em 0;
+		}
+		.read-more {
+			float: right;
+			margin-right: 1em;
+			.rightArrowAfter();
+		}
+	}
+	nav#pagination {
+		overflow: auto;	width: 100%;	//expands to grab all floats (height-wise)
+		margin: 4em 0 1em 0;
+					
+		& > a, & > ul > li > a {
+				padding: 10px;
+				display: block;
+				text-align: center;
+				height: 20px;
+				background-color: @ultraLightGray;
+				border: 1px solid transparent;
+				.borderRadius(@globalRadius);
+				.boxShadow(~"inset 0 1px 5px rgba(255, 255, 255, 0.45), inset -1px -1px 1px rgba(0, 0, 0, 0.05)");
+				.transition(background-color .2 linear);
+
+			}
+		& > a:hover, & > ul > li > a:hover  {
+			background-color: @TSABlue;
+			color: white;
+			border: 1px solid @highlightBlue;
+			text-shadow: 1px 1px 1px @darkBlue;
+			.boxShadow(none);
+
+		}
+			
+		& > a:active, & > ul > li > a:hover  {
+			.boxShadow(~"inset 0 1px 5px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.15)");
+		}
+
+		& > ul{
+			margin: 0 auto 0 30%;
+			& > li > a {
+				float: left;
+				margin-right: 10px;
+				width: 35px;
+				
+			}
+		}
+		& > a[rel="next"] {
+			.leftArrowBefore();
+			float: left;
+		}
+		& > a[rel="prev"] {
+			.rightArrowAfter();
+			float: right;
+
+		}
+		.archiveHover {
+		
+			& > a {
+				.upArrowAfter();
+				margin-right: 50px;
+			}
+		
+			& > div {
+		
+				display: none;		
+				width: 400px;	
+				position:absolute;
+				z-index: 1;
+				height: 170px;
+			    margin-top: -180px;
+				.hover-box;
+				
+				& > div {
+					padding: 15px;
+					.hover-box-inner;
+				
+					& > time {
+						.time;
+						display: block;
+						clear: both;
+						margin: 5px 0;
+						padding: 0;
+						overflow: auto; width: 100%;	//expands to grab all floats (height-wise)
+			
+						
+					}
+					span {
+						display: block;
+						width: 52px;
+						padding: 8px 0 0 8px;
+						float: left;
+						color: @darkBlue;
+						font-weight: 700;
+						height: 100%;
+						
+					}
+					ul {
+						li {
+							float: left;
+						}
+					}
+					time time {
+						float: left;
+						width: 48px;
+						padding: 8px 0;			
+						
+					}
+					& > a {
+						display: block;
+					    font-size: 80%;
+					    position: absolute;
+					    right: 35px;
+					    top: 25px;
+					    .rightArrowAfter();
+					}
+				
+				
+				}
+				
+				
+			}
+		
+			h1 {
+				.hoverBox-h1();
+				width: 100%;
+			}
+		
+		&:hover > div {
+				opacity: 1;
+				display: block;
+				
+			}
+		
+			& > a > div > div {
+				padding:10px;
+			}
+		
+		}
+	}
+}
+
+#basement {
+
+	@spacing: 30px;					//space between sections (margin-right)
+
+	clear: both; 					//wait till the end of floats above (#content & nav)
+//	position: relative;
+	overflow: auto; width: 100%;	//expands to grab all floats (height-wise)
+	
+	background-color: black;
+	background-image: @basement-background-tile;
+	border-top: 1px solid #1A1A1A; 
+	
+	.boxShadow (-1px -1px 3px rgba(0, 0, 0, 0.4));
+	z-index: 10;
+	position: relative;
+	
+	.back-to-top {
+		
+		float: right;
+		margin: 5px;
+		font-size: .7em;
+		position: relative;
+		top: -25px;
+		display: block;
+		padding: 5px;
+		.borderRadius(10px);
+		border: 1px solid transparent;
+		
+		.upArrowAfter();
+		
+		&:hover	{
+			border: 1px solid rgba(119, 119, 119, 0.25);
+		}
+		&:active{
+			.boxShadow(~"inset 0 1px 5px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.15)");
+		}
+		
+	}
+	
+	
+	& > div {
+		background: @basement-background bottom no-repeat;
+		overflow: auto; width: 100%; 	//expands to grab all floats (height-wise)
+	}
+	
+	section {
+		
+		
+	
+		float: left;
+		width: 350px;
+		
+		&#events, &#archives {
+			margin-right: @spacing;
+		}
+		&#events, &#archives, &#partners {
+			clear: both
+		}
+		
+		ol{
+			margin-bottom: 1.75em;			
+			li {	
+				a {
+					display: block;
+					border: 1px solid transparent;
+					padding: 2px 0 2px 8px;
+	//				background-color: black;				//fallback to black
+	//				background-color: rgba(0, 0, 0, .26) !important;
+	//				.borderRadius(@pillRadius);
+					margin: 5px 0;
+					color: white;
+					.transition(background 0.2s ease);
+					font-style: normal;
+					font-weight: 400;
+	//				border: 1px solid transparent; 			//prevent box-model jump on hover
+	
+					border-bottom: 1px dotted @darkGray;
+					
+					&:hover {
+						border: 1px solid @lightBlue;
+						box-shadow: 0 0 5px @lightBlue;
+						font-weight: 700;
+						text-shadow: -1px -1px 0 @TSABlue;
+						.gradientV(@TSABlue, @darkBlue);
+						
+						span {
+							background-color: white;
+							color: @TSABlue;
+							text-shadow: none;
+						}
+						
+					}
+				}
+			}
+			
+			li:last-child a {
+				border-bottom: none;
+			}
+			
+		}
+		
+		& > a{
+			.linkOnDark();
+			float: right;
+			margin: -1.5em 0.4em 1em 0;
+		}
+		
+		
+		
+	}
+	
+	#events
+	{
+		ol li span {
+			.time;
+			float: right;
+			margin: 0 5px;
+			padding: 1px 6px;
+			}
+
+		}
+	
+	#archives {		
+		& > time {
+			.time;
+			display: block;
+			clear: both;
+			margin: 5px 0;
+			padding: 0;
+			overflow: auto; width: 350px;	//expands to grab all floats (height-wise)
+
+			
+		}
+		span {
+			display: block;
+			width: 52px;
+			padding: 8px 0 0 8px;
+			float: left;
+			color: white;
+			font-weight: 700;
+			height: 100%;
+			
+		}
+		ul {
+		overflow: auto; //expands to grab all floats (height-wise)
+		width: 290px;
+			li {
+				float: left;
+			}
+		}
+		time time {
+			float: left;
+			width: 48px;
+			padding: 8px 0;			
+			
+		}
+		& > a {
+			margin: .4em;
+		}
+	
+	}
+	
+	#contact {
+		
+		@padding: 15px;
+	
+		background-color: rgba(255, 255, 255, .05);
+		padding: @padding;
+		width: 320px;
+		color: white;
+		font-size: .8em;
+		.borderRadius(10px);
+		.boxShadow(1px 1px 3px @ultraDarkGray);
+		
+		form {
+			width: 308px;
+			background: @wrapper-background-tile-translucent repeat;
+			.borderRadius(@globalRadius);
+			margin: 10px 0;
+			padding: 6px;
+		}
+		
+		#name, #email {
+			float: left;
+			width: 131px;
+		}
+		#name, #email, #message {
+			color: @darkGray;
+			padding: 10px;
+			border: 1px solid #777;
+		}
+		
+		
+		#name {
+			color: @darkGray;
+			margin-right: 1px;
+		}
+		
+		#email {
+			color: @darkGray;
+		}
+		
+		#message {
+			width: 285px;
+			height: 50px;
+		}
+		
+		input:focus { 						//TODO: focus styling
+			.boxShadow(0 0 2px @TSABlue);
+		}
+		
+		input[type="submit"] {
+			border: 1px solid @lightBlue;
+			font-weight: 700;
+			text-shadow: -1px -1px 0 @TSABlue;
+			.gradientV(@TSABlue, @darkBlue);
+			.borderRadius(20px);
+			color: white;
+			float: right;
+			margin: 15px 10px;
+			padding: .3em 1em;
+			font-size: 1em;
+			
+			.transition(background 0.2s ease);
+			
+		}
+		input[type="submit"]:hover {
+			border: 1px solid @highlightBlue;
+			text-shadow: 0 0 2px #fff;
+			background-color: @TSABlue;
+			.boxShadow(0 0 2px @TSABlue);
+			
+			}
+			
+		input[type="submit"]:active {
+			border: 1px solid @lightBlue;
+			text-shadow: -1px -1px 0 @TSABlue;
+			.gradientV(@darkBlue, @TSABlue);
+			}	
+		
+		address {
+			margin-top: 10px;
+		}
+		
+	}
+	
+	#partners {
+	
+	width: 100%;
+	
+	img {width: 100%}
+	
+	 h1 {
+			font-size: .8em;
+			color: @midGray;
+			text-shadow: none;
+			
+			width: 720px;
+			border-bottom: 1px solid #777;
+	//		border-top: 1px solid #777;
+			padding: 15px 0;
+			margin: 5px 0 13px 0;
+			text-align: center;
+		} 
+	}
+	
+	footer {
+	clear: both;					//wait till the end of floats above (sections)
+	color: @midGray;
+	padding-top: 15px;
+	
+		a	{
+			color: @midGray;
+			font-style: normal;
+			font-weight: 400;
+			margin: 5px;
+			padding: 5px;
+			.borderRadius(10px);
+			border: 1px solid transparent;
+		}
+		
+		a:hover	{
+			border: 1px solid rgba(119, 119, 119, 0.25);
+		}
+		a:active{
+			.boxShadow(~"inset 0 1px 5px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.15)");
+
+		}
+		
+		small {
+			font-size: .5em;
+		}
+		
+		small.copyright {
+			 float: left;
+			 width: 45%;
+	//		 margin-top: 10px;
+		}
+		
+		.developer, .engine {
+			float: right;
+			display: block;
+		}
+		
+		small img {
+			vertical-align: middle;
+			height: 20px;				//to line up text correctly -TODO: make both images this size
+			padding: 0 0 5px 5px;
+		}
+	}
+}
 
 
 
