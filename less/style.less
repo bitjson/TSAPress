@@ -304,6 +304,17 @@ a:hover {
 			 	width: 25px;
 			 	height: 25px;
 				}
+		}
+		
+		#RSS a {
+			text-indent: -99999px;
+			background: @RSSIcon no-repeat 5px 5px;
+			width: 20px;
+			
+			&:hover {
+				background-image: @RSSIconHover;
+			}
+			
 		}	
 		
 		
@@ -403,13 +414,15 @@ a:hover {
 		margin-right: 0.4em;
 	}
 }
+
 	
 #category-selector {			//TODO: fade box in? works on any part of screen? (maybe using display: none / block & opacity ?)
 	
 	color: @midGray;
-    float: right;
     font-size: 0.8em;
     font-weight: 300;
+    float: right;
+
     
     & > a {
     	.downArrowAfter();

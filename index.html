@@ -35,12 +35,12 @@
 <body><div id="page-wrap">
     <!--[if lt IE 7]><p class=chromeframe>Your browser is somewhat <em>outdated</em>! <a href="http://browsehappy.com/">Please upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to view the internet in all its glory.</p><![endif]-->
 
-    <div id="TSA-Bar">
+    <div id="TSA-Bar"> <!-- TODO: snap bar to top with larger window dimensions (past certain height) -->
     
     <span class="full-wrap">
     
     
-        <a href="#" alt="Home" id="root"><img src="img/TSA-emblem-icon.png" alt="Technology Student Association Emblem">Technology Student Association</a> <!-- TODO: replace wordmark with text, hover effects, blur? -->
+        <a href="#" alt="Home" id="root"><img src="img/TSA-emblem-icon.png" alt="Technology Student Association Emblem">Technology Student Association</a> <!-- TODO: on hover, background more opaque image? -->
 			<ul>
 			
 			
@@ -108,14 +108,7 @@
             
             </li>
             
-            
-            <!-- TODO: RSS Icon
-            
-            <li id="connect">
-            	<a href="#" class="mail-icon"></a>
-            	<a href="#" class="rss-icon"></a>
-            </li>
-            -->
+            <li id="RSS"><a href="#">&nbsp;</a></li>
             
         </ul>
         
@@ -156,28 +149,29 @@
 
     <div class="content-wrap">
         <section id="content">
+                        
             
-            
-           <!--  TODO: category selector - select field, javascript replace with html dialog -->
+           <!--  TODO: category selector - for smaller screens, grab option select menue (<input>), replace via javascript with below html dialog -->
            
-            <span id="category-selector">View news from:
-            
-            <a href="#">All Regions</a>
-	            <div class="hover-box">
-	            	<div>
-	            	<h1>Please Select a Region</h1>
-	            		<ul>
-	           				 <li><a href="#" class="current">All Regions</a></li>
-	            			 <li><a href="#">Blue Ridge</a></li>
-	           				 <li><a href="#">Northern</a></li>
-	           				 <li><a href="#">Valley</a></li>
-	           				 <li><a href="#">Southwestern</a></li>
-	           				 <li><a href="#">South Central</a></li>
-	           				 <li><a href="#">Tidewater</a></li>
-			            </ul>    
-	 	           </div>
- 	           </div>
-			</span>
+
+		           <span id="category-selector">Viewing news from:
+		            
+			            <a href="#">All Regions</a>
+			            <div class="hover-box">
+			            	<div>
+				            	<h1>Please Select a Region</h1>
+			            		<ul>
+			           				 <li><a href="#" class="current">All Regions</a></li>
+			            			 <li><a href="#">Blue Ridge</a></li>
+			           				 <li><a href="#">Northern</a></li>
+			           				 <li><a href="#">Valley</a></li>
+			           				 <li><a href="#">Southwestern</a></li>
+			           				 <li><a href="#">South Central</a></li>
+			           				 <li><a href="#">Tidewater</a></li>
+					            </ul>    
+			 	           </div>
+		 	           </div>
+					</span>
 			
 			<h1>News</h1>
 
@@ -370,7 +364,7 @@
     	<a href="#">Full Archives</a>
     </section>
     
-    <section id="contact">
+    <section id="contact"> <!-- TODO: expand contact form on :focus for ease of use (fill basement?) -->
     	<h1>Contact Us</h1>
     	<!-- <p>Please leave us a message, and we'll get back to soon!</p> -->
 		<form method="post" action="#">
