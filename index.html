@@ -152,11 +152,41 @@
                         
             
            <!--  TODO: category selector - for smaller screens, grab option select menue (<input>), replace via javascript with below html dialog -->
+   
+	    <select id="category-selector" name="catagory-selector" ONCHANGE="location = this.options[this.selectedIndex].value;">
+			  <option value="#">All Regions</option>
+			  <option value="#">Blue Ridge</option>
+			  <option value="#">Northern</option>
+			  <option value="#">Valley</option>
+			  <option value="#">Southwestern</option>
+			  <option value="#">South Central</option>
+			  <option value="#">Tidewater</option>
+		</select>
+  
+  <span id="category-selector-javascript" style="display: none;">Viewing news from: <a href="#">All Regions</a>
+	  <div class="hover-box">
+		<div>
+	    	<h1>Please Select a Region</h1>
+	    	<div id="region-map-canvas"></div> 
+			<ul>
+					 <li><a href="#" class="current" data-geo-lat="37.779399" data-geo-lon="-79.519043" data-geo-map-origin="true">All Regions</a></li>
+				 	 <li><a href="#" data-geo-lat="37.07271" data-geo-lon="-80.0354" data-geo-id="1">Blue Ridge</a></li>
+					 <li><a href="#" data-geo-lat="38.668356" data-geo-lon="-77.76123" data-geo-id="2">Northern</a></li>
+					 <li><a href="#" data-geo-lat="38.462192" data-geo-lon="-78.848877" data-geo-id="3">Valley</a></li>
+					 <li><a href="#" data-geo-lat="36.901587" data-geo-lon="-81.89209" data-geo-id="4">Southwestern</a></li>
+					 <li><a href="#" data-geo-lat="37.169072" data-geo-lon="-78.299561" data-geo-id="5">South Central</a></li>
+					 <li><a href="#" data-geo-lat="37.51844" data-geo-lon="-76.47583" data-geo-id="6">Tidewater</a></li>
+	        </ul>  
+	       </div>
+	   </div>
+	</span>
+  
            
+<!--
 
-		           <span id="category-selector">Viewing news from:
-		            
-			            <a href="#">All Regions</a>
+Old HTML:
+
+		           <span id="category-selector">Viewing news from: <a href="#">All Regions</a>
 			            <div class="hover-box">
 			            	<div>
 				            	<h1>Please Select a Region</h1>
@@ -172,6 +202,8 @@
 			 	           </div>
 		 	           </div>
 					</span>
+					
+					-->
 			
 			<h1>News</h1>
 
@@ -400,11 +432,10 @@
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-    <script src="js/libs/bootstrap/transition.js" type="text/javascript"></script>
-    <script src="js/libs/bootstrap/collapse.js" type="text/javascript"></script>
-    <script src="js/plugins.js" type="text/javascript"></script>
-    <script src="js/lib/bootstrap/bootstrap.js" type="text/javascript"></script>
+    
     <script src="js/script.js" type="text/javascript"></script>
+    
+    
     <script type="text/javascript">
 var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
@@ -415,6 +446,12 @@ var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
     <script type="text/javascript"
       src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAnRwiaJO9vIJUSkHQoxqQPGhF4OMCTl68&sensor=true">
     </script>
+    
+    <!--
+     <script src="js/libs/bootstrap/transition.js" type="text/javascript"></script>
+    <script src="js/libs/bootstrap/collapse.js" type="text/javascript"></script>
+    <script src="js/plugins.js" type="text/javascript"></script>
+    <script src="js/lib/bootstrap/bootstrap.js" type="text/javascript"></script> -->
     
     </div>
 </body>

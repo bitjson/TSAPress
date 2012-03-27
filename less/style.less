@@ -86,6 +86,9 @@ a:hover {
 	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
+.hide {
+	display: none;
+}
 
 .time { 									//time style (now mixable)
 	border: 1px solid rgba(30,30,30,.1);
@@ -121,7 +124,7 @@ a:hover {
 	.borderRadius(@globalRadius);
 }
 
-.hover-box div {
+.hover-box > div {
 	.hover-box-inner;
 }
 
@@ -575,21 +578,18 @@ figure {
     
 	& > div {
 		
-		display: none;		
-		width: 270px;		
+		width: 650px;		
 		position:absolute;
 		z-index: 1;
-		margin-left: -75px;
+		margin-left: -450px;
+		top: -1000px;
 		
 		& > div {
 			padding: 15px;
 			overflow: auto;
 		}
 		
-		ul{
-			
-			padding: 15px;
-			
+		ul{			
 			li{
 				
 				margin-bottom: 5px;
@@ -604,7 +604,7 @@ figure {
 					text-align: center;
 					font-size: 16px;
 					
-					&:hover {
+					&:hover, &.hover {
 						color: white;
 						background: @TSABlue;
 						border: 1px solid @lightBlue;
@@ -624,15 +624,19 @@ figure {
 	&:hover > div {
 			opacity: 1;
 			overflow: auto;
-			
-			display: block;
-			
+			top: auto;			
 		}
 	
 		& > a > div > div {
 			padding:10px;
 		}
-	
+		#region-map-canvas { 
+		      display: block;
+		      width: 450px;
+		      height: 250px;
+		      float: left;
+		      margin-top: -20px;		      
+	       }
 }
 
 nav#pagination {
@@ -967,7 +971,7 @@ section.page {						//* TODO: editor styles?  */
 	
 	}
 	
-	#contact {
+	#basement section#contact {
 		
 		@padding: 15px;
 	
