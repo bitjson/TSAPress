@@ -17,8 +17,6 @@ TODO: on :focus - form pops out, expands, font sizes grow
 
 */
 
-
-
 /* ==========================================================================
                                 Primary styles
 ========================================================================== */
@@ -68,6 +66,14 @@ body {
 	float: right;
 	padding: 30px 10px;
 }
+
+
+
+/* extend basement to bottom of page, even without all content  - used in development
+html, body, #page-wrap, #basement, #basement > div, #basement > div > div { height: 100%; }
+*/
+
+
 
 //*============================================= */
 //* =========== Universal styles =============== */
@@ -147,7 +153,7 @@ a:hover {
 
 #root {
 		top: 8px;
-		position: absolute;
+		position: relative;
 		text-transform: uppercase;
 		color: white;
 		font-family: @copyFont;
@@ -240,7 +246,6 @@ a:hover {
 				margin-top: -500px;
 				display: block;
 				position:absolute;
-				top: 38px;
 			}
 		}
 	
@@ -250,7 +255,7 @@ a:hover {
 			background-image: @TSA-bar-background-tile-hover;
 			
 			& > div {
-				margin-top:0;
+				margin-top: -10px;
 				opacity: 1;
 			}
 		}
@@ -444,8 +449,7 @@ a:hover {
 
 #left-nav {
 	width: 200px;
-	float: left;
-	clear: both;
+	z-index: -1;
 	
 	ul{
 		margin-bottom: 1.75em;			
@@ -462,13 +466,6 @@ a:hover {
 				.transition(background 0.2s ease-in-out);
 				font-style: normal;
 				font-weight: 400;
-				
-				&:hover, &.current {
-					border: 1px solid @lightBlue;
-					font-weight: 700;
-					text-shadow: -1px -1px 0 @TSABlue;
-					.gradientV(@TSABlue, @darkBlue);
-				}
 			}
 		}
 	}
@@ -479,6 +476,25 @@ a:hover {
 		margin-right: 0.4em;
 	}
 }
+	
+	//* :first-childs -> (highlights blog link when viewing single post, kind of a hack) */
+	//*&.current_page_ancestor a,  (unnecessary, keeping for reference) */
+	
+#left-nav ul li a:hover,
+#left-nav ul li.current_page_item a,
+#left-nav ul li.current-page-ancestor a,
+.single #left-nav h1:first-child + ul li:first-child a,
+.archive #left-nav h1:first-child + ul li:first-child a
+
+  	{ 
+		border: 1px solid @lightBlue;
+		font-weight: 700;
+		text-shadow: -1px -1px 0 @TSABlue;
+		.gradientV(@TSABlue, @darkBlue);
+	}
+	
+	
+
 
 
 //*============== end left-nav ================= */
@@ -492,73 +508,100 @@ a:hover {
 //*============================================= */
 
 
-
-figure {
-	display: block;
-	position: relative;
-	overflow: hidden;
-
-	img {	
-		width: 100%;   // /* TODO: responsive images? serve differently to smaller screen sizes via background-image? http://csswizardry.com/2011/07/responsive-images-right-now/ */
-		border: 1px solid @lightGray;
+#content {
+	background: #fff;
+	.borderRadius(@globalRadius @globalRadius 0 0);
+	padding: 10px;	
+	min-height: 400px;	
+	
+	a:hover {
+	color: @TSABlue;
+	text-shadow: 1px 1px 1px @lightGray;
 	}
 	
-	figcaption {
-		position: absolute; 
-		background-color: black;
-		background-color: rgba(0,0,0,0.75); 
-		color: white;
-		padding: 10px 20px; 
-		opacity: 0;
-		.transition(bottom 0.6s ease);
-		left: 0; bottom: -30%;
+	& > h1, & > h1 a {
+		font-family: @copyFont;
+		font-size: 2.4em;
+		font-weight: 300;
+		color: @lightBlue;	
+		margin: 0 0 .3em 10px;
+		.insetText(@lightBlue);
+		
+	}
+	small {
+		font-family: @copyFont;
+		font-weight: 400;	
+		font-size: .8em;
+		color: @midGray;
+		margin: 0 0 .8em 0;
 	}
 	
-	&:hover figcaption {
-		opacity: 1;
-		bottom: 0;
+	article {
+		border: 1px solid transparent;
+		margin-bottom: 1em;
+		clear: both;
+		left:-10px;
+		padding: 0 10px 10px;
+		
+		& > header {
+				h1 {
+					font-family: @headingFont;
+					font-weight: 700;
+					font-size: 1.5em;
+					color: @darkGray;
+					margin: 0 0 .1em 0;
+				}
+				time {.time;}
+		}
+		
+		p {
+			line-height: 1.55em;
+			margin: 0.4em 0;
+		}
 	}
-	&:before { 
-
-		content: "▲"; 
-		position: absolute; 
-		background: rgba(0, 0, 0, 0.80); 
-		font-weight: 800; 
-		text-shadow: 0 0 5px black;
-		color: white;
-		
-		width: 24px;
-		height: 24px;
-		
-		.borderRadius(12px);
-		
-		text-align: center;
-		
-		font-size: 12px;
-		line-height: 24px;
-		
-		.transition(background 0.6s ease);
-		
-		opacity: 0.75;
-		
-			
-		bottom: 10px;
-		left: 10px;
-		
-		
-	}
-	&:hover:before {
-		opacity: 0;
-	}
-
 }
+
+.blog, .single, .archive {
+	 #content article > header {
+		h1 a {
+			font-weight: 700;
+			color: @darkGray;
+			margin: 0 0 .1em 0;
+			font-size: 1em;
+		    font-style: normal;
+		}
+		
+		p {
+			font-family: @copyFont;
+			font-weight: 400;	
+			font-size: .8em;
+			color: @midGray;
+			margin: 0 0 .8em 0;
+	
+		}
+		time {.time;}
+	}
+}
+
+.blog #content, .search #content, .archive #content {
+	article:hover > header h1 a, article > header h1 a:hover {
+		color: @darkBlue;
+		text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.20);
+	}
+	/* article:hover {						//want?
+		background: @ultraLightGray;
+		border: 1px solid @lightGray;
+	} */
+}
+
+
 
 
 
 //*=============== blog styles ================= */
 
 	
-#category-selector {			//* TODO: fade box in? works on any part of screen? (maybe using display: none / block & opacity ?) */
+.category-selector {			//* TODO: fade box in? works on any part of screen? (maybe using display: none / block & opacity ?) */
 	
 	color: @midGray;
     font-size: 0.8em;
@@ -581,7 +624,7 @@ figure {
 		width: 650px;		
 		position:absolute;
 		z-index: 1;
-		margin-left: -450px;
+		margin-left: -400px;
 		top: -1000px;
 		
 		& > div {
@@ -639,53 +682,78 @@ figure {
 	       }
 }
 
-nav#pagination {
+.more-link {
+	float: right;
+	.rightArrowAfter();
+	margin: 10px 0;
+	
+	span {
+		display: none;
+	}
+}
+
+nav#pagination {						//*  TODO: clean out unused code (not using numbered/month pagination, only next, prev links) */
 		overflow: auto;	width: 100%;	//* expands to grab all floats (height-wise) */
 		margin: 4em 0 1em 0;
+		}
 					
-		& > a, & > ul > li > a {
-				padding: 10px;
-				display: block;
-				text-align: center;
-				height: 20px;
-				background-color: @ultraLightGray;
-				border: 1px solid transparent;
-				.borderRadius(@globalRadius);
-				.boxShadow(~"inset 0 1px 5px rgba(255, 255, 255, 0.45), inset -1px -1px 1px rgba(0, 0, 0, 0.05)");
-				.transition(background-color .2 linear);
+nav#pagination a, #content a.more-link {
+	padding: 10px;
+	display: block;
+	text-align: center;
+	height: 20px;
+	background-color: @ultraLightGray;
+	border: 1px solid transparent;
+	.borderRadius(@globalRadius);
+	.boxShadow(~"inset 0 1px 5px rgba(255, 255, 255, 0.45), inset -1px -1px 1px rgba(0, 0, 0, 0.05)");
+	.transition(background-color .2 linear);
 
-			}
-		& > a:hover, & > ul > li > a:hover  {
-			background-color: @TSABlue;
-			color: white;
-			border: 1px solid @highlightBlue;
-			text-shadow: 1px 1px 1px @darkBlue;
-			.boxShadow(none);
+	}
+nav#pagination a:hover, #content a.more-link:hover {
+	background-color: @TSABlue;
+	color: white;
+	border: 1px solid @highlightBlue;
+	text-shadow: 1px 1px 1px @darkBlue;
+	.boxShadow(none);
 
-		}
-			
-		& > a:active, & > ul > li > a:hover  {
-			.boxShadow(~"inset 0 1px 5px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.15)");
-		}
+}
+	
+nav#pagination a:active, #content a.more-link:active {
+	.boxShadow(~"inset 0 1px 5px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.15)");
+}
 
-		& > ul{
-			margin: 0 auto 0 30%;
-			& > li > a {
-				float: left;
-				margin-right: 10px;
-				width: 35px;
-				
-			}
-		}
-		& > a[rel="next"] {
-			.leftArrowBefore();
-			float: left;
-		}
-		& > a[rel="prev"] {
-			.rightArrowAfter();
-			float: right;
 
-		}
+/* TODO: clean up for semantics, put rel="" on anchors
+
+	TODO: ajax - load more posts below, 100% width bar (like Facebook)
+
+& > a[rel="next"] {
+	.leftArrowBefore();
+	float: left;
+}
+& > a[rel="prev"] {
+	.rightArrowAfter();
+	float: right;
+}
+
+Temporary: */
+
+.next > a {
+	.leftArrowBefore();
+	float: left;
+}
+.prev > a {
+	.rightArrowAfter();
+	float: right;
+}
+		
+		
+		
+		
+		
+		
+		/* Not using direct pagination, archiveHover
+		
 		.archiveHover {
 		
 			& > a {
@@ -713,7 +781,7 @@ nav#pagination {
 						clear: both;
 						margin: 5px 0;
 						padding: 0;
-						overflow: auto; width: 100%;	//*expands to grab all floats (height-wise) */	
+						overflow: auto; width: 100%;	//*expands to grab all floats (height-wise)	*/ /*
 					}
 					span {
 						display: block;
@@ -765,20 +833,26 @@ nav#pagination {
 			}
 		
 		}
-	}
+		
+		*/
+		
+		
 
 
 //*=============== page styles ================= */
 
 
 
-#sub-nav {
+section#content #sub-nav {
 	ul {
-		height: 40px;
-		margin-bottom: 15px;
+		height: 20px;
+		margin-bottom: 20px;
 	}
 	li {
 		float: left;
+		margin: 0;
+		list-style: none;
+		
 		a{
 			font-size: 14px;
 			font-weight: 700;
@@ -788,104 +862,25 @@ nav#pagination {
 			font-family: @copyFont;
 			padding: 5px 10px;
 			margin: 0 10px;
-			color: @TSABlue;
+			color: @darkGray;
 			border: 1px solid transparent;
-			
-			&:hover, &.current {
+		}
+		
+		a:hover, &.current_page_item a {
 				background-color: @TSABlue;
 				color: white;
 				border: 1px solid @midGray;
 	
 			}
+		
+		&:first-child a {
+			margin: 0 10px 0 0;
 		}
+		
 	}
 }
 
-section.page {						//* TODO: editor styles?  */
 
-	.jumbotext {				
-		font-weight: 700;
-		font-size: 18px;
-		margin-bottom: 1em;
-		padding-left: 15px;
-		border-left: 3px solid @TSABlue;
-	}
-	
-	h1, h2, h3, h4, h5, h6 {
-		font-weight: 700;
-		font-family: @copyFont;
-		color: @TSABlue;
-		text-transform: uppercase;
-		margin-top: 1em;
-	}
-	h1 {font-size: 1.25em;}
-	h2 {font-size: 1em;}
-	h3 {font-size: .9em;}
-	h4 {font-size: .8em;}
-	h5 {font-size: .7em;}
-	h6 {font-size: .6em;}
-
-	
-
-}
-
-
-
-#content {
-	background: #fff;
-	.borderRadius(@globalRadius @globalRadius 0 0);
-	padding: 10px 20px;		
-	
-	a:hover {
-	color: @TSABlue;
-	text-shadow: 1px 1px 1px @lightGray;
-	}
-	
-	& > h1 {
-		font-family: @copyFont;
-		font-size: 2.4em;
-		font-weight: 300;
-		color: @lightBlue;	
-		margin: .15em 0 .3em;
-		.insetText(@lightBlue);
-		
-	}
-	
-	article {
-		
-		margin-bottom: 1em;
-		clear: both;
-		
-		& > header {
-				h1 {
-					font-family: @headingFont;
-					font-weight: 700;
-					font-size: 1.5em;
-					color: @darkGray;
-					margin: 0 0 .1em 0;
-				}
-				p {
-					font-family: @copyFont;
-					font-weight: 400;	
-					font-size: .8em;
-					color: @midGray;
-					margin: 0 0 .8em 0;
-
-				}
-				time {.time;}
-		}
-		
-		p {
-			line-height: 1.55em;
-			margin: 0.4em 0;
-		}
-		.read-more {
-			float: right;
-			margin-right: 1em;
-			.rightArrowAfter();
-		}
-	}
-}
 
 //*============== end content ================== */
 //* ============================================ */
@@ -920,160 +915,166 @@ section.page {						//* TODO: editor styles?  */
 		
 	}
 
-#events
+.events
 	{
-		ol li span {
-			.time;
-			float: right;
-			margin: 0 5px;
-			padding: 1px 6px;
-			}
-
+	ol li span {
+		.time;
+		float: right;
+		margin: 0 5px;
+		padding: 1px 6px;
 		}
-	
-	#archives {		
-		& > time {
-			.time;
-			display: block;
-			clear: both;
-			margin: 5px 0;
-			padding: 0;
-			overflow: auto; width: 350px;	//expands to grab all floats (height-wise)
-
-			
-		}
-		span {
-			display: block;
-			width: 52px;
-			padding: 8px 0 0 8px;
-			float: left;
-			color: white;
-			font-weight: 700;
-			height: 100%;
-			
-		}
-		ul {
-		overflow: auto; //expands to grab all floats (height-wise)
-		width: 290px;
-			li {
-				float: left;
-			}
-		}
-		time time {
-			float: left;
-			width: 48px;
-			padding: 8px 0;			
-			
-		}
-		& > a {
-			margin: .4em;
-		}
-	
 	}
 	
-	#basement section#contact {
+.archives {		
+	& > time {
+		.time;
+		display: block;
+		clear: both;
+		margin: 5px 0;
+		padding: 0;
+		overflow: auto; width: 350px;	//expands to grab all floats (height-wise)
+
 		
-		@padding: 15px;
-	
-		background-color: rgba(255, 255, 255, .05);
-		padding: @padding;
-		width: 320px;
+	}
+	span {
+		display: block;
+		width: 52px;
+		padding: 8px 0 0 8px;
+		float: left;
 		color: white;
-		font-size: .8em;
-		.borderRadius(10px);
-		.boxShadow(1px 1px 3px @ultraDarkGray);
+		font-weight: 700;
+		height: 100%;
 		
-		form {
-			width: 308px;
-			background: @wrapper-background-tile-translucent repeat;
-			.borderRadius(@globalRadius);
-			margin: 10px 0;
-			padding: 6px;
-		}
-		
-		#name, #email {
+	}
+	ul {
+	overflow: auto; //expands to grab all floats (height-wise)
+	width: 290px;
+		li {
 			float: left;
-			width: 131px;
 		}
-		#name, #email, #message {
-			color: @darkGray;
-			padding: 10px;
-			border: 1px solid #777;
-		}
-		
-		
-		#name {
-			color: @darkGray;
-			margin-right: 1px;
-		}
-		
-		#email {
-			color: @darkGray;
-		}
-		
-		#message {
-			width: 285px;
-			height: 50px;
-		}
-		
-		input:focus { 						//TODO: focus styling
-			.boxShadow(0 0 2px @TSABlue);
-		}
-		
-		input[type="submit"] {
-			border: 1px solid @lightBlue;
-			font-weight: 700;
-			text-shadow: -1px -1px 0 @TSABlue;
-			.gradientV(@TSABlue, @darkBlue);
-			.borderRadius(20px);
-			color: white;
-			float: right;
-			margin: 15px 10px;
-			padding: .3em 1em;
-			font-size: 1em;
-			
-			.transition(background 0.2s ease);
-			
-		}
-		input[type="submit"]:hover {
-			border: 1px solid @highlightBlue;
-			text-shadow: 0 0 2px #fff;
-			background-color: @TSABlue;
-			.boxShadow(0 0 2px @TSABlue);
-			
-			}
-			
-		input[type="submit"]:active {
-			border: 1px solid @lightBlue;
-			text-shadow: -1px -1px 0 @TSABlue;
-			.gradientV(@darkBlue, @TSABlue);
-			}	
-		
-		address {
-			margin-top: 10px;
-		}
+	}
+	time time {
+		float: left;
+		width: 48px;
+		padding: 8px 0;			
 		
 	}
-	
-	#partners {
-	
-	width: 100%;
-	
-	img {width: 100%}
-	
-	 h1 {
-			font-size: .8em;
-			color: @midGray;
-			text-shadow: none;
-			
-			width: 720px;
-			border-bottom: 1px solid #777;
-	//		border-top: 1px solid #777;
-			padding: 15px 0;
-			margin: 5px 0 13px 0;
-			text-align: center;
-		} 
+	#basement & > a {
+		margin: .4em;
 	}
+
+}
+	
+#basement section.contact {
+	
+	@padding: 15px;
+
+	background-color: rgba(255, 255, 255, .05);
+	padding: @padding;
+	width: 320px;
+	color: white;
+	font-size: .8em;
+	.borderRadius(10px);
+	.boxShadow(1px 1px 3px @ultraDarkGray);
+	
+	form {
+		width: 308px;
+		background: @wrapper-background-tile-translucent repeat;
+		.borderRadius(@globalRadius);
+		margin: 10px 0;
+		padding: 6px;
+	}
+	
+	#name, #email {
+		float: left;
+		width: 131px;
+	}
+	#name, #email, #message {
+		color: @darkGray;
+		padding: 10px;
+		border: 1px solid #777;
+	}
+	
+	
+	#name {
+		color: @darkGray;
+		margin-right: 1px;
+	}
+	
+	#email {
+		color: @darkGray;
+	}
+	
+	#message {
+		width: 285px;
+		height: 50px;
+	}
+	
+	input:focus { 						//TODO: focus styling
+		.boxShadow(0 0 2px @TSABlue);
+	}
+	
+	input[type="submit"] {
+		border: 1px solid @lightBlue;
+		font-weight: 700;
+		text-shadow: -1px -1px 0 @TSABlue;
+		.gradientV(@TSABlue, @darkBlue);
+		.borderRadius(20px);
+		color: white;
+		float: right;
+		margin: 15px 10px;
+		padding: .3em 1em;
+		font-size: 1em;
+		
+		.transition(background 0.2s ease);
+		
+	}
+	input[type="submit"]:hover {
+		border: 1px solid @highlightBlue;
+		text-shadow: 0 0 2px #fff;
+		background-color: @TSABlue;
+		.boxShadow(0 0 2px @TSABlue);
+		
+		}
+		
+	input[type="submit"]:active {
+		border: 1px solid @lightBlue;
+		text-shadow: -1px -1px 0 @TSABlue;
+		.gradientV(@darkBlue, @TSABlue);
+		}	
+	
+	address {
+		margin-top: 10px;
+	}
+	
+}
+
+#basement section.contact:focus {
+
+	background-color: rgba(0, 0, 0, 0.85);
+    position: absolute;
+    width: 700px;
+}
+	
+#basement #partners {
+
+width: 100%;
+
+img {width: 100%}
+
+ h1 {
+		font-size: .8em;
+		color: @midGray;
+		text-shadow: none;
+		
+		width: 720px;
+		border-bottom: 1px solid #777;
+//		border-top: 1px solid #777;
+		padding: 15px 0;
+		margin: 5px 0 13px 0;
+		text-align: center;
+	} 
+}
 
 #basement {
 
@@ -1104,10 +1105,10 @@ section.page {						//* TODO: editor styles?  */
 		float: left;
 		width: 350px;
 		
-		&#events, &#archives {
+		&.events, &.archives {
 			margin-right: @spacing;
 		}
-		&#events, &#archives, &#partners {
+		&.events, &.archives, &.partners {
 			clear: both
 		}
 		
@@ -1200,13 +1201,434 @@ section.page {						//* TODO: editor styles?  */
 		
 		small img {
 			vertical-align: middle;
-			height: 20px;				//to line up text correctly -TODO: make both images this size
+			height: 20px;				//*to line up text correctly -TODO: make both images this size */
 			padding: 0 0 5px 5px;
 		}
 	}
 }
 
 
+//*============== end Basement ================= */
+//* ============================================ */
+
+
+//*============================================= */
+//* ============= Content Styles ================= */
+//*============================================= */
+
+#content article {						//* TODO: editor styles?  */
+
+	.jumbotext {				
+		font-weight: 700;
+		font-size: 18px;
+		margin-bottom: 1em;
+		padding-left: 15px;
+		border-left: 3px solid @TSABlue;
+	}
+	
+	h1, h2, h3, h4, h5, h6 {
+		font-weight: 700;
+		font-family: @copyFont;
+		text-transform: uppercase;
+		margin: .75em 0 .35em;
+	}
+	
+	h1, h3, h5 {
+		color: @TSABlue;
+	}
+	
+	h2, h4, h6 {
+		color: @lightBlue;
+	}
+	
+	
+	h1 {font-size: 1.25em;}	
+	h2 {font-size: 1.15em;}
+	h3 {font-size: .9em;}
+	h4 {font-size: .85em;}
+	h5 {font-size: .7em;}
+	h6 {font-size: .65em;}
+	
+	ol li, ul li { margin-left: 20px; list-style-position: inside;}
+  
+	ol li {
+		list-style-type: decimal;
+		ol li {
+			list-style-type: lower-latin;
+			ol li {
+				list-style-type: lower-roman;
+				ol li {
+					list-style-type: upper-latin;
+					ol li {
+						list-style-type: decimal;
+					}
+				}
+			}
+		}
+	}
+	
+	ul li {
+		list-style-type: square;
+	}
+
+}
+
+strong, em, var {font-weight: 700;}
+em, cite, var {font-style: italic;}
+
+sup, sub {font-size: 75%;}
+sup {vertical-align: super;}
+sub {vertical-align: sub;}
+
+cite {font-weight: 300;}
+
+hr {margin: 25px 0; border: dotted #CCC; border-width: 0 0 1px 0;}
+
+abbr {border-bottom: 1px dotted; cursor: help;}
+
+del:hover:before, ins:hover:before {     
+    background-color: white;
+    border: 1px solid;
+    .borderRadius(40px);
+    font-size: 14px;
+    font-weight: 400;
+    margin-left: 5px;
+    margin-top: -30px;
+    padding: 5px;
+    position: absolute; 
+}
+del {text-decoration: line-through; color: @TSARed;
+	&:hover:before {content: "(deleted)";}
+}
+ins {font-weight: 700; color: @TSABlue;
+	&:hover:before {content: "(inserted)";}
+}
+
+
+dl {
+    border: 1px solid @lightGray;
+    padding: 1em;
+	margin: 10px 0 10px 10px;
+  }
+  dt {
+    float: left;
+	clear: left;
+	text-align: right;
+	font-weight: 300;
+	color: @lightBlue;
+	margin: 0 1em 1em 0;
+  }
+  dt:after {
+    content: ":";
+  }
+  dd {
+    padding: 0 0 0.5em 0;
+	display: block;
+	margin-left: 26%;
+  }
+
+table {
+	border: 1px solid @lightGray;
+	border-collapse: collapse;
+	margin: 20px 0;
+	width: 100%;
+}
+
+th {font-weight: 700;}
+th, td {padding: 10px; border: 1px solid @lightGray;}
+
+tr:nth-child(odd) {background-color: #F8F8FF;}
+
+th {background-color: @ultraLightGray;}
+
+code, pre, samp, kbd {
+	font-family: courier, monaco, monospace;
+	line-height: 1.45em;
+	}
+
+code, samp, kbd {
+	padding: 1px 5px;
+	background-color: #777;
+	color: white;
+	.borderRadius(5px);
+	.boxShadow(~"inset 0 1px 5px rgba(255, 255, 255, 0.25), inset -1px -1px 1px rgba(0, 0, 0, 0.20)");
+	
+	var{
+		color: @highlightBlue;
+	}
+}
+
+samp, code {width: 100%;}
+
+pre {
+	padding: 10px;
+	border: 1px solid @lightGray;
+	background-color: @ultraLightGray;
+	
+	samp, code {
+		padding: 0;
+		background-color: transparent;
+		color: @darkGray;
+		.borderRadius(none);
+		.boxShadow(none);
+	}
+	
+}
+
+blockquote {
+	padding: 10px;
+	border: 1px solid @lightGray;
+	background-color: @ultraLightGray;
+	overflow: auto;
+	
+	cite {
+		float: right;
+		margin-right: 1em;
+		a {
+			font-weight: 300;
+			font-style: normal;
+		}
+		&:before {
+			content: "– ";
+		}
+	}
+	
+/*	&:before {					//* display left quote in blockquote */ /*
+		content: "\201C";
+		float: left;
+	    font-size: 150px;
+    	margin-left: -4px;
+	    margin-top: -55px;
+	    text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.05);
+		color: rgba(0, 0, 0, 0.1);
+	    position: absolute;
+	} */
+}
+
+
+/*
+.entry-content img {
+	margin: 0 0 1.5em 0;
+	}
+	*/
+	
+	
+.alignleft, img.alignleft {
+	margin-right: 1.5em;
+	display: inline;
+	float: left;
+	}
+.alignright, img.alignright {
+	margin-left: 1.5em;
+	display: inline;
+	float: right;
+	}
+.aligncenter, img.aligncenter {
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+	clear: both;
+	}
+	
+	
+.wp-caption {
+	text-align: center;
+	margin-top: 5px;
+	}
+	
+
+.wp-smiley {
+	margin: 0 !important;
+	max-height: 1em;
+	}
+	
+blockquote.left {
+	margin-right: 20px;
+	text-align: right;
+	margin-left: 0;
+	width: 33%;
+	float: left;
+	}
+	
+blockquote.right {
+	margin-left: 20px;
+	text-align: left;
+	margin-right: 0;
+	width: 33%;
+	float: right;
+	}
+	
+mark {
+	background-color: @TSABlue;
+    color: white;
+    padding: 0 5px;
+}
+	
+	
+//*=============== figure styles ================= */
+
+
+
+figure {
+	display: block;
+	position: relative;
+	overflow: hidden;
+	margin-top: 10px;
+
+	img {	
+		width: 100%;   // /* TODO: responsive images? serve differently to smaller screen sizes via background-image? http://csswizardry.com/2011/07/responsive-images-right-now/ */
+		border: 1px solid @lightGray;
+	}
+	
+	figcaption {
+		position: absolute; 
+		background-color: black;
+		background-color: rgba(0,0,0,0.75); 
+		color: white;
+		padding: 10px 2%; 
+		
+		.transition(bottom 0.6s ease);
+		left: 0; bottom: -30%;
+		width: 96%;
+		
+		&:before { 
+			content: "▲"; 
+			position: absolute; 
+			background: rgba(0, 0, 0, 0.80); 
+			font-weight: 800; 
+			text-shadow: 0 0 5px black;
+			color: white;
+			
+			width: 16px;
+			height: 16px;
+			
+			.borderRadius(8px);
+			
+			text-align: center;
+			
+			font-size: 8px;
+			line-height: 16px;
+			
+			.transition(opacity 0.6s ease);
+			
+			opacity: 0.75;
+			
+			left: 10px;
+			bottom: 85px;	
+		}	
+	}
+	
+	&:hover figcaption {
+		bottom: 0;
+		&:before {
+			opacity: 0;
+		}
+		
+	}
+	&:hover:before {			//NEED ?
+		opacity: 0;
+	}
+
+}
+
+//*============================================= */
+//* ============= Search Styles ================ */
+//*============================================= */
+
+.search #content {
+	 article ol li {
+		list-style-position: outside;
+		color: @TSABlue;
+		font-weight: 900;
+		font-size: 1.3em;
+		margin-bottom: 15px;
+		
+		h2 a {
+			font-size: 0.8em;
+			font-style: normal;
+		}
+		
+		p {
+			font-weight: 400;
+			font-size: 0.8em;
+			color: @darkGray;
+		}
+		
+	}
+	aside {
+		background-color: @ultraLightGray;
+		border-bottom: 1px solid @lightGray;
+		padding: 20px;
+		h1 {
+			font-size: 0.9em;
+		}
+	}
+}
+
+//*============================================= */
+//* ============= Admin Styles ================= */
+//*============================================= */
+
+#content {
+
+	.post-edit-link {						//* TODO: clean up */
+		position: absolute;
+		display: block;
+		z-index: 2; 
+	    height: 22px;
+	    margin-left: -50px;
+		padding: 2px 8px;
+		background-color: @ultraLightGray;
+		border: 1px solid @lightGray;
+		.borderRadius(@globalRadius);
+		.boxShadow(0 1px 1px rgba(0,0,0,0.2));
+//		.transition(background-color .2 linear);
+		font-style: normal;
+	    font-size: 16px;	
+	    text-shadow: none;
+
+	    
+		&:hover {
+			background-color: @TSABlue;
+			color: white;
+			border-color: @highlightBlue;
+			text-shadow: none;
+		}
+		
+		&:active {
+			.boxShadow(~"inset 0 1px 5px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.15)");
+		}
+		
+		
+		&:before {
+			content: "";
+			position: absolute;
+			width: 0;
+			height: 0;
+			border-color: @midGray transparent transparent;
+			border-style: solid;
+		    border-width: 13px 0 0 27px;
+		    left: 2px;
+		    top: 27px;
+		    z-index: -2;
+		}	
+		&:hover:before {
+			border-color: @darkBlue transparent transparent;
+		}
+	}
+}
+
+
+//*============================================= */
+//* ============= Print Styles ================= */
+//*============================================= */
+
+
+@media print { 
+      #content article section a[href]:after {  //* show hrefs when printing */
+     	 content: ~'" [" attr(href) "] "';
+      }
+}
 
 
 
