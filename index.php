@@ -1,6 +1,6 @@
 <?php get_header(); ?>
         
-      	<?php get_template_part( 'catagoryselector' ); ?>
+<?php get_template_part( 'catagoryselector' ); ?>
                 
         	<h1>News</h1>
         
@@ -32,7 +32,7 @@
 			<article>
 				<h1>Not Found</h1>
 				<p>Sorry, but the requested resource was not found on this site.</p>
-				<?php get_search_form(); ?>
+<?php get_search_form(); ?>
 			</article>
 
 			<?php endif; ?>

@@ -19,7 +19,7 @@
 		<?php //TODO: more meta? ?>
 		
 
-		<link rel="stylesheet/less" href="<?php bloginfo('template_directory'); ?>/less/style.less">    
+		<link rel="stylesheet/less" href="<?php bloginfo('template_directory'); ?>/css/style.less">    
 	    <script src="<?php bloginfo('template_directory'); ?>/js/libs/less-1.2.1.min.js" type="text/javascript"></script>
 		<?php /*
 		
@@ -45,8 +45,11 @@
 		
 		
 		<script src="<?php bloginfo('template_directory'); ?>/js/libs/modernizr-2.5.3-respond-1.1.0.min.js" type="text/javascript"></script>
-		<?php wp_enqueue_script('jquery'); ?>
-		<?php wp_head(); ?>
+
+
+<?php wp_head(); ?>
+
+
 	</head>
 	<body <?php body_class(); ?>>
 	<div id="page-wrap">
@@ -63,7 +66,6 @@
 			<ul>
 			
 			
-            <?php /* 		Pulling out for AHSTSA
             
             <li id="share">
             
@@ -75,13 +77,9 @@
                 </div>
             </li>
 
+<?php get_template_part( 'stateselect' ); ?>
 
-           	 get_template_part( 'stateselect' ); 
-           	 
-           	 
-           	 */
-           	 
-           	  get_search_form(); ?>       	
+<?php get_search_form(); ?>       	
             	            
             <li id="RSS"><a title="<?php bloginfo('name'); ?> RSS 2.0 Feed" href="<?php bloginfo('rss2_url'); ?>">&nbsp;</a></li> <!-- TODO: sprite this -->
             
@@ -92,11 +90,21 @@
     </div>
     
    <div class="full-wrap">
-
     <aside id="about">
-       <div><a href="<?php bloginfo('url'); ?>/" id="emblem"><img src="<?php bloginfo('template_directory'); ?>/img/Virginia-TSA-emblem.png" alt="Virginia TSA Emblem"></a></div> <!-- TODO: emblem hover effect - glow fade in/out? -->
+       <div><a href="<?php home_url(); ?>" id="emblem">
+       <img src="<?php
+       	
+       	$state_emblem_url = of_get_option('state_emblem');
+       
+        	if (trim($state_emblem_url) == '') {
+      			echo get_bloginfo('template_directory') . '/img/TSA-emblem.png'; //state_emblem was previously set but currently has no value
+        	} else {	
+         		echo $state_emblem_url;
+         	} 
+        
+        ?>" alt="State TSA Emblem"></a></div> <!-- TODO: emblem hover effect - glow fade in/out? -->
        <div id="callout">
-        <h1>We are <em>10,000 students</em>, in <em>180 schools</em> across Virginia who believe that technology is the key to a better world.</h1>
+        <h1>We are <em><?php echo of_get_option('total_members', '5,000'); ?> students</em>, in <em><?php echo of_get_option('total_schools', '100'); ?> schools</em> across <?php echo of_get_option('state_name', 'the state'); ?> who believe that technology is the key to a better world.</h1>
         <p>We prepare our members to thrive in a technical world through competitive events, networking, and leadership opportunities.</p><a href="#">Check out our story</a>
         </div>
     </aside>

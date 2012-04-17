@@ -124,15 +124,9 @@
     </div>
   </div>
 </div>
+   
+   
     
-    <?php /* TODO: fix wp enque to serve below bit:
-    
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript">window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-    
-    */ ?>
-    
-    <script src="<?php bloginfo('template_directory'); ?>/js/script.js" type="text/javascript"></script>
     
      <?php /* TODO: Google Analytics
     
@@ -146,13 +140,12 @@ var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
         */ ?>
 
     
-    <script type="text/javascript"
-      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAnRwiaJO9vIJUSkHQoxqQPGhF4OMCTl68&sensor=true">
-    </script>
     
     </div>
     
-    <?php wp_footer(); ?>
+<?php wp_footer(); ?>
     
+    <script type="text/javascript">window.jQuery || document.write('<script src="<?php bloginfo('template_directory'); ?>/js/libs/jquery-1.7.1.min.js"><\/script>')</script><?php //if jQuery is not loaded from Google CDN, load it from the library ?>
+    <script defer src="<?php bloginfo('template_directory'); ?>/js/script.js" type="text/javascript"></script>
 </body>
 </html>
