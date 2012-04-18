@@ -47,9 +47,7 @@
 
 			<?php endwhile; ?>
 
-			<nav id="pagination">
-				<span class="next"><?php previous_posts_link('Newer Posts');?></span><span class="prev"><?php next_posts_link('Older Posts'); ?></span>
-			</nav>
+<?php get_template_part( 'pagination' ); ?>
 
 			<?php else : ?>
 

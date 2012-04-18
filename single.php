@@ -4,7 +4,6 @@
 	
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-		<section>
 			<article id="post-<?php the_ID(); ?>">
 			<?php  edit_post_link('Edit'); ?>
 				<header>
@@ -13,7 +12,6 @@
 				</header>
 				<section>
 					<?php the_content('Read more on "'.the_title('', '', false).'" &raquo;'); ?>
-
 				</section>
 				<footer>
 					<?php wp_link_pages(array('before' => '<p><strong>Pages:</strong> ', 'after' => '</p>', 'next_or_number' => 'number')); ?>
@@ -40,7 +38,7 @@
 							// neither comments nor pings are open ?>
 							<?php //Both comments and pings are currently closed. ?>
 
-						<?php } edit_post_link('Edit the Post'); ?>
+						<?php } ?>
 
 					</small>
 				</footer>
@@ -48,11 +46,17 @@
 
 			<?php comments_template(); ?>
 
+			<?php get_template_part( 'pagination' ); 
+			/*
+			
+			
+			?>
+			
 			<nav>
 				<p><?php previous_post_link(); ?> &bull; <?php next_post_link(); ?></p>
 			</nav>
 
-	<?php endwhile; else: ?>
+	<?php */ endwhile; else: ?>
 
 			<article>
 				<p>Sorry, no posts matched your criteria.</p>

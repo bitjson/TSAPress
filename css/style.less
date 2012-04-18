@@ -562,8 +562,9 @@ a:hover {
 		}
 		
 		p {
-			line-height: 1.55em;
-			margin: 0.4em 0;
+			line-height: 1.75em;
+			margin: 0.4em 0 1em;
+			font-weight: 300;
 		}
 	}
 }
@@ -602,7 +603,18 @@ a:hover {
 }
 
 
-
+#content article {
+	header{
+		margin-bottom: 15px;
+	}
+	footer {
+		margin: 15px;
+		
+		p {
+			margin: 0.8em 0;
+		}
+	}
+}
 
 
 //*=============== blog styles ================= */
@@ -711,6 +723,7 @@ nav#pagination a, #content a.more-link {
 	.borderRadius(@globalRadius);
 	.boxShadow(~"inset 0 1px 5px rgba(255, 255, 255, 0.45), inset -1px -1px 1px rgba(0, 0, 0, 0.05)");
 	.transition(background-color .2 linear);
+	max-width: 42%; //*also the answer to life the universe and everything*/
 
 	}
 nav#pagination a:hover, #content a.more-link:hover {
@@ -1536,6 +1549,108 @@ figure {
 		opacity: 0;
 	}
 
+}
+
+//*============================================= */
+//* ================ Comments ================== */
+//*============================================= */
+
+#respond {
+	padding: 20px;
+	border: 1px solid @lightGray;
+	background-color: @ultraLightGray;
+	.borderRadius(@globalRadius);
+	.boxShadow(0 2px 3px rgba(0, 0, 0, 0.2));
+	margin: 0 20px 10px;
+	
+	p {
+	line-height: 1.75em;
+	margin: 0.4em 0 1em;
+	font-weight: 300;
+	}
+	
+	& > h1 {
+		font-family: @copyFont;
+		font-weight: 700;
+		font-size: 1.5em;
+		margin-bottom: 15px;
+	}
+	
+	input[type="text"] {
+		width: 70%;
+		margin-right: 30%;
+		text-indent: 5.5em;
+	}
+		
+	textarea {
+		width: 96%;
+		text-indent: 6.3em;
+	}
+	
+	input[type="text"], textarea {
+		font-size: 18px;
+		margin-bottom: 20px;
+		border: 1px solid rgba(0, 0, 0, 0.1);
+	    .borderRadius(@globalRadius);
+	    .boxShadow(1px 1px 3px rgba(0, 0, 0, 0.2) inset;
+	    padding: 10px;
+	    z-index: 0;
+	    position: relative;
+	    color: @darkGray;
+	}
+	
+	input[type="text"]:focus, textarea:focus {
+	    z-index: 2;
+	    text-indent: 0;
+	}
+	
+	input[type="submit"] {
+		float: right;
+		margin-right: -30px;
+		margin-top: -10px;		
+	}
+	
+	input[type="submit"]:hover {
+		background-color: @TSABlue;
+		border-color: @lightBlue;
+	}
+	
+	input[type="submit"]:active {
+		background-color: @darkBlue;
+		border-color: @TSABlue;
+	}
+	
+	
+	label, input[type="submit"] {
+		background-color: @lightBlue;
+		border: 2px solid @highlightBlue;
+		font-weight: 700;
+		color: white;
+		text-align: center;
+		.borderRadius(@globalRadius);
+    	.boxShadow(0 0 2px rgba(0, 0, 0, 0.2);
+    	padding: 12px 10px;
+    	font-size: 18px;
+
+	}
+	
+	label {
+		position: absolute;
+	    min-width: 60px;
+	    z-index: 1;
+	    margin-top:-3px;	
+	    margin-left: -5px;
+	    
+	    span {
+	    	position: absolute;
+			right: -20px;
+			color: @TSARed;
+	    }
+	    
+	}
+	
+	
+	
 }
 
 //*============================================= */

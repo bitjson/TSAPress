@@ -12,8 +12,8 @@
 
 <?php if ($comments) : // there are comments ?>
 
-		<section>
-			<h3><?php comments_number('No Responses', 'One Response', '% Responses' ); ?> to &ldquo;<?php the_title(); ?>&rdquo;</h3>
+		<section id="comments">
+			<h1><?php comments_number('No Responses', 'One Response', '% Responses' ); ?> to &ldquo;<?php the_title(); ?>&rdquo;</h1>
 
 			<?php foreach ($comments as $comment) : ?>
 
@@ -48,8 +48,8 @@
 
 <?php if ('open' == $post->comment_status) : ?>
 
-		<section>
-			<h3>Leave a Response</h3>
+		<section id="respond">
+			<h1>Respond</h1>
 
 			<?php if (get_option('comment_registration') && !$user_ID) : ?>
 			<p>You must be <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>">logged in</a> to post a comment.</p>
@@ -60,22 +60,25 @@
 				<?php if ($user_ID) : ?>
 				<p>Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?action=logout" title="Log out of this account">Log out &raquo;</a></p>
 				<?php else : ?>
-
-				<label for="author">Name <?php if ($req) echo "(required)"; ?></label>
-				<input type="text" name="author" id="author" value="<?php echo $comment_author; ?>" size="55" tabindex="1" <?php if ($req) echo "aria-required='true'"; ?>>
 				
-				<label for="email">Email (will not be published) <?php if ($req) echo "(required)"; ?></label>
-				<input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="55" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?>>
+				<p>Your email address will not be published. Fields marked with an asterisk (*) are required.</p>
+
+				<label for="author">Name <?php if ($req) echo "<span>*</span>"; ?></label>
+				<input type="text" name="author" id="author" value="<?php echo $comment_author; ?>" size="55" tabindex="1" <?php if ($req) echo 'required aria-required="true"'; ?>>
+				
+				<label for="email">Email <?php if ($req) echo "<span>*</span>"; ?></label>
+				<input type="text" name="email" id="email" placeholder="address@example.com" value="<?php echo $comment_author_email; ?>" size="55" tabindex="2" <?php if ($req) echo 'required aria-required="true"'; ?>>
 				
 				<label for="url">Website</label>
 				<input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="55" tabindex="3">
 
 				<?php endif; ?>
-
+				
 				<!-- p>Allowed <abbr title="HyperText Markup Language">HTML:</abbr> tags: <code><?php echo allowed_tags(); ?></code></p -->
 				<label for="comment">Comment</label>
-				<textarea name="comment" id="comment" cols="55" rows="10" tabindex="4"></textarea>
-				<input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment">
+				<textarea name="comment" id="comment" cols="50" rows="10" tabindex="4"></textarea>
+				
+				<input name="submit" type="submit" id="submit" tabindex="5" value="Submit">
 				<input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>">
 				<?php do_action('comment_form', $post->ID); ?>
 
