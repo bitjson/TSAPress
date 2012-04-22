@@ -76,36 +76,60 @@ function tsapress_base_dir(){
 	return $tsapress_base_dir;
 }
 
+function tsapress_uploads_folder(){
+	return 'assets';
+}
+
 function tsapress_add_rewrites($content) {
-	
 	$tsapress_base_dir = tsapress_base_dir();
+	$tsapress_uploads_folder = 'assets';
 
 	$theme_name = next(explode('/themes/', get_stylesheet_directory()));
 	global $wp_rewrite;
-	$roots_new_non_wp_rules = array(
+	$tsapress_new_non_wp_rules = array(																/*These rules get refreshed every admin_init*/
 		'css/(.*)'      => $tsapress_base_dir.'wp-content/themes/'. $theme_name . '/css/$1',
 		'js/(.*)'       => $tsapress_base_dir.'wp-content/themes/'. $theme_name . '/js/$1',
 		'img/(.*)'      => $tsapress_base_dir.'wp-content/themes/'. $theme_name . '/img/$1',
-		'admin/(.*)'      => $tsapress_base_dir.'wp-content/themes/'. $theme_name . '/admin/$1',
-		'plugins/(.*)'  => $tsapress_base_dir.'wp-content/plugins/$1'
+		'admin/(.*)'    => $tsapress_base_dir.'wp-content/themes/'. $theme_name . '/admin/$1',
+		'plugins/(.*)'  => $tsapress_base_dir.'wp-content/plugins/$1',
+		 tsapress_uploads_folder() . '/(.*)'   => $tsapress_base_dir.'wp-content/uploads/$1'
 	);
 	
-	$wp_rewrite->non_wp_rules += $roots_new_non_wp_rules;
+	$wp_rewrite->non_wp_rules += $tsapress_new_non_wp_rules;
 }
 
  add_action('admin_init', 'roots_flush_rewrites'); // TODO: this is very slow!!! need to find a better place to execute
 
 
-
 function tsapress_clean_assets($content) {
 	$tsapress_base_dir = tsapress_base_dir();
-
     $theme_name = next(explode('/themes/', $content));
+    
     $current_path = '/'.$tsapress_base_dir.'wp-content/themes/' . $theme_name;
     $new_path = '';
     $content = str_replace($current_path, $new_path, $content);
+        
     return $content;
 }
+
+
+/*
+* If Wordpress is not set to save assets outside '/[basedir]/wp-content/uploads/' replace it with '/assets/'
+*	(requires tsapress_add_rewrites to rewrite generated urls back to default directory.)
+*/
+add_filter('wp_get_attachment_url', 'tsapress_clean_uploads');
+add_filter('img_caption_shortcode', 'tsapress_clean_uploads', 9999);	//9999 - last priority - insures code isn't replaced by tsapress_img_caption_shortcode_filter
+function tsapress_clean_uploads($content) {
+	$tsapress_base_dir = tsapress_base_dir();
+    $theme_name = next(explode('/themes/', $content));    
+    
+ 	$current_path = $tsapress_base_dir.'wp-content/uploads';
+    $new_path = tsapress_uploads_folder();
+    $content = str_replace($current_path, $new_path, $content);
+    
+    return $content;
+}
+
 
 function tsapress_clean_plugins($content) {
 	$tsapress_base_dir = tsapress_base_dir();
@@ -176,7 +200,7 @@ if (!is_admin() && !in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-regi
   add_filter('day_link', 'roots_root_relative_url');
   add_filter('year_link', 'roots_root_relative_url');
   add_filter('tag_link', 'roots_root_relative_url');
-  add_filter('the_author_posts_link', 'roots_root_relative_url');
+  add_filter('the_author_posts_link', 'roots_root_relative_url');  
 }
 
 // remove root relative URLs on any attachments in the feed

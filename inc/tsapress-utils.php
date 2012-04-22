@@ -39,7 +39,7 @@ function the_post_thumbnail_meta($meta) {
 }
 
 function get_post_thumbnail_meta($meta) {
-	/*acceptable meta values: 'title', 'caption', 'description', 'alt' */
+/*acceptable meta values: 'title', 'caption', 'description', 'alt' */
 	
 	  global $post;
 	
@@ -87,7 +87,7 @@ function tsapress_img_caption_shortcode_filter($val, $attr, $content = null) {
   . do_shortcode( $content ) . '<figcaption>' . $caption . '</figcaption></figure>';
 }
 
-add_filter('img_caption_shortcode', 'tsapress_img_caption_shortcode_filter',10,3);
+add_filter('img_caption_shortcode', 'tsapress_img_caption_shortcode_filter', 10, 3);
 
 
 /* Nice Search from Roots (the HTML5 Wordpress Boilterplate Theme)*/
