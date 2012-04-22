@@ -41,7 +41,6 @@
 
 	 <?php else : ?>
 		<!-- [comments are closed, and no comments] -->
-		<p>Comments are closed.</p>
 
 	<?php endif; ?>
 <?php endif; ?>

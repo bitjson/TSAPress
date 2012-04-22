@@ -10,6 +10,9 @@
 					<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
 					<small>Posted on <?php the_time('F jS, Y'); ?> by <?php the_author(); ?></small>
 				</header>
+
+<?php get_template_part( 'featuredimage' ); ?>
+
 				<section>
 					<?php the_content('Read more on "'.the_title('', '', false).'" &raquo;'); ?>
 				</section>
@@ -44,9 +47,9 @@
 				</footer>
 			</article>
 
-			<?php comments_template(); ?>
+<?php comments_template(); ?>
 
-			<?php get_template_part( 'pagination' ); 
+<?php get_template_part( 'pagination' ); 
 			/*
 			
 			

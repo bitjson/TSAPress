@@ -1,5 +1,38 @@
 <?php
 
+function tsapress_debug($object){
+	die(print_r($object));
+}
+
+function tsapress_get_total_posts_in_query(){
+	
+	global $wp_query;
+	
+	$total_posts = $wp_query->found_posts;
+	return $total_posts;
+}
+
+function tsapress_get_current_page_number(){
+	$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+	return $current_page;
+}
+
+function tsapress_get_posts_per_page(){
+	$per_page = get_query_var('posts_per_page');
+	return $per_page;
+}
+
+function tsapress_get_number_of_last_page_in_query(){
+	$last_page = ceil(tsapress_get_total_posts_in_query() / tsapress_get_posts_per_page());
+	return $last_page;
+}
+
+function tsapress_is_paginated(){
+	$is_paginated = (tsapress_get_total_posts_in_query() > tsapress_get_posts_per_page());
+	return $is_paginated;
+}
+
+
 function the_post_thumbnail_meta($meta) {
 /*acceptable meta values: 'title', 'caption', 'description', 'alt' */
  	echo get_post_thumbnail_meta($meta);
@@ -78,11 +111,12 @@ $do_not_highlight = array( "a", "A", "is", "Is", "the", "The", "and", "And" );
  $search_term = explode("+",$uri[2]);
  
         foreach ($search_term as $search_t) {
-            preg_match_all("/$search_t+/i", $the_title, $matches);
-            foreach ($matches as $match) {
-                if (!in_array($match[0],$do_not_highlight)) {
-                    $the_title = str_replace($match[0], "[m]" . $match[0] . "[mm]", $the_title);
-                }
+            if(preg_match_all("/$search_t+/i", $the_title, $matches)){ //must have found matches
+	            foreach ($matches as $match) {
+	                if (!in_array($match[0],$do_not_highlight)) {
+	                    $the_title = str_replace($match[0], "[m]" . $match[0] . "[mm]", $the_title);
+	                }
+	            }
             }
         }
  
@@ -104,11 +138,12 @@ $do_not_highlight = array( "a", "A", "is", "Is", "the", "The", "and", "And" );
 $search_term = explode("+",$uri[2]);
  
         foreach ($search_term as $search_t) {
-            preg_match_all("/$search_t+/i", $the_excerpt, $matches);
-            foreach ($matches as $match) {
-                if (!in_array($match[0],$do_not_highlight)) {
-                $the_excerpt = str_replace($match[0], "[m]" . $match[0] . "[mm]", $the_excerpt);
-                }
+            if(preg_match_all("/$search_t+/i", $the_excerpt, $matches)){ //must have found matches
+	            foreach ($matches as $match) {
+	                if (!in_array($match[0],$do_not_highlight)) {
+	                $the_excerpt = str_replace($match[0], "[m]" . $match[0] . "[mm]", $the_excerpt);
+	                }
+	            }
             }
         }
  

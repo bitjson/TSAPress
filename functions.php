@@ -44,7 +44,6 @@ if (function_exists('register_sidebar')) {
 	));
 }
 
-
 /* Load the Options Panel */
 if ( !function_exists( 'optionsframework_init' ) ) {
 	define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_bloginfo('template_directory') . '/admin/' );
@@ -66,4 +65,68 @@ function tsapress_load_scripts() {
 }    
  
 add_action('wp_enqueue_scripts', 'tsapress_load_scripts');
+
+
+add_action( 'init', 'tsapress_overwrite_category_core_taxonomy' );
+/* 	Re-label Wordpress core Categories taxonomy to clarify that Categories = Regions in the backend 
+*
+*	Derived from create_initial_taxonomies(); in wp-includes/taxonomy.php
+*
+*	+ 'labels' key
+*	+ also use for 'tsapress_events' custom post type
+*/
+function tsapress_overwrite_category_core_taxonomy()
+{
+	global $wp_rewrite;
+
+	$region_labels = array (
+					  'name' => 'Regions',
+					  'singular_name' => 'Region',
+					  'menu_name' => 'Regions',
+					  'add_new' => 'Add New',
+					  'add_new_item' => 'Add New Region',
+					  'edit' => 'Edit',
+					  'edit_item' => 'Edit Region',
+					  'new_item' => 'New Region',
+					  'view' => 'View Region',
+					  'view_item' => 'View Region',
+					  'search_items' => 'Search Regions',
+					  'not_found' => 'No Regions Found',
+					  'not_found_in_trash' => 'No Regions found in Trash',
+					  'parent' => 'Parent Region',
+					  'update_item' => 'Update Region',
+					  'new_item_name' => 'New Region Name',
+					  'parent_item' => 'Parent Region',
+					  'parent_item_colon' => 'Parent Region:' );
+	
+	register_taxonomy( 'category', array('post', 'tsapress_events'), array(
+			'hierarchical' => true,
+			'query_var' => 'category_name',
+			'rewrite' => did_action( 'init' ) ? array(
+						'hierarchical' => true,
+						'slug' => get_option('category_base') ? get_option('category_base') : 'category',
+						'with_front' => ( get_option('category_base') && ! $wp_rewrite->using_index_permalinks() ) ? false : true ) : false,
+			'public' => true,
+			'show_ui' => true,
+			'_builtin' => true,
+			'labels' => $region_labels )
+			 );		 
+			 
+			
+	//		 global $wp_taxonomies;
+	//		 tsapress_debug($wp_taxonomies['category']);
+			 
+}
+
+
+add_action( 'init', 'cmb_initialize_cmb_meta_boxes', 9999 );
+/**
+ * Initialize the metabox class.
+ */
+function cmb_initialize_cmb_meta_boxes() {
+
+	if ( ! class_exists( 'cmb_Meta_Box' ) )
+		require_once('admin/metaboxes.php');
+		
+}
 

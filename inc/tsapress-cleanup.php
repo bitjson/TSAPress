@@ -86,6 +86,7 @@ function tsapress_add_rewrites($content) {
 		'css/(.*)'      => $tsapress_base_dir.'wp-content/themes/'. $theme_name . '/css/$1',
 		'js/(.*)'       => $tsapress_base_dir.'wp-content/themes/'. $theme_name . '/js/$1',
 		'img/(.*)'      => $tsapress_base_dir.'wp-content/themes/'. $theme_name . '/img/$1',
+		'admin/(.*)'      => $tsapress_base_dir.'wp-content/themes/'. $theme_name . '/admin/$1',
 		'plugins/(.*)'  => $tsapress_base_dir.'wp-content/plugins/$1'
 	);
 	

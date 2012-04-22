@@ -724,6 +724,7 @@ nav#pagination a, #content a.more-link {
 	.boxShadow(~"inset 0 1px 5px rgba(255, 255, 255, 0.45), inset -1px -1px 1px rgba(0, 0, 0, 0.05)");
 	.transition(background-color .2 linear);
 	max-width: 42%; //*also the answer to life the universe and everything*/
+	font-size: 14px;
 
 	}
 nav#pagination a:hover, #content a.more-link:hover {
@@ -1561,7 +1562,7 @@ figure {
 	background-color: @ultraLightGray;
 	.borderRadius(@globalRadius);
 	.boxShadow(0 2px 3px rgba(0, 0, 0, 0.2));
-	margin: 0 20px 10px;
+	margin: 0 20px 25px;
 	
 	p {
 	line-height: 1.75em;
@@ -1657,12 +1658,25 @@ figure {
 //* ============= Search Styles ================ */
 //*============================================= */
 
-.search #content {
+.search #content, .error404 #content {
+	
+	.page-number{
+		float: right;
+	}
+	
+	.more-link{
+	}
+	
 	blockquote {
-	padding: 0;
-	border: none;
-	background-color: transparent;
-	overflow: visible;
+		padding: 0;
+		border: none;
+		background-color: transparent;
+		overflow: auto;
+		
+		p{
+			margin: 0;
+		}
+		
 	}
 	& > h1 {
 	    color: #3D3D3D;
@@ -1696,6 +1710,8 @@ figure {
 		background-color: @ultraLightGray;
 		border-bottom: 1px solid @lightGray;
 		padding: 20px;
+		clear: both;
+		
 		h1 {
 			font-size: 0.9em;
 		}

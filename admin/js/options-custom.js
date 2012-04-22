@@ -1,6 +1,9 @@
 /**
  * Prints out the inline javascript needed for the colorpicker and choosing
  * the tabs in the panel.
+ *
+ * (Used by Theme Options)
+ *
  */
 
 jQuery(document).ready(function($) {

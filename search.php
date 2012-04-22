@@ -1,7 +1,6 @@
 <?php get_header(); ?>
-
-	<h1>Search Results <small>for &ldquo;<?php the_search_query(); ?>&rdquo;</small></h1>
-
+	<?php /* ?> <span class="page-number"><?php echo 'Viewing page: ' . tsapress_get_current_page_number() ?></span> <?php // */ ?>
+	<h1>Search Results <small>Page <?php echo tsapress_get_current_page_number(); ?> for &ldquo;<?php the_search_query(); ?>&rdquo;</small></h1>
 			<?php if (have_posts()) : ?>
 
 				<ol>
@@ -10,7 +9,11 @@
 					<li>
 						<article id="post-<?php the_ID(); ?>">
 						<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php highlighted_title(); ?></a></h1>
-						<blockquote><?php //the_content('Read More <span> -' . the_title('', '', false) . '</span>'); ?><?php highlighted_excerpt(get_the_excerpt()); ?></blockquote>
+						<blockquote>
+							<?php //the_content('Read More <span> -' . the_title('', '', false) . '</span>'); ?><?php highlighted_excerpt(get_the_excerpt()); ?>
+							<a class="more-link" href="<?php the_permalink($post->ID); ?>">Read More<span> - <?php the_title($post->ID); ?></span></a>
+						</blockquote>
+						<?php /* ?> <a class="more-link" href="<?php the_permalink($post->ID); ?>">Read More<span> - <?php the_title($post->ID); ?></span></a> <?php // */ ?>
 						</article>
 					</li>
 
@@ -23,11 +26,9 @@
 					<?php get_search_form(); ?>
 				</aside>
 			
-			<nav id="pagination">
-				<span class="next"><?php previous_posts_link('Newer Posts');?></span><span class="prev"><?php next_posts_link('Older Posts'); ?></span>
-			</nav>
+<?php get_template_part( 'pagination' ); ?>
 
-			<?php else : ?>
+			<?php else : //TODO: clean up this function- streamline switch to google- search box left, big Google button right? ?>
 
 			<article>
 				<h1>Not Found</h1>

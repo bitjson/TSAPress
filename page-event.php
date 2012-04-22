@@ -1,6 +1,11 @@
+<?php
+/*
+Template Name: Event Page
+*/
+?>
 <?php get_header(); ?>
 
-	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 				<h1><?php 	
 				if ( $post->post_parent == 0 ) {
@@ -10,7 +15,7 @@
 					echo get_the_title($post->post_parent);
 				}
 				?></h1>
-				
+
 
 			<article id="post-<?php the_ID(); ?>">
 				     <?php
@@ -44,7 +49,7 @@
 				  
 				   ?>
 				</header>
-
+				
 <?php get_template_part( 'featuredimage' ); ?>
 
 				<section>
@@ -64,7 +69,7 @@
 			</article>
 	
 	<?php endif; ?>
-	  
+	
 <?php get_sidebar(); ?>
 
 <?php get_footer(); ?>
