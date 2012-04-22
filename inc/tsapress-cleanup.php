@@ -52,7 +52,6 @@ add_filter('gallery_style', 'roots_gallery_style');
 *	Slightly modified from Roots HTML5 Theme
 *	Change: made compatible with WordPress installations in a subdirectory (not in root)
 *
-*   TODO: assets (wp-content/uploads) not working properly
 */
 
 // rewrite [$base_dir]/wp-content/themes/tsapress/css/ to /css/
@@ -80,9 +79,13 @@ function tsapress_uploads_folder(){
 	return 'assets';
 }
 
+function tsapress_current_uploads_path(){
+	if(get_option('upload_path') == '') return 'wp-content/uploads';
+	return get_option('upload_path');
+}
+
 function tsapress_add_rewrites($content) {
 	$tsapress_base_dir = tsapress_base_dir();
-	$tsapress_uploads_folder = 'assets';
 
 	$theme_name = next(explode('/themes/', get_stylesheet_directory()));
 	global $wp_rewrite;
@@ -92,7 +95,7 @@ function tsapress_add_rewrites($content) {
 		'img/(.*)'      => $tsapress_base_dir.'wp-content/themes/'. $theme_name . '/img/$1',
 		'admin/(.*)'    => $tsapress_base_dir.'wp-content/themes/'. $theme_name . '/admin/$1',
 		'plugins/(.*)'  => $tsapress_base_dir.'wp-content/plugins/$1',
-		 tsapress_uploads_folder() . '/(.*)'   => $tsapress_base_dir.'wp-content/uploads/$1'
+		 tsapress_uploads_folder() . '/(.*)'   => $tsapress_base_dir . tsapress_current_uploads_path() . '/$1'
 	);
 	
 	$wp_rewrite->non_wp_rules += $tsapress_new_non_wp_rules;
@@ -114,7 +117,7 @@ function tsapress_clean_assets($content) {
 
 
 /*
-* If Wordpress is not set to save assets outside '/[basedir]/wp-content/uploads/' replace it with '/assets/'
+* If Wordpress is not set to save assets outside "/[basedir] [get_option('upload_path')] " replace it with '/assets/'
 *	(requires tsapress_add_rewrites to rewrite generated urls back to default directory.)
 */
 add_filter('wp_get_attachment_url', 'tsapress_clean_uploads');
@@ -123,7 +126,7 @@ function tsapress_clean_uploads($content) {
 	$tsapress_base_dir = tsapress_base_dir();
     $theme_name = next(explode('/themes/', $content));    
     
- 	$current_path = $tsapress_base_dir.'wp-content/uploads';
+ 	$current_path = $tsapress_base_dir. tsapress_current_uploads_path();
     $new_path = tsapress_uploads_folder();
     $content = str_replace($current_path, $new_path, $content);
     
