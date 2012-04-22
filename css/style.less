@@ -80,6 +80,7 @@ html, body, #page-wrap, #basement, #basement > div, #basement > div > div { heig
 //*============================================= */
 
 
+
 a {
 	color: @lightBlue;
 	font-style: italic;
@@ -91,6 +92,9 @@ a:hover {
 	color: @highlightBlue;
 	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
+
+
+
 
 .hide {
 	display: none;
@@ -520,20 +524,30 @@ a:hover {
 	text-shadow: 1px 1px 1px @lightGray;
 	}
 	
-	& > h1, & > h1 a {
+	& > h1 {		
+		margin: 0 0 .3em -10px;
+		
+		& a.current, & a:hover {
+			border-left: 13px solid @lightBlue;
+			padding-left: 9px;
+		}
+		
+		& a {
 		font-family: @copyFont;
-		font-size: 2.4em;
+		font-size: 38px;
 		font-weight: 300;
 		color: @lightBlue;	
-		margin: 0 0 .3em 10px;
 		.insetText(@lightBlue);
+		font-style: normal;
+		border: none 0;
+		padding-left: 22px;
+		}
 		
 		small {
 			font-size: 0.5em;
 			text-shadow: none;
 			font-variant: small-caps;
 		}
-		
 	}
 	small {
 		font-family: @copyFont;

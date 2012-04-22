@@ -12,7 +12,7 @@ Template Name: Event Page
 					the_title();
 				}
 				else{
-					echo get_the_title($post->post_parent);
+					echo '<a href="' . get_permalink($post->post_parent) . '">' .get_the_title($post->post_parent) . '</a>';
 				}
 				?></h1>
 

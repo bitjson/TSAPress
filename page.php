@@ -4,10 +4,10 @@
 
 				<h1><?php 	
 				if ( $post->post_parent == 0 ) {
-					the_title();
+					echo '<a href="' . get_permalink() . '" class="current">' .get_the_title() . '</a>';
 				}
 				else{
-					echo get_the_title($post->post_parent);
+					echo '<a href="' . get_permalink($post->post_parent) . '">' .get_the_title($post->post_parent) . '</a>';
 				}
 				?></h1>
 				
