@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 	
-	<h1>News</h1>
+<?php get_template_part( 'contentheader' ); ?>
 	
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 

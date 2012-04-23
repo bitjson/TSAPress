@@ -16,12 +16,8 @@
 	TODO: why are all events firing while binding? nothing is waiting for the event to happen. Need to fix contact form
 */
 
-
-console.log('opened javascript');
-
  jQuery(document).ready(function($) {
 	    
-	   console.log('document ready');
 
 	   
 	   /*Contact Form
@@ -40,6 +36,9 @@ console.log('opened javascript');
 	   
 	   */
 	   
+	   
+	   	   
+	   
 	   $('#category-selector-simple').bind('change', function(e){    
 			var selector = document.getElementById('category-selector-simple');
 			var newURL = selector.options[selector.selectedIndex].value;
@@ -47,13 +46,16 @@ console.log('opened javascript');
 	   });
 	   
 	   
+	   
+	   
+	   if($('#region-map-canvas').length != 0) {
+	   
+	   console.log("found map-canvas, init map...")
+	   
 	    function initMap() {
-	
-		console.log("loading map");
 		
 		$canvas = $("#region-map-canvas");
 		mapID = $canvas.attr("data-geo-map");
-		console.log(mapID);
 
 	  		TSARegionMapStyles = [
 	  		 { featureType: "road", stylers: [ { visibility: "off" } ] },
@@ -66,9 +68,7 @@ console.log('opened javascript');
 	  		 originLat = parseFloat(mapOriginElement.attr("data-geo-lat"));
 	  		 originLon = parseFloat(mapOriginElement.attr("data-geo-lon"));
 	  		 originZoom = parseInt(mapOriginElement.attr("data-geo-zoom"));
-			
-			console.log("zoom =" + originZoom);
-	  		 
+				  		 
 	  		 mapOptions = {
 	  		 
 		  		zoom: originZoom,
@@ -98,15 +98,11 @@ console.log('opened javascript');
 		
 		
 			$('#category-selector li a').mouseenter(function() {
-	    	
-	    	console.log("mouseentered");
-	    	
+	    		    	
 	    	$el = $(this);
 	    	$("#category-selector li a").removeClass("hover");
         	$el.addClass("hover");
-	    	
-	    	console.log($el);
-	    	
+	    		    	
 	    	//default zoom levels
 	    	farZoom = 6;
 	    	closeZoom = 7;
@@ -120,7 +116,6 @@ console.log('opened javascript');
 		    zoomSet = $el.attr("data-geo-zoom");
 	    	if (!zoomSet == false) {
 	    		zoomLevel = zoomSet;
-	    		console.log("zoomLevel set to " + zoomLevel);
 	    	}
 	    	
 
@@ -135,9 +130,7 @@ console.log('opened javascript');
   			geoID = $el.attr("data-geo-id"); //grab region id of hovered region
 	    	
 	    	if (geoID != undefined){ //this is a highlightable region
-	    	
-	    	console.log('ID = ' + geoID);
-	    	
+	    		    	
 	    	highlightLayer = new google.maps.FusionTablesLayer({
 			  query: {
 			    select: 'geometry',
@@ -155,7 +148,8 @@ console.log('opened javascript');
 		initMap();
 
 		
-			    
+		}
+	
 	    
 	    
 	    

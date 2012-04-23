@@ -72,7 +72,7 @@ function roots_flush_rewrites() {
 function tsapress_base_dir(){
 	$tsapress_base_dir = trim(next(explode(home_url(), site_url())), "/"); //grabs base directory structure if wordpress is installed in a subdirectory
 	if ($tsapress_base_dir != "") $tsapress_base_dir .= "/";
-	return $tsapress_base_dir;
+	return $tsapress_base_dir;	//outputs "[base]/"
 }
 
 function tsapress_uploads_folder(){
@@ -119,6 +119,8 @@ function tsapress_clean_assets($content) {
 /*
 * If Wordpress is not set to save assets outside "/[basedir] [get_option('upload_path')] " replace it with '/assets/'
 *	(requires tsapress_add_rewrites to rewrite generated urls back to default directory.)
+*
+*	TODO: bug? Safari Reader messes up featured image src
 */
 add_filter('wp_get_attachment_url', 'tsapress_clean_uploads');
 add_filter('img_caption_shortcode', 'tsapress_clean_uploads', 9999);	//9999 - last priority - insures code isn't replaced by tsapress_img_caption_shortcode_filter
@@ -126,8 +128,8 @@ function tsapress_clean_uploads($content) {
 	$tsapress_base_dir = tsapress_base_dir();
     $theme_name = next(explode('/themes/', $content));    
     
- 	$current_path = $tsapress_base_dir. tsapress_current_uploads_path();
-    $new_path = tsapress_uploads_folder();
+ 	$current_path = '/' . $tsapress_base_dir. tsapress_current_uploads_path();
+    $new_path = '/' . tsapress_uploads_folder();
     $content = str_replace($current_path, $new_path, $content);
     
     return $content;

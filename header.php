@@ -91,10 +91,10 @@
     
    <div class="full-wrap">
     <aside id="about">
-       <div><a href="<?php home_url(); ?>" id="emblem">
+       <div><a href="<?php bloginfo('url'); ?>" id="emblem">
        <img src="<?php
        	
-       	$state_emblem_url = of_get_option('state_emblem');
+       	$state_emblem_url = tsapress_clean_uploads(of_get_option('state_emblem'));
        
         	if (trim($state_emblem_url) == '') {
       			echo get_bloginfo('template_directory') . '/img/TSA-emblem.png'; //state_emblem was previously set but currently has no value

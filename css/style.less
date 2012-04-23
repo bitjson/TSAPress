@@ -524,15 +524,8 @@ a:hover {
 	text-shadow: 1px 1px 1px @lightGray;
 	}
 	
-	& > h1 {		
+	& > h1, & > a > h1 {		
 		margin: 0 0 .3em -10px;
-		
-		& a.current, & a:hover {
-			border-left: 13px solid @lightBlue;
-			padding-left: 9px;
-		}
-		
-		& a {
 		font-family: @copyFont;
 		font-size: 38px;
 		font-weight: 300;
@@ -541,7 +534,17 @@ a:hover {
 		font-style: normal;
 		border: none 0;
 		padding-left: 22px;
+		
+		&.current, &:hover {
+			border-left: 13px solid @lightBlue;
+			padding-left: 9px;
 		}
+		
+		
+		
+		
+		
+		
 		
 		small {
 			font-size: 0.5em;

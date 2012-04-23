@@ -2,9 +2,8 @@
         
 <?php get_template_part( 'catagoryselector' ); ?>
                 
-                
-        	<h1>News</h1>
-        
+<?php get_template_part( 'contentheader' ); ?>
+                        
 			<?php if (have_posts()) : ?>
 			<?php while (have_posts()) : the_post(); ?>
 

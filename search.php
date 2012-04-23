@@ -1,6 +1,7 @@
 <?php get_header(); ?>
-	<?php /* ?> <span class="page-number"><?php echo 'Viewing page: ' . tsapress_get_current_page_number() ?></span> <?php // */ ?>
-	<h1>Search Results <small>Page <?php echo tsapress_get_current_page_number(); ?> for &ldquo;<?php the_search_query(); ?>&rdquo;</small></h1>
+
+<?php get_template_part( 'contentheader' ); ?>
+
 			<?php if (have_posts()) : ?>
 
 				<ol>

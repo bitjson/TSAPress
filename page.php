@@ -2,16 +2,8 @@
 
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-				<h1><?php 	
-				if ( $post->post_parent == 0 ) {
-					echo '<a href="' . get_permalink() . '" class="current">' .get_the_title() . '</a>';
-				}
-				else{
-					echo '<a href="' . get_permalink($post->post_parent) . '">' .get_the_title($post->post_parent) . '</a>';
-				}
-				?></h1>
+<?php get_template_part( 'contentheader' ); ?>
 				
-
 			<article id="post-<?php the_ID(); ?>">
 				     <?php
 				  
