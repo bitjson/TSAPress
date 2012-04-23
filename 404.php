@@ -2,7 +2,7 @@
 
 header("HTTP/1.0 404 Not Found");
 
-//TODO: fix this up!! see search.php
+//TODO: fix this page design up!! see search.php
 
 get_header(); 
 

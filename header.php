@@ -1,3 +1,9 @@
+<?php
+
+if($_SERVER['REQUEST_URI'] == "/login" || $_SERVER['REQUEST_URI'] == "/login/" ) Header( 'Location: ' . get_admin_url() ); //redirect [site]/login to login screen
+
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->

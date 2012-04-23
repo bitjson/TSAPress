@@ -95,7 +95,7 @@ function tsapress_add_rewrites($content) {
 		'img/(.*)'      => $tsapress_base_dir.'wp-content/themes/'. $theme_name . '/img/$1',
 		'admin/(.*)'    => $tsapress_base_dir.'wp-content/themes/'. $theme_name . '/admin/$1',
 		'plugins/(.*)'  => $tsapress_base_dir.'wp-content/plugins/$1',
-		 tsapress_uploads_folder() . '/(.*)'   => $tsapress_base_dir . tsapress_current_uploads_path() . '/$1'
+		 tsapress_uploads_folder() . '/(.*)'   => $tsapress_base_dir . tsapress_current_uploads_path() . '/$1',
 	);
 	
 	$wp_rewrite->non_wp_rules += $tsapress_new_non_wp_rules;
