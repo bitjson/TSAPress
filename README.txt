@@ -1,31 +1,30 @@
-***********************************************************************************
-                                                                                                    
-                                                                            
-     shhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhyy+`             
-    +MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMd.            
-   `mmmmmmmNMMMMMMMMMMNmmmmmmmmmmmMMMMMMMMMMNmmmmmmmmNMMMMMMMMm-           
-           .MMMMMMMMMh` -://///:  oNMMMMMMMMh`       `osssssssso`          
-           sMMMMMMMMm` +MMMMMMMMy` :mMMMMMMMMy`   `--------------.         
-          +MMMMMMMMN- :MMMMMMMMMM+  .dMMMMMMMMd.  `yMMMMMMMMMMMMMNy`       
-         :NMMMMMMMM/ .mMMMMMMMMMh`   `yMMMMMMMMm-  `sNMMMMMMMMMMMMMd.      
-        .NMMMMMMMMs `hMMMMMMMMMm.      +MMMMMMMMN/   ------hMMMMMMMMm-     
-       `dMMMMMMMMh` sMMMMMMMMMM: smmmmmmMMMMMMMMMMmmmmmmmmmNMMMMMMMMMN/    
-       yMMMMMMMMm. /MMMMMMMMMM+ +MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMo   
-      oMMMMMMMMM: .NMMMMMMMMMy -NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMy  
-      :////////-  -//////////` -////////////////////////////////////////:  
-                                                                           
-                                                                                                    
-   Developed by the Technology Student Association : Technology Advisory Group.                                                                                            
+****************************************************************************
 
-***********************************************************************************
+                         DEVELOPED BY THE                                                                                       
+
+     ////////////////////////////////////////////////////////\
+    /TECHNOLOGY STUDENT ASSOCIATION: TECHNOLOGY ADVISORY GROUP\
+   ////////////////////////////////////////////////////////////\
+            ///////////            \/////////\        \/////////\
+           ///////////  ////////\   \/////////\              
+          ///////////  //////////\   \/////////\  \///////////////\
+         ///////////  ////////////    \/////////\  \///////////////\
+        ///////////  ////////////      \/////////\        \/////////\
+       ///////////  //////////// ////////////////////////////////////\
+      ///////////  //////////// //////////////////////////////////////\
+     ///////////  //////////// ////////////////////////////////////////                                                                      
+                                                                                                    
+****************************************************************************
 
 This WordPress theme is intended for use by state delegations of the Technology Student Association.
 
 
+
+Notes:
+
+
 Set up:
 Categories -> regions, descriptions -> geo: [$geoID, $geoLat, $geoLon, $geoZoom]
-
-
 
 
 New Post Checklist:
