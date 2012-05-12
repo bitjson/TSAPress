@@ -1,25 +1,23 @@
-****************************************************************************************************
+***********************************************************************************
                                                                                                     
-       ------------------------------------------------------------------------.                    
-      :MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN+                  
-     `NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMy                 
-     hMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMh`               
-     -:::::::::oMMMMMMMMMMMMMy/::::::::::::::yMMMMMMMMMMMMMy:::::::::::+MMMMMMMMMMMMm.              
-               .MMMMMMMMMMMMy   +yyyyyyyyy/   +MMMMMMMMMMMMd`           ..............              
-              `dMMMMMMMMMMMd   yMMMMMMMMMMMy`  :NMMMMMMMMMMMm.     ....................             
-              yMMMMMMMMMMMN.  +MMMMMMMMMMMMMh   .mMMMMMMMMMMMN:    -mMMMMMMMMMMMMMMMMMMMo           
-             +MMMMMMMMMMMM:  -MMMMMMMMMMMMMM-    `hMMMMMMMMMMMM/    `dMMMMMMMMMMMMMMMMMMMh`         
-            -MMMMMMMMMMMMs  `mMMMMMMMMMMMMMo       oMMMMMMMMMMMMo     yMMMMMMMMMMMMMMMMMMMd.        
-           .NMMMMMMMMMMMd   hMMMMMMMMMMMMMh         /NMMMMMMMMMMMy`    ```````-mMMMMMMMMMMMN-       
-           dMMMMMMMMMMMN`  +MMMMMMMMMMMMMm` -ssssssssmMMMMMMMMMMMMmssssssssssssdMMMMMMMMMMMMN:      
-          yMMMMMMMMMMMM:  -MMMMMMMMMMMMMM- `NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM+     
-         +MMMMMMMMMMMMo  `mMMMMMMMMMMMMM+  hMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMs    
-        -MMMMMMMMMMMMh   hMMMMMMMMMMMMMy  oMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMh`  
-        yhhhhhhhhhhhh`  :hhhhhhhhhhhhhh` .hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh/  
+                                                                            
+     shhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhyy+`             
+    +MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMd.            
+   `mmmmmmmNMMMMMMMMMMNmmmmmmmmmmmMMMMMMMMMMNmmmmmmmmNMMMMMMMMm-           
+           .MMMMMMMMMh` -://///:  oNMMMMMMMMh`       `osssssssso`          
+           sMMMMMMMMm` +MMMMMMMMy` :mMMMMMMMMy`   `--------------.         
+          +MMMMMMMMN- :MMMMMMMMMM+  .dMMMMMMMMd.  `yMMMMMMMMMMMMMNy`       
+         :NMMMMMMMM/ .mMMMMMMMMMh`   `yMMMMMMMMm-  `sNMMMMMMMMMMMMMd.      
+        .NMMMMMMMMs `hMMMMMMMMMm.      +MMMMMMMMN/   ------hMMMMMMMMm-     
+       `dMMMMMMMMh` sMMMMMMMMMM: smmmmmmMMMMMMMMMMmmmmmmmmmNMMMMMMMMMN/    
+       yMMMMMMMMm. /MMMMMMMMMM+ +MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMo   
+      oMMMMMMMMM: .NMMMMMMMMMy -NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMy  
+      :////////-  -//////////` -////////////////////////////////////////:  
+                                                                           
                                                                                                     
-             Developed by the Technology Student Association : Technology Advisory Group.                                                                                            
+   Developed by the Technology Student Association : Technology Advisory Group.                                                                                            
 
-****************************************************************************************************
+***********************************************************************************
 
 This WordPress theme is intended for use by state delegations of the Technology Student Association.
 
