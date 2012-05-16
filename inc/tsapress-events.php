@@ -26,7 +26,7 @@ Event Options include:
 
 -Location	
 	-Name
-	-Google Map? Link?
+	-Google Map? Link? Like youtube "video location" field- on select, display dropdown map with result of geolocation call
 
 -Upload
 	-Name (Default: Registration Packet)
@@ -69,7 +69,7 @@ add_filter( 'cmb_meta_boxes', 'cmb_event_metaboxes' );
 function cmb_event_metaboxes( array $meta_boxes ) {
 
 	// Start with an underscore to hide fields from custom fields list
-	$prefix = '_cmb_';
+	$prefix = '_tsapress_event_';
 
 
 
@@ -111,7 +111,7 @@ $meta_boxes[] = array(
 								
 								array(
 									'name'    => 'Event Type',
-									'desc'    => 'Date/time range type for the event. <br />
+									'desc'    => 'Date/time range type for the event. Current timezone: ' .date('T') . '. Wordpress Timezone can be changed in Settings > General. <br />
 									  <ul>
 									  <li> <strong>Date/time</strong> events occur between certain times (like a Rally, Expo, or Conference).</li>
 									  <li> <strong>Date</strong> events occur all day for each day within the date range (like Advisor Appreciation Week).</li>
@@ -171,7 +171,7 @@ $meta_boxes[] = array(
 								
 								array(
 									'name' => 'Deadline',
-									'desc' => 'Date and time at which the Deadline is set.',
+									'desc' => 'Date and time at which the Deadline is set. It is recommended to set the time for midnight deadlines to 11:59 PM for clarity.',
 									'id'   => $prefix . 'deadline_datetime',
 									'type' => 'text_datetime_timestamp',
 								),
@@ -182,8 +182,15 @@ $meta_boxes[] = array(
 								
 								array(
 									'name' => 'Location',
-									'desc' => 'Name of the event location. To be displayed as a link to a Google Map',
-									'id'   => $prefix . 'test_text',
+									'desc' => 'Name of the event location. This text be displayed as the link to a Google Map. E.g.: &ldquo;The White House&rdquo;',
+									'id'   => $prefix . 'location',
+									'type' => 'text',
+								),
+								
+								array(
+									'name' => 'Google Maps Query',
+									'desc' => 'Refined search term for Google Maps. This can usually be left blank. (Location field will be used.) If the resulting link does not point to the correct location, provide more detail here (city, state) or a GPS coordinate. E.g.: &ldquo;The White House, Washington, D.C.&rdquo; or &ldquo;38.897659,-77.036516&rdquo;',
+									'id'   => $prefix . 'google_maps_query',
 									'type' => 'text',
 								)
 								

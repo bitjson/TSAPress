@@ -11,7 +11,6 @@ require_once('inc/tsapress-widgets.php');
 
 
 
-
 if ( function_exists( 'register_nav_menu' ) ) {
 	
 	register_nav_menus(

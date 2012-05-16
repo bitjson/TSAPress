@@ -7,52 +7,117 @@ Template Name: Event Page
 
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-				<h1><?php 	
-				if ( $post->post_parent == 0 ) {
-					the_title();
-				}
-				else{
-					echo '<a href="' . get_permalink($post->post_parent) . '">' .get_the_title($post->post_parent) . '</a>';
-				}
-				?></h1>
+<section id="event-info">
+<?php 
 
+
+/* outputs clean HTML5 <time> or <time> range */
+function get_tsapress_pretty_time($begin, $end = false, $include_time = false){
+
+	$output = '<time class="date" datetime="';
+	
+	//format deadline
+	if ($end == false) {
+		$output .= gmdate('Y-m-d\TH:i', $begin) . date('P') . '">' . gmdate('M jS, Y g:i A ', $begin). date('T'); //Timezones: Display timezone set via wordpress (tsapress_utils: tsapress_clarify_timezone())
+	}
+	
+	//include hh:mm - hh:mm
+	elseif ($include_time){
+		
+		//same day
+		if (gmdate('Y-m-d', $begin) == gmdate('Y-m-d', $end)) {
+			$output .= gmdate('Y-m-d\TH:i', $begin) . '">' . gmdate('M jS, Y', $begin) . '<span>' . gmdate('g:ia', $begin) . '-' . gmdate('g:ia', $end) . '</span>';
+		}
+		//same month
+		elseif (gmdate('Y-m', $begin) == gmdate('Y-m', $end)) {
+			$output .= gmdate('Y-m-d\TH:i', $begin) . '/' . gmdate('Y-m-d\TH:i', $end) . '">' . gmdate('M jS', $begin) . '&ndash;' . gmdate('jS, Y', $end) . '<span>' . gmdate('g:ia', $begin) . '-' . gmdate('g:ia', $end) . '</span>';
+		}
+		//same year
+		elseif (gmdate('Y', $begin) == gmdate('Y', $end)) {
+			$output .= gmdate('Y-m-d\TH:i', $begin) . '/' . gmdate('Y-m-d\TH:i', $end) . '">' . gmdate('M jS', $begin) . '&ndash;' . gmdate('M jS, Y', $end) . '<span>' . gmdate('g:ia', $begin) . '-' . gmdate('g:ia', $end) . '</span>';
+		}
+		
+		
+	} else {	
+		//same day
+		if (gmdate('Y-m-d', $begin) == gmdate('Y-m-d', $end)) {
+			$output .= gmdate('Y-m-d', $begin) . '">' . gmdate('M jS, Y', $begin);
+		}
+		//same month
+		elseif (gmdate('Y-m', $begin) == gmdate('Y-m', $end)) {
+			$output .= gmdate('Y-m-d', $begin) . '/' . gmdate('Y-m-d', $end) . '">' . gmdate('M jS', $begin) . '&ndash;' . gmdate('jS, Y', $end);
+		}
+		//same year
+		elseif (gmdate('Y', $begin) == gmdate('Y', $end)) {
+			$output .= gmdate('Y-m-d', $begin) . '/' . gmdate('Y-m-d', $end) . '">' . gmdate('M jS', $begin) . '&ndash;' . gmdate('M jS, Y', $end);
+		}
+	}
+	
+	$output .= '</time>';
+	
+	return $output; 
+		
+		
+}
+
+switch(get_post_meta($post->ID, '_tsapress_event_datetime_range', true)) {
+
+	case 'datetime':
+		$datetime_begin = get_post_meta($post->ID, '_tsapress_event_datetime_begin', true);
+		$datetime_end = get_post_meta($post->ID, '_tsapress_event_datetime_end', true);
+		echo get_tsapress_pretty_time($datetime_begin, $datetime_end, true);
+		break;
+		
+	case 'date':
+		$date_begin = get_post_meta($post->ID, '_tsapress_event_date_begin', true);
+		$date_end = get_post_meta($post->ID, '_tsapress_event_date_end', true);
+		echo get_tsapress_pretty_time($date_begin, $date_end);
+		break;
+		
+	case 'deadline':
+		$deadline_datetime = get_post_meta($post->ID, '_tsapress_event_deadline_datetime', true);
+		echo get_tsapress_pretty_time($deadline_datetime);
+		break;		
+		
+	default: //(case 'tbd':)
+			echo '<time datetime="TBD">TBD</time>';
+		break;
+	}
+	
+	$event_location = get_post_meta($post->ID, '_tsapress_event_location', true);
+	$event_location_query = get_post_meta($post->ID, '_tsapress_event_google_maps_query', true);
+	if ($event_location_query == "") $event_location_query = $event_location;
+	
+	echo '<a href="http://maps.google.com/maps?q=' . urlencode($event_location_query) . '" target="_blank">' . $event_location . '</a>';
+	
+	 ?>
+</section>
+
+<?php get_template_part( 'contentheader' ); ?>
 
 			<article id="post-<?php the_ID(); ?>">
-				     <?php
-				  
-				      /*
-				      TODO: Consider allowing for another level of navagation- need to develop display method- maybe drop downs?
-				      */
-				      
-				      
-					if($post->post_parent)
-					$children = wp_list_pages("depth=1&title_li=&child_of=".$post->post_parent."&echo=0");
-					else
-					$children = wp_list_pages("depth=1&title_li=&child_of=".$post->ID."&echo=0");
-					if ($children) { ?>
-						
-							<nav id="sub-nav">
-								<ul>
-									<?php echo $children; ?>
-								</ul>
-							</nav>	 
-				  <?php }
-				  
-				  /*
-				  
-				  TODO: make Safari [reader] display the correct title for all pages
-				  
-				  <header><h1><?php the_title(); ?></h1></header>	
-				  
-				  */
-				  
-				  
-				   ?>
-				</header>
+
+<?php get_template_part( 'childnav' ); ?>
 				
 <?php get_template_part( 'featuredimage' ); ?>
 
 				<section>
+				
+	<?php	/*
+	
+		TODO:
+		
+		Option to display event countdown?
+		
+	
+	*/ ?>
+	
+	<!--
+	<?php print_r(get_post_custom($post->ID)); ?>
+	-->
+	
+
+				
 					<?php edit_post_link('Edit'); ?>
 					<?php the_content('Read more on "'.the_title('', '', false).'" &raquo;'); ?>
 

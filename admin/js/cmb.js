@@ -11,6 +11,8 @@
 jQuery(document).ready(function ($) {
 	'use strict';
 
+	var $prefix = '_tsapress_event_';
+
 	var formfield;
 	
 	var $datetime_range;
@@ -19,11 +21,11 @@ jQuery(document).ready(function ($) {
 	var $date_options;
 	var $deadline_options;
 
-	$datetime_range = $('._cmb_datetime_range input');
+	$datetime_range = $('.' + $prefix + 'datetime_range input');
 	
-	$datetime_options = $('._cmb_datetime_begin, ._cmb_datetime_end');
-	$date_options = $('._cmb_date_begin, ._cmb_date_end');
-	$deadline_options = $('._cmb_deadline_datetime');
+	$datetime_options = $('.' + $prefix + 'datetime_begin, .' + $prefix + 'datetime_end');
+	$date_options = $('.' + $prefix + 'date_begin, .' + $prefix + 'date_end');
+	$deadline_options = $('.' + $prefix + 'deadline_datetime');
 	
 	function datetimeShowHider(){
 		var checked;
@@ -50,6 +52,12 @@ jQuery(document).ready(function ($) {
 			break;
 			
 		case 'tbd':
+			$datetime_options.hide();
+			$date_options.hide();
+			$deadline_options.hide();
+			break;
+			
+		default:
 			$datetime_options.hide();
 			$date_options.hide();
 			$deadline_options.hide();
