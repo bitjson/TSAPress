@@ -5,11 +5,9 @@ if($_SERVER['REQUEST_URI'] == "/login" || $_SERVER['REQUEST_URI'] == "/login/" )
 ?>
 
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!-->
 
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
 <html class="no-js" <?php language_attributes(); ?>>
 <!--<![endif]-->
 
@@ -61,7 +59,7 @@ if($_SERVER['REQUEST_URI'] == "/login" || $_SERVER['REQUEST_URI'] == "/login/" )
 	<div id="page-wrap">
 
 
-   <!--[if lt IE 7]><p class=chromeframe>Your browser is somewhat <em>outdated</em>! <a href="http://browsehappy.com/">Please upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to view the internet in all its glory.</p><![endif]-->
+   <!--[if lt IE 9]><p class=chromeframe><em>Oh no!</em> Your browser is outdated. <a href="http://www.google.com/chromeframe/">Get Chromeframe</a> <em>in just seconds</em> to view the internet <em>faster</em>, <em>safer</em>, and in all its <em>glory</em>.</p><![endif]-->
 
     <div id="TSA-Bar"> <!-- TODO: snap bar to top with larger window dimensions (past certain height) -->
     

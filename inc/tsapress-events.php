@@ -46,6 +46,108 @@ Possible?:
 */
 
 
+
+
+/* outputs clean HTML5 <time> or <time> range */
+function get_tsapress_pretty_time($type, $begin_timestamp, $end_timestamp = false, $include_time = false){
+
+	// create DateTimeZone object
+	global $tz_string;
+	$dtzone = new DateTimeZone($tz_string);
+	 
+	// create a DateTime object
+	$begin = new DateTime();
+	$end = new DateTime();
+	
+	// set it to the timestamp (PHP >= 5.3.0) TODO: WARNING: requires PHP 5.3
+	$begin->setTimestamp($begin_timestamp);
+	$end->setTimestamp($end_timestamp);
+	 
+	// convert to timezone
+	$begin->setTimeZone($dtzone);
+	$end->setTimeZone($dtzone);
+
+
+	$output = '<time class="date" datetime="';
+
+	
+	if ($type == "deadline") {
+		$output .= $begin->format('Y-m-d\TH:i P') . '">' . $begin->format('M jS, Y g:i A T');
+			}
+	
+	//include hh:mm - hh:mm
+	elseif ($type == "datetime"){
+		
+		//same day
+		if ($begin->format('Y-m-d') == $end->format('Y-m-d')) {
+			$output .= $begin->format('Y-m-d\TH:i') . '">' . $begin->format('M jS, Y') . '<span>' . $begin->format('g:ia') . '-' . $end->format('g:ia') . '</span>';
+		}
+		//same month
+		elseif ($begin->format('Y-m') == $end->format('Y-m')) {
+			$output .= $begin->format('Y-m-d\TH:i') . '/' . $end->format('Y-m-d\TH:i') . '">' . $begin->format('M jS') . '&ndash;' . $end->format('jS, Y') . '<span>' . $begin->format('g:ia') . '-' . $end->format('g:ia') . '</span>';
+		}
+		//same year
+		elseif ($begin->format('Y') == $end->format('Y')) {
+			$output .= $begin->format('Y-m-d\TH:i') . '/' . $end->format('Y-m-d\TH:i') . '">' . $begin->format('M jS') . '&ndash;' . $end->format('M jS, Y') . '<span>' . $begin->format('g:ia') . '-' . $end->format('g:ia') . '</span>';
+		}	
+	} else {	
+		//same day
+		if ($begin->format('Y-m-d') == $end->format('Y-m-d')) {
+			$output .= $begin->format('Y-m-d') . '">' . $begin->format('M jS, Y');
+		}
+		//same month
+		elseif ($begin->format('Y-m') == $end->format('Y-m')) {
+			$output .= $begin->format('Y-m-d') . '/' . $end->format('Y-m-d') . '">' . $begin->format('M jS') . '&ndash;' . $end->format('jS, Y');
+		}
+		//same year
+		elseif ($begin->format('Y') == $end->format('Y')) {
+			$output .= $begin->format('Y-m-d') . '/' . $end->format('Y-m-d') . '">' . $begin->format('M jS') . '&ndash;' . $end->format('M jS, Y');
+		}
+		else {
+			$output .= $begin->format('Y-m-d') . '/' . $end->format('Y-m-d') . '">' . $begin->format('M jS, Y') . '&ndash;' . $end->format('M jS, Y');
+		}
+	}
+	
+	
+	$output .= '</time>';
+	
+	return $output; 
+		
+	
+}
+
+/*use "$post->ID" as $post*/
+function get_tsapress_event_datetime_string($post){
+
+$prefix = '_tsapress_event_';
+
+switch(get_post_meta($post, $prefix.'datetime_range', true)) {
+
+	case 'datetime':
+		$datetime_begin = get_post_meta($post, $prefix.'datetime_begin', true);
+		$datetime_end = get_post_meta($post, $prefix.'datetime_end', true);
+		return get_tsapress_pretty_time("datetime", $datetime_begin, $datetime_end, true);
+		break;
+		
+	case 'date':
+		$date_begin = get_post_meta($post, $prefix.'date_begin', true);
+		$date_end = get_post_meta($post, $prefix.'date_end', true);
+		return get_tsapress_pretty_time("date", $date_begin, $date_end);
+		break;
+		
+	case 'deadline':
+		$deadline_datetime = get_post_meta($post, $prefix.'deadline_datetime', true);
+		return get_tsapress_pretty_time("deadline", $deadline_datetime);
+		break;		
+		
+	default: //(case 'tbd':)
+			return '<time datetime="TBD">TBD</time>';
+		break;
+	}
+
+}
+
+
 add_filter('cmb_meta_box_url', 'tsapress_cmb_meta_box_url');
 /* redefines the URL to cmb assets */
 function tsapress_cmb_meta_box_url($url) {	 
@@ -108,6 +210,13 @@ $meta_boxes[] = array(
 		'priority'   => 'high',
 		'show_names' => true, // Show field names on the left
 		'fields'     => array(
+								
+								array(
+									'name' => 'Major Event',
+									'desc' => 'Check this box to add this event to the primary events list, displayed in the events segment of the left sidebar and the events widget at the bottom of the page.',
+									'id'   => $prefix . 'major_event',
+									'type' => 'checkbox',
+								),
 								
 								array(
 									'name'    => 'Event Type',
@@ -193,10 +302,6 @@ $meta_boxes[] = array(
 									'id'   => $prefix . 'google_maps_query',
 									'type' => 'text',
 								)
-								
-								
-								
-								
 							)
 					);
 

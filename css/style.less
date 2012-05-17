@@ -68,6 +68,44 @@ body {
 }
 
 
+.chromeframe {
+	background: white;
+	width: 100%;
+	z-index: 200;
+	padding: 20px;
+	text-align: center;
+	top:0;
+	border: 1px solid #CCC;
+	font-size: 16px;
+
+	a {
+		box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');
+		background-color:#79bbff;
+		border-radius:6px;
+		border:1px solid #84bbf3;
+		display:inline-block;
+		color:#ffffff;
+		font-size:14px;
+		font-weight:bold;
+		margin: 0 5px;
+		padding:4px 8px;
+		text-decoration:none;
+		text-shadow:1px 1px 0px #528ecc;
+		 &:hover {
+			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff');
+			background-color:#378de5;
+		} 
+		&:active {
+			position:relative;
+			top:1px;
+		}
+	}
+}
+
+
+
+
 
 /* extend basement to bottom of page, even without all content  - used in development
 html, body, #page-wrap, #basement, #basement > div, #basement > div > div { height: 100%; }
@@ -471,6 +509,17 @@ a:hover {
 				.transition(background 0.2s ease-in-out);
 				font-style: normal;
 				font-weight: 400;
+				
+				span {
+					width: 100%;
+					display: block;
+					font-size: 12px;
+					color: @midGray;
+				}
+				
+				&:hover span {
+					color: white;
+				}
 			}
 		}
 	}
@@ -517,7 +566,7 @@ a:hover {
 	background: #fff;
 	.borderRadius(@globalRadius @globalRadius 0 0);
 	padding: 10px;	
-	min-height: 400px;	
+	min-height: 450px;	
 	
 	a:hover {
 	color: @TSABlue;
@@ -1469,11 +1518,7 @@ blockquote {
 	}
 	
 	
-.wp-caption {
-	text-align: center;
-	margin-top: 5px;
-	}
-	
+
 
 .wp-smiley {
 	margin: 0 !important;
@@ -1505,13 +1550,17 @@ mark {
 	
 //*=============== figure styles ================= */
 
-
-
 figure {
 	display: block;
 	position: relative;
 	overflow: hidden;
-	margin-top: 10px;
+	float: left;
+	margin: 10px 20px 10px 0;
+
+	&.featured-image {
+		width: 100%;
+		margin: 0;
+	}
 
 	img {	
 		width: 100%;   // /* TODO: responsive images? serve differently to smaller screen sizes via background-image? http://csswizardry.com/2011/07/responsive-images-right-now/ */
@@ -1524,50 +1573,49 @@ figure {
 		background-color: rgba(0,0,0,0.75); 
 		color: white;
 		padding: 10px 2%; 
-		
-		.transition(bottom 0.6s ease);
-		left: 0; bottom: -30%;
+		.transition(~"bottom 0.6s ease, opacity 0.6s ease");
+		left: 1px; bottom: -30%;
 		width: 96%;
-		
-		&:before { 
-			content: "▲"; 
-			position: absolute; 
-			background: rgba(0, 0, 0, 0.80); 
-			font-weight: 800; 
-			text-shadow: 0 0 5px black;
-			color: white;
-			
-			width: 16px;
-			height: 16px;
-			
-			.borderRadius(8px);
-			
-			text-align: center;
-			
-			font-size: 8px;
-			line-height: 16px;
-			
-			.transition(opacity 0.6s ease);
-			
-			opacity: 0.75;
-			
-			left: 10px;
-			bottom: 85px;	
-		}	
+		opacity: 0;
+		border: 1px solid transparent;
 	}
+	&.wp-caption:before { 
+		content: "▲"; 
+		position: absolute; 
+		background: rgba(0, 0, 0, 0.80); 
+		font-weight: 800; 
+		text-shadow: 0 0 5px black;
+		color: white;
+		
+		width: 16px;
+		height: 16px;
+		
+		.borderRadius(8px);
+		
+		text-align: center;
+		
+		font-size: 8px;
+		line-height: 16px;
+		
+		.transition(opacity 0.6s ease);
+		
+		opacity: 0.75;
+		
+		left: 10px;
+		bottom: 15px;	
+	}	
 	
 	&:hover figcaption {
-		bottom: 0;
-		&:before {
-			opacity: 0;
-		}
-		
+		opacity: 1;
+		bottom: 5px;
 	}
-	&:hover:before {			//NEED ?
+	
+	&:hover:before {
 		opacity: 0;
 	}
-
 }
+
+
 
 
 //*============================================= */

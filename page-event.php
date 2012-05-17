@@ -2,6 +2,7 @@
 /*
 Template Name: Event Page
 */
+
 ?>
 <?php get_header(); ?>
 
@@ -10,79 +11,13 @@ Template Name: Event Page
 <section id="event-info">
 <?php 
 
+ 
 
-/* outputs clean HTML5 <time> or <time> range */
-function get_tsapress_pretty_time($begin, $end = false, $include_time = false){
+echo get_tsapress_event_datetime_string($post->ID);
 
-	$output = '<time class="date" datetime="';
 	
-	//format deadline
-	if ($end == false) {
-		$output .= gmdate('Y-m-d\TH:i', $begin) . date('P') . '">' . gmdate('M jS, Y g:i A ', $begin). date('T'); //Timezones: Display timezone set via wordpress (tsapress_utils: tsapress_clarify_timezone())
-	}
 	
-	//include hh:mm - hh:mm
-	elseif ($include_time){
-		
-		//same day
-		if (gmdate('Y-m-d', $begin) == gmdate('Y-m-d', $end)) {
-			$output .= gmdate('Y-m-d\TH:i', $begin) . '">' . gmdate('M jS, Y', $begin) . '<span>' . gmdate('g:ia', $begin) . '-' . gmdate('g:ia', $end) . '</span>';
-		}
-		//same month
-		elseif (gmdate('Y-m', $begin) == gmdate('Y-m', $end)) {
-			$output .= gmdate('Y-m-d\TH:i', $begin) . '/' . gmdate('Y-m-d\TH:i', $end) . '">' . gmdate('M jS', $begin) . '&ndash;' . gmdate('jS, Y', $end) . '<span>' . gmdate('g:ia', $begin) . '-' . gmdate('g:ia', $end) . '</span>';
-		}
-		//same year
-		elseif (gmdate('Y', $begin) == gmdate('Y', $end)) {
-			$output .= gmdate('Y-m-d\TH:i', $begin) . '/' . gmdate('Y-m-d\TH:i', $end) . '">' . gmdate('M jS', $begin) . '&ndash;' . gmdate('M jS, Y', $end) . '<span>' . gmdate('g:ia', $begin) . '-' . gmdate('g:ia', $end) . '</span>';
-		}
-		
-		
-	} else {	
-		//same day
-		if (gmdate('Y-m-d', $begin) == gmdate('Y-m-d', $end)) {
-			$output .= gmdate('Y-m-d', $begin) . '">' . gmdate('M jS, Y', $begin);
-		}
-		//same month
-		elseif (gmdate('Y-m', $begin) == gmdate('Y-m', $end)) {
-			$output .= gmdate('Y-m-d', $begin) . '/' . gmdate('Y-m-d', $end) . '">' . gmdate('M jS', $begin) . '&ndash;' . gmdate('jS, Y', $end);
-		}
-		//same year
-		elseif (gmdate('Y', $begin) == gmdate('Y', $end)) {
-			$output .= gmdate('Y-m-d', $begin) . '/' . gmdate('Y-m-d', $end) . '">' . gmdate('M jS', $begin) . '&ndash;' . gmdate('M jS, Y', $end);
-		}
-	}
 	
-	$output .= '</time>';
-	
-	return $output; 
-		
-		
-}
-
-switch(get_post_meta($post->ID, '_tsapress_event_datetime_range', true)) {
-
-	case 'datetime':
-		$datetime_begin = get_post_meta($post->ID, '_tsapress_event_datetime_begin', true);
-		$datetime_end = get_post_meta($post->ID, '_tsapress_event_datetime_end', true);
-		echo get_tsapress_pretty_time($datetime_begin, $datetime_end, true);
-		break;
-		
-	case 'date':
-		$date_begin = get_post_meta($post->ID, '_tsapress_event_date_begin', true);
-		$date_end = get_post_meta($post->ID, '_tsapress_event_date_end', true);
-		echo get_tsapress_pretty_time($date_begin, $date_end);
-		break;
-		
-	case 'deadline':
-		$deadline_datetime = get_post_meta($post->ID, '_tsapress_event_deadline_datetime', true);
-		echo get_tsapress_pretty_time($deadline_datetime);
-		break;		
-		
-	default: //(case 'tbd':)
-			echo '<time datetime="TBD">TBD</time>';
-		break;
-	}
 	
 	$event_location = get_post_meta($post->ID, '_tsapress_event_location', true);
 	$event_location_query = get_post_meta($post->ID, '_tsapress_event_google_maps_query', true);
@@ -112,7 +47,7 @@ switch(get_post_meta($post->ID, '_tsapress_event_datetime_range', true)) {
 	
 	*/ ?>
 	
-	<!--
+	<!-- //TODO: remove this dump
 	<?php print_r(get_post_custom($post->ID)); ?>
 	-->
 	

@@ -20,19 +20,19 @@
 		    <span><time datetime="2013-03-10">3/10</time></span></a></li>
 		    <li><a href="#">Technosphere 2013
 		    <span><time datetime="2012-05-29">5/29</time> - <time datetime="2012-06-03">6/3</time></span></a></li>
-		    <li><a href="#">Technosphere 2013 (II)
+<?php	/*	    <li><a href="#">Technosphere 2013 (II)
 		    <span><time datetime="2012-05-29">5/29</time> - <time datetime="2012-06-03">6/3</time></span></a></li>
-   		</ol>
+*/ ?>  		</ol>
     	<a href="#">More important dates</a> <!-- TODO:reveal -->
     </section>
     
     <section class="updates">
     	<h1>Latests Updates</h1>
 	    <ol>
-		    <li><a href="#">Fall Rallies</a></li>
-		    <li><a href="#">State Leadership Academy</a></li>
+		    <li><a href="#">Regional Fall Rallies</a></li>
+		    <li><a href="#">Leadership Academy</a></li>
 		    <li><a href="#">Regional Conferences</a></li>
-		    <li><a href="#">Technosphere 2013</a></li>
+		    <li><a href="#">Technosphere 2012</a></li>
 		    <li><a href="#">Another Test</a></li>
    		</ol>
     	<a href="#">Previous updates</a>
@@ -108,7 +108,7 @@
     
     <section id="partners">
     <h1>National TSA Partners</h1>
-    <img src="<?php bloginfo('template_directory'); ?>/mock-content/national-tsa-partners.png" alt="National TSA Partners" />
+    <img src="<?php bloginfo('template_directory'); ?>/mock-content/national-tsa-partners.png" alt="National TSA Partners" height="100px" />
     </section>
     
     

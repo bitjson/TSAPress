@@ -23,18 +23,32 @@
 				<h1><?php bloginfo('name'); ?> (auto)</h1>			
 <?php wp_page_menu( array ('depth' => '1', 'title_li' => '', 'show_home' => 'News' ) ); ?>								
 		<? endif; ?>
-		
-		<?php if ( has_nav_menu('events-nav') ) : ?>
-			<h1><?php echo $events_nav_menu[ 'name' ]; ?></h1>
-				<ul>
-<?php wp_nav_menu( array( 'items_wrap' => '%3$s', 'theme_location' => 'events-nav', 'container' => '', 'depth' => 1, ) ); ?>
-				</ul>	
-		<? else : ?>
-				<h1>Events (auto)</h1>			
-				<ul><li><a>this</a></li><li><a>must</a></li><li><a>list</a></li><li><a>event posts</a></li></ul>								
-		<? endif; ?>
+				
+<?php 
 
-			
+$querystr = "SELECT wposts.*
+FROM ".$wpdb->posts." AS wposts
+INNER JOIN ".$wpdb->postmeta." AS wpostmeta
+ON wpostmeta.post_id = wposts.ID
+AND wpostmeta.meta_key = '_tsapress_event_major_event'
+AND wpostmeta.meta_value = 'on'";
+
+ $primary_events = $wpdb->get_results($querystr, OBJECT);
+		
+ if ($primary_events): ?>
+ <h1>Events</h1>		
+	<ul>
+  <?php global $post; ?>
+  <?php foreach ($primary_events as $post): ?>
+    <?php setup_postdata($post); ?>
+<li><a href="<?php the_permalink() ?>"><?php the_title(); ?><span><?php echo get_tsapress_event_datetime_string($post->ID); ?></span></a></li>
+  <?php endforeach; ?>
+  
+  <?php else : ?>
+    <h1 class="center">No Events</h1>
+    <p class="center">Sorry, there are no events yet.</p>
+ <?php endif; ?>
+
 			
 <?php if ( function_exists('dynamic_sidebar') )  dynamic_sidebar(); /* simply adds on below other menus */ ?> 
 			

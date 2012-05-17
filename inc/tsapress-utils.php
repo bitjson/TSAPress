@@ -4,8 +4,9 @@ function tsapress_debug($object){
 	die(print_r($object));
 }
 
-function tsapress_clarify_timezone(){    
-	if(get_option('timezone_string') != ""){ date_default_timezone_set(get_option('timezone_string'));}
+/* Set global var $tz_string with correct string from Wordpress settings */
+global $tz_string;
+if(get_option('timezone_string') != ""){ $tz_string = get_option('timezone_string'); }
 	else {
 		$timezones = array( 
 		        '-12'=>'Pacific/Kwajalein', 
@@ -39,10 +40,10 @@ function tsapress_clarify_timezone(){
 		        '11'=>'Asia/Magadan', 
 		        '12'=>'Asia/Kamchatka' 
 		    );
-		date_default_timezone_set($timezones[get_option('gmt_offset')]); 	
+		$tz_string = $timezones[get_option('gmt_offset')];
 	}
-}
-tsapress_clarify_timezone();
+date_default_timezone_set($tz_string); //Set running timezone to Wordpress timezone settings
+	
 
 function tsapress_get_total_posts_in_query(){
 	

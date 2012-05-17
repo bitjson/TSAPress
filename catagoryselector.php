@@ -56,6 +56,8 @@
 		<div>
 	    	<h1>View News from:</h1>
 	    	<div id="region-map-canvas" data-geo-map="<?php echo $mapID; ?>"></div> 
+				
+				
 				<ul>
 <?php
 						  $categories=  get_categories();	  
@@ -65,14 +67,21 @@
 						  foreach ($categories as $cat) {
 						  	
 						  	$temp = $cat->category_description;
-						  @ list($geoLat, $geoLon, $geoZoom, $geoID) = split('[,]', $temp); //@ suppresses errors. in wp_debug mode, notice is thrown when # in list and split don't match
-						  							  	
-						  	$geoData = 'data-geo-lat="'.$geoLat.'" data-geo-lon="'.$geoLon.'"';
-						  							  	
-						  	if (!$geoZoom === false) { $geoData .= ' data-geo-zoom="'. $geoZoom .'"';}
 						  	
-						  	if (!$geoID === false) {
-						  		$geoData .= ' data-geo-id="'. $geoID .'"';
+						  	$geoDataArray = explode(',', $temp);
+							 
+							  // Standard:
+							  //	$geoDataArray[0] = Latitude of map center (on hover)
+							  //	$geoDataArray[1] = Longitude of map center (on hover)
+							  //	$geoDataArray[2] = Zoom Level of map center (to view whole region)
+							  //	$geoDataArray[3] = Fusion Table Row ID (for region highlighting)					  	
+						  	
+						  							  	
+						  	$geoData = 'data-geo-lat="'.$geoDataArray[0].'" data-geo-lon="'.$geoDataArray[1].'"';
+						  							  	
+						  	if (isset($geoDataArray[2])) { $geoData .= ' data-geo-zoom="'. $geoDataArray[2] .'"';}
+						  	
+						  	if (isset($geoDataArray[3])) { $geoData .= ' data-geo-id="'. $geoDataArray[3] .'"';
 						  	 						  							  	 
 						  	} else { //this is the $geoData for all categories
 						  		
@@ -93,7 +102,7 @@
 						  
 						  
 					 ?>
-				</ul>  
+				</ul>  		
 	  		</div>
 		</div>
 	</span>
