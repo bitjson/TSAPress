@@ -43,7 +43,7 @@ AND wpostmeta.meta_value = 'on'";
     <?php setup_postdata($post); ?>
 <li><a href="<?php the_permalink() ?>"><?php the_title(); ?><span><?php echo get_tsapress_event_datetime_string($post->ID); ?></span></a></li>
   <?php endforeach; ?>
-  
+  	</ul>
   <?php else : ?>
     <h1 class="center">No Events</h1>
     <p class="center">Sorry, there are no events yet.</p>

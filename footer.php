@@ -10,6 +10,36 @@
     <?php /* Cut for AHSTSA.org */ ?>
     
     <section class="events">
+    <?php 
+
+$querystr = "SELECT wposts.*
+FROM ".$wpdb->posts." AS wposts
+INNER JOIN ".$wpdb->postmeta." AS wpostmeta
+ON wpostmeta.post_id = wposts.ID
+AND wpostmeta.meta_key = '_tsapress_event_major_event'
+AND wpostmeta.meta_value = 'on'";
+
+ $primary_events = $wpdb->get_results($querystr, OBJECT);
+		
+ if ($primary_events): ?>
+ <h1>Conferences &amp; Events</h1>
+	<ol><?php
+	
+	global $post; 
+	
+   foreach ($primary_events as $post): ?>
+    <?php setup_postdata($post); ?>
+		<li><a href="<?php the_permalink() ?>"><?php the_title(); ?><span><?php echo get_tsapress_event_datetime_string($post->ID, 'short'); ?></span></a></li>
+  <?php endforeach; ?>
+  </ol>
+  <?php else : ?>
+    <h1 class="center">No Events</h1>
+    <p class="center">Sorry, there are no events yet.</p>
+ <?php endif; ?>
+    
+
+<?php	/* 
+    
     	<h1>Conferences &amp; Events</h1>
 	    <ol>
 		    <li><a href="#">Fall Rallies 
@@ -20,9 +50,14 @@
 		    <span><time datetime="2013-03-10">3/10</time></span></a></li>
 		    <li><a href="#">Technosphere 2013
 		    <span><time datetime="2012-05-29">5/29</time> - <time datetime="2012-06-03">6/3</time></span></a></li>
-<?php	/*	    <li><a href="#">Technosphere 2013 (II)
+	    <li><a href="#">Technosphere 2013 (II)
 		    <span><time datetime="2012-05-29">5/29</time> - <time datetime="2012-06-03">6/3</time></span></a></li>
-*/ ?>  		</ol>
+  		</ol>
+*/ ?>
+
+
+
+
     	<a href="#">More important dates</a> <!-- TODO:reveal -->
     </section>
     
