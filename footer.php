@@ -5,55 +5,41 @@
     <div>
        <div>
        <div class="basement-line">
-       <a href="#TSA-Bar" class="back-to-top">Back to Top</a>
+       <a href="#TSA-Bar" class="back-to-top">Back to Top</a>    
     
-    <?php /* Cut for AHSTSA.org */ ?>
-    
-    <section class="events">
-    <?php 
-
-$querystr = "SELECT wposts.*
-FROM ".$wpdb->posts." AS wposts
-INNER JOIN ".$wpdb->postmeta." AS wpostmeta
-ON wpostmeta.post_id = wposts.ID
-AND wpostmeta.meta_key = '_tsapress_event_major_event'
-AND wpostmeta.meta_value = 'on'";
-
- $primary_events = $wpdb->get_results($querystr, OBJECT);
-		
- if ($primary_events): ?>
- <h1>Conferences &amp; Events</h1>
-	<ol><?php
-	
-	global $post; 
-	
-   foreach ($primary_events as $post): ?>
-    <?php setup_postdata($post); ?>
-		<li><a href="<?php the_permalink() ?>"><?php the_title(); ?><span><?php echo get_tsapress_event_datetime_string($post->ID, 'short'); ?></span></a></li>
-  <?php endforeach; ?>
-  </ol>
-  <?php else : ?>
-    <h1 class="center">No Events</h1>
-    <p class="center">Sorry, there are no events yet.</p>
- <?php endif; ?>
-    
-
-<?php	/* 
-    
-    	<h1>Conferences &amp; Events</h1>
+     <section class="updates">
+    	<h1>Latests Updates</h1>
 	    <ol>
-		    <li><a href="#">Fall Rallies 
-		    <span><time datetime="2012-10-08">10/8</time></span></a></li>
-		    <li><a href="#">State Leadership Academy
-		    <span><time datetime="2012-11-06">11/6</time> - <time datetime="2012-11-08">11/8</time></span></a></li>
-		    <li><a href="#">Regional Conferences
-		    <span><time datetime="2013-03-10">3/10</time></span></a></li>
-		    <li><a href="#">Technosphere 2013
-		    <span><time datetime="2012-05-29">5/29</time> - <time datetime="2012-06-03">6/3</time></span></a></li>
-	    <li><a href="#">Technosphere 2013 (II)
-		    <span><time datetime="2012-05-29">5/29</time> - <time datetime="2012-06-03">6/3</time></span></a></li>
-  		</ol>
-*/ ?>
+	    <?php wp_get_archives(array ('type' => 'postbypost', 'limit' => 5, 'before' => '<li>', 'after' => '</li>')); ?>
+   		</ol>
+    	<a href="#">Previous updates</a>
+    </section>
+    
+    <section class="events"><?php 
+
+			$querystr = "SELECT wposts.*
+			FROM ".$wpdb->posts." AS wposts
+			INNER JOIN ".$wpdb->postmeta." AS wpostmeta
+			ON wpostmeta.post_id = wposts.ID
+			AND wpostmeta.meta_key = '_tsapress_event_major_event'
+			AND wpostmeta.meta_value = 'on'";
+			
+			 $primary_events = $wpdb->get_results($querystr, OBJECT);
+					
+			 if ($primary_events): ?>
+		 <h1>Conferences &amp; Events</h1>
+			<ol><?php
+				global $post; 
+				
+				foreach ($primary_events as $post): ?>
+			    <?php setup_postdata($post); ?>
+				<li><a href="<?php the_permalink() ?>"><?php the_title(); ?><?php echo get_tsapress_event_datetime_string($post->ID, 'short'); ?></a></li>
+ 				<?php endforeach; ?>
+  			</ol>
+  		<?php else : ?>
+   		<h1 class="center">No Events</h1>
+   			<p class="center">Sorry, there are no events yet.</p>
+ 		<?php endif; ?>
 
 
 
@@ -61,17 +47,7 @@ AND wpostmeta.meta_value = 'on'";
     	<a href="#">More important dates</a> <!-- TODO:reveal -->
     </section>
     
-    <section class="updates">
-    	<h1>Latests Updates</h1>
-	    <ol>
-		    <li><a href="#">Regional Fall Rallies</a></li>
-		    <li><a href="#">Leadership Academy</a></li>
-		    <li><a href="#">Regional Conferences</a></li>
-		    <li><a href="#">Technosphere 2012</a></li>
-		    <li><a href="#">Another Test</a></li>
-   		</ol>
-    	<a href="#">Previous updates</a>
-    </section>
+   
     
     <section  class="archives">
     	<h1>News Archives</h1>
@@ -159,7 +135,6 @@ AND wpostmeta.meta_value = 'on'";
     </div>
   </div>
 </div>
-   
    
     
     
