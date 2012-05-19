@@ -45,6 +45,11 @@ Possible?:
 
 */
 
+
+//TODO: Cache events database query
+
+
+
 function is_same_day($begin, $end){ if ($begin->format('Y-m-d') == $end->format('Y-m-d')) return true;
 	return false; }
 

@@ -1428,38 +1428,39 @@ tr:nth-child(odd) {background-color: #F8F8FF;}
 
 th {background-color: @ultraLightGray;}
 
-code, pre, samp, kbd {
-	font-family: courier, monaco, monospace;
-	line-height: 1.45em;
-	}
-
-code, samp, kbd {
-	padding: 1px 5px;
-	background-color: #777;
-	color: white;
-	.borderRadius(5px);
-	.boxShadow(~"inset 0 1px 5px rgba(255, 255, 255, 0.25), inset -1px -1px 1px rgba(0, 0, 0, 0.20)");
+#content {
+	code, pre, samp, kbd {
+		font-family: courier, monaco, monospace;
+		line-height: 1.45em;
+		}
 	
-	var{
-		color: @highlightBlue;
-	}
-}
-
-samp, code {width: 100%;}
-
-pre {
-	padding: 10px;
-	border: 1px solid @lightGray;
-	background-color: @ultraLightGray;
-	
-	samp, code {
-		padding: 0;
-		background-color: transparent;
-		color: @darkGray;
-		.borderRadius(none);
-		.boxShadow(none);
+	code, samp, kbd {
+		padding: 1px 5px;
+		background-color: #777;
+		color: white;
+		.borderRadius(5px);
+		.boxShadow(~"inset 0 1px 5px rgba(255, 255, 255, 0.25), inset -1px -1px 1px rgba(0, 0, 0, 0.20)");
+		
+		var{
+			color: @highlightBlue;
+		}
 	}
 	
+	samp, code {width: 100%;}
+	
+	pre {
+		padding: 10px;
+		border: 1px solid @lightGray;
+		background-color: @ultraLightGray;
+		
+		samp, code {
+			padding: 0;
+			background-color: transparent;
+			color: @darkGray;
+			.borderRadius(none);
+			.boxShadow(none);
+		}	
+	}
 }
 
 blockquote {
@@ -1548,7 +1549,11 @@ mark {
 }
 	
 	
-//*=============== figure styles ================= */
+//*=============== image & figure styles ================= */
+
+#content article img {	
+	border: 1px solid @lightGray;
+}
 
 figure {
 	display: block;
@@ -1564,7 +1569,6 @@ figure {
 
 	img {	
 		width: 100%;   // /* TODO: responsive images? serve differently to smaller screen sizes via background-image? http://csswizardry.com/2011/07/responsive-images-right-now/ */
-		border: 1px solid @lightGray;
 	}
 	
 	figcaption {

@@ -2,6 +2,8 @@
 
 if($_SERVER['REQUEST_URI'] == "/login" || $_SERVER['REQUEST_URI'] == "/login/" ) Header( 'Location: ' . get_admin_url() ); //redirect [site]/login to login screen
 
+tsapress_process_contact_form();
+
 ?>
 
 <!DOCTYPE html>
