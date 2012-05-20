@@ -109,11 +109,7 @@
     <section id="partners">
     <h1>National TSA Partners</h1>
     <img src="<?php bloginfo('template_directory'); ?>/mock-content/national-tsa-partners.png" alt="National TSA Partners" height="100px" />
-    </section>
-    
-    
-   <?php /* end cut */?>
-    
+    </section>    
     
     <footer>
         <small class="copyright">&copy; <?php echo date('Y'); ?> <a href="<?php bloginfo('url'); ?>/" title="<?php bloginfo('description'); ?>"><?php bloginfo('name'); ?></a><br>
@@ -123,8 +119,7 @@
     </footer>
     </div>
   </div>
-</div>
-   
+</div> 
     
     
      <?php /* TODO: Google Analytics
