@@ -17,11 +17,11 @@ if	(is_page()) {
 			$post = $posts[0]; // hack: set $post so that the_date() works 
 			
 			if 		(is_category()) 	single_cat_title(); 
-			elseif	(is_tag()) 			echo 'News Tagged &ldquo;' . single_tag_title() . '&rdquo;';
-			elseif 	(is_day()) 			echo 'News Archive for ' . the_time('F jS, Y');
-			elseif 	(is_month()) 		echo 'News Archive for ' . the_time('F, Y');
-			elseif 	(is_year()) 		echo 'News Archive for ' . the_time('Y');
-			elseif 	(is_author()) 		echo 'Author Archive';
+			elseif	(is_tag()) 			echo 'News <small>Tagged &ldquo;' . single_tag_title() . '&rdquo;'. '</small>';
+			elseif 	(is_day()) 			echo 'News <small>from ' . get_the_time('F jS, Y'). '</small>';
+			elseif 	(is_month()) 		echo 'News <small>from ' . get_the_time('F, Y'). '</small>';
+			elseif 	(is_year()) 		echo 'News <small>from ' . get_the_time('Y'). '</small>';
+			elseif 	(is_author()) 		echo 'News <small>from ' . 'Author' . '</small>'; //TODO get Author Name d
 			
 			elseif (isset($_GET['paged']) && !empty($_GET['paged'])) echo 'News Archives';
 		}

@@ -51,58 +51,7 @@
     
     <section  class="archives">
      <h1>News Archives</h1>
-
 <?    
-
-/* Desired Result:
-
- <time datetime="2012">
-	    	<span>2012:</span>
-	    <ul>
-	    	<li><a href="#"><time datetime="2012-01">Jan</time></a></li>
-	    	<li><a href="#"><time datetime="2012-02">Feb</time></a></li>
-	    	<li><a href="#"><time datetime="2012-03">Mar</time></a></li>
-	    	<li><a href="#"><time datetime="2012-04">Apr</time></a></li>
-	    	<li><a href="#"><time datetime="2012-05">May</time></a></li>
-	    	<li><a href="#"><time datetime="2012-06">June</time></a></li>
-	    </ul>
-	    </time>
-	    <time datetime="2011">
-	    <span>2011:</span>
-	    <ul>
-	    	<li><a href="#"><time datetime="2012-01">Jan</time></a></li>
-	    	<li><a href="#"><time datetime="2012-02">Feb</time></a></li>
-	    	<li><a href="#"><time datetime="2012-03">Mar</time></a></li>
-	    	<li><time datetime="2012-04">Apr</time></li>
-	    	<li><a href="#"><time datetime="2012-05">May</time></a></li>
-	    	<li><a href="#"><time datetime="2012-06">June</time></a></li>
-	    	<li><time datetime="2012-07">July</time></li>
-	    	<li><a href="#"><time datetime="2012-08">Aug</time></a></li>
-	    	<li><a href="#"><time datetime="2012-09">Sept</time></a></li>
-	    	<li><a href="#"><time datetime="2012-10">Oct</time></a></li>
-	    	<li><a href="#"><time datetime="2012-11">Nov</time></a></li>
-	    	<li><time datetime="2012-12">Dec</time></li>
-	    </ul>
-	    </time>
-	    <time datetime="2010">
-	    <span>2010:</span>
-	    <ul>
-	    	<li><a href="#"><time datetime="2012-01">Jan</time></a></li>
-	    	<li><a href="#"><time datetime="2012-02">Feb</time></a></li>
-	    	<li><a href="#"><time datetime="2012-03">Mar</time></a></li>
-	    	<li><time datetime="2012-04">Apr</time></li>
-	    	<li><a href="#"><time datetime="2012-05">May</time></a></li>
-	    	<li><a href="#"><time datetime="2012-06">June</time></a></li>
-	    	<li><time datetime="2012-07">July</time></li>
-	    	<li><time datetime="2012-08">Aug</time></li>
-	    	<li><a href="#"><time datetime="2012-09">Sept</time></a></li>
-	    	<li><a href="#"><time datetime="2012-10">Oct</time></a></li>
-	    	<a href="#"><time datetime="2012-11">Nov</time></a></li>
-	    	<li><a href="#"><time datetime="2012-12">Dec</time></a></li>
-	    </ul>	
-	    </time> */
-
-	
 		$archive_query = "SELECT YEAR(post_date) AS `year`, MONTH(post_date) AS `month`, count(ID) as posts FROM $wpdb->posts WHERE post_type = 'post' AND post_status = 'publish' GROUP BY YEAR(post_date), MONTH(post_date) ORDER BY post_date DESC";
 	
 		$key = md5($archive_query);
@@ -134,7 +83,7 @@
 						
 			foreach($years as $year => $months){
 				echo "<time datetime=\"$year\">";
-				echo "<span>$year:</span>";
+				echo '<a href="' . get_year_link($year) . "\">$year:</a>";
 				echo "\n<ul>\n";	
 				
 				foreach($months as $month_number => $posts_exist_in_month){
@@ -150,77 +99,13 @@
 				
 				echo "\n</ul></time>\n";					
 			}
-		}	
-			
-			
-
-				
-
-
-
-
-
-
-/*    
-    
-	   <time datetime="2012">
-	    	<span>2012:</span>
-	    <ul>
-	    	<li><a href="#"><time datetime="2012-01">Jan</time></a></li>
-	    	<li><a href="#"><time datetime="2012-02">Feb</time></a></li>
-	    	<li><a href="#"><time datetime="2012-03">Mar</time></a></li>
-	    	<li><a href="#"><time datetime="2012-04">Apr</time></a></li>
-	    	<li><a href="#"><time datetime="2012-05">May</time></a></li>
-	    	<li><a href="#"><time datetime="2012-06">June</time></a></li>
-	    </ul>
-	    </time>
-	    <time datetime="2011">
-	    <span>2011:</span>
-	    <ul>
-	    	<li><a href="#"><time datetime="2012-01">Jan</time></a></li>
-	    	<li><a href="#"><time datetime="2012-02">Feb</time></a></li>
-	    	<li><a href="#"><time datetime="2012-03">Mar</time></a></li>
-	    	<li><time datetime="2012-04">Apr</time></li>
-	    	<li><a href="#"><time datetime="2012-05">May</time></a></li>
-	    	<li><a href="#"><time datetime="2012-06">June</time></a></li>
-	    	<li><time datetime="2012-07">July</time></li>
-	    	<li><a href="#"><time datetime="2012-08">Aug</time></a></li>
-	    	<li><a href="#"><time datetime="2012-09">Sept</time></a></li>
-	    	<li><a href="#"><time datetime="2012-10">Oct</time></a></li>
-	    	<li><a href="#"><time datetime="2012-11">Nov</time></a></li>
-	    	<li><time datetime="2012-12">Dec</time></li>
-	    </ul>
-	    </time>
-	    <time datetime="2010">
-	    <span>2010:</span>
-	    <ul>
-	    	<li><a href="#"><time datetime="2012-01">Jan</time></a></li>
-	    	<li><a href="#"><time datetime="2012-02">Feb</time></a></li>
-	    	<li><a href="#"><time datetime="2012-03">Mar</time></a></li>
-	    	<li><time datetime="2012-04">Apr</time></li>
-	    	<li><a href="#"><time datetime="2012-05">May</time></a></li>
-	    	<li><a href="#"><time datetime="2012-06">June</time></a></li>
-	    	<li><time datetime="2012-07">July</time></li>
-	    	<li><time datetime="2012-08">Aug</time></li>
-	    	<li><a href="#"><time datetime="2012-09">Sept</time></a></li>
-	    	<li><a href="#"><time datetime="2012-10">Oct</time></a></li>
-	    	<a href="#"><time datetime="2012-11">Nov</time></a></li>
-	    	<li><a href="#"><time datetime="2012-12">Dec</time></a></li>
-	    </ul>	
-	    </time> 
-*/	   
-	   
+		}	   
 ?>
-	   
-    	<a href="#">Full Archives</a>
+		<a href="#">Full Archives</a>
     </section>
-    
-    <section id="contact" class="contact"> <!-- TODO: expand contact form on :focus for ease of use (fill basement?) -->
-    
+        
 <?php tsapress_display_contact_form(); ?>
-    	
-    </section>
-    
+    	    
     <section id="partners">
     <h1>National TSA Partners</h1>
     <img src="<?php bloginfo('template_directory'); ?>/mock-content/national-tsa-partners.png" alt="National TSA Partners" height="100px" />

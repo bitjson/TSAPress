@@ -1018,17 +1018,15 @@ section#content #sub-nav {
 		padding: 0;
 		overflow: auto; width: 350px;	//expands to grab all floats (height-wise)
 
-		
-	}
-	span {
-		display: block;
-		width: 52px;
-		padding: 8px 0 0 8px;
-		float: left;
-		color: white;
-		font-weight: 700;
-		height: 100%;
-		
+		& > a {
+			display: block;
+			width: 52px;
+			padding: 8px 0 0 8px;
+			float: left;
+			color: white;
+			font-weight: 700;
+			height: 100%;		
+		}	
 	}
 	ul {
 	overflow: auto; //expands to grab all floats (height-wise)
@@ -1138,6 +1136,26 @@ section#content #sub-nav {
 	background-color: rgba(0, 0, 0, 0.85);
     position: absolute;
     width: 700px;
+}
+
+.contact-error {
+	padding: 8px 35px 8px 14px;
+	margin-bottom: 18px;
+	color: #C09853;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	background-color: #FCF8E3;
+	border: 1px solid #FBEED5;
+	.borderRadius(@globalRadius);
+}
+
+.contact-success {
+	padding: 8px 35px 8px 14px;
+	margin-bottom: 18px;
+	color: #468847;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	background-color: #DFF0D8;
+	border: 1px solid #D6E9C6;
+	.borderRadius(@globalRadius);
 }
 	
 #basement #partners {
