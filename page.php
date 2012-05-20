@@ -2,13 +2,13 @@
 
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-<?php get_template_part( 'contentheader' ); ?>
+<?php get_template_part( 'inc/contentheader' ); ?>
 				
 			<article id="post-<?php the_ID(); ?>">
 
-<?php get_template_part( 'childnav' ); ?>
+<?php get_template_part( 'inc/childnav' ); ?>
 
-<?php get_template_part( 'featuredimage' ); ?>
+<?php get_template_part( 'inc/featuredimage' ); ?>
 
 				<section>
 					<?php edit_post_link('Edit'); ?>

@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<?php get_template_part( 'contentheader' ); ?>
+<?php get_template_part( 'inc/contentheader' ); ?>
 
 			<?php if (have_posts()) : ?>
 
@@ -27,7 +27,7 @@
 					<?php get_search_form(); ?>
 				</aside>
 			
-<?php get_template_part( 'pagination' ); ?>
+<?php get_template_part( 'inc/pagination' ); ?>
 
 			<?php else : //TODO: clean up this function- streamline switch to google- search box left, big Google button right? ?>
 

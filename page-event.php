@@ -28,13 +28,13 @@ echo get_tsapress_event_datetime_string($post->ID);
 	 ?>
 </section>
 
-<?php get_template_part( 'contentheader' ); ?>
+<?php get_template_part( 'inc/parts/contentheader' ); ?>
 
 			<article id="post-<?php the_ID(); ?>">
 
-<?php get_template_part( 'childnav' ); ?>
+<?php get_template_part( 'inc/parts/childnav' ); ?>
 				
-<?php get_template_part( 'featuredimage' ); ?>
+<?php get_template_part( 'inc/parts/featuredimage' ); ?>
 
 				<section>
 				

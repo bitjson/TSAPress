@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 	
-<?php get_template_part( 'contentheader' ); ?>
+<?php get_template_part( 'inc/contentheader' ); ?>
 	
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
@@ -11,7 +11,7 @@
 					<small>Posted on <?php the_time('F jS, Y'); ?> by <?php the_author(); ?></small>
 				</header>
 
-<?php get_template_part( 'featuredimage' ); ?>
+<?php get_template_part( 'inc/featuredimage' ); ?>
 
 				<section>
 					<?php the_content('Read more on "'.the_title('', '', false).'" &raquo;'); ?>
@@ -49,7 +49,7 @@
 
 <?php comments_template(); ?>
 
-<?php get_template_part( 'pagination' ); 
+<?php get_template_part( 'inc/pagination' ); 
 			/*
 			
 			

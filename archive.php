@@ -1,8 +1,8 @@
 <?php get_header(); ?>
 
-<?php get_template_part( 'catagoryselector' ); ?>
+<?php get_template_part( 'inc/catagoryselector' ); ?>
 
-<?php get_template_part( 'contentheader' ); ?>
+<?php get_template_part( 'inc/contentheader' ); ?>
 		
 <?php if (have_posts()) : ?>
 		<?php while (have_posts()) : the_post(); ?>
@@ -25,7 +25,7 @@
 
 			<?php endwhile; ?>
 
-<?php get_template_part( 'pagination' ); ?>
+<?php get_template_part( 'inc/pagination' ); ?>
 
 			<?php else : ?>
 

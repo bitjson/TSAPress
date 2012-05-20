@@ -83,7 +83,7 @@ tsapress_process_contact_form();
                 </div>
             </li>
 
-<?php get_template_part( 'stateselect' ); ?>
+<?php get_template_part( 'inc/stateselect' ); ?>
 
 <?php get_search_form(); ?>       	
             	            
