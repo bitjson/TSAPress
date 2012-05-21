@@ -35,9 +35,9 @@ function tsapress_display_contact_form() {
 		<?php } ?>
     	<!-- <p>Please leave us a message, and we'll get back to soon!</p> -->
 		<form method="post" action="<?php the_permalink(); ?>#contact">
-			<input type="text" id="name" name="name" value="<?php if(isset($user_name)) echo $user_name; ?>" placeholder="Name" required="required" />  
-			<input type="email" id="email" name="email" value="<?php if(isset($user_email)) echo $user_email; ?>" placeholder="Email" required="required" /> 
-			<textarea id="message" name="message" placeholder="Questions? comments?" required="required" data-minlength="20"><?php if(isset($user_message)) echo $user_message; ?></textarea>   
+			<input type="text" id="name" name="tsapress_contact_name" value="<?php if(isset($user_name)) echo $user_name; ?>" placeholder="Name" required="required" />  
+			<input type="email" id="email" name="tsapress_contact_email" value="<?php if(isset($user_email)) echo $user_email; ?>" placeholder="Email" required="required" /> 
+			<textarea id="message" name="tsapress_contact_message" placeholder="Questions? comments?" required="required" data-minlength="20"><?php if(isset($user_message)) echo $user_message; ?></textarea>   
 			<input type="submit" value="Send" id="submit-button" /> 
 		</form>
 		<address>
@@ -51,7 +51,7 @@ function tsapress_display_contact_form() {
 
 function tsapress_process_contact_form() {
 
-	if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message'])) {
+	if(isset($_POST['tsapress_contact_name']) && isset($_POST['tsapress_contact_email']) && isset($_POST['tsapress_contact_message'])) {
 		
 		isset($_SERVER['HTTP_REFERER']) ? $http_referer = $_SERVER['HTTP_REFERER'] : $http_referer = "None";
 		isset($_SERVER['REMOTE_ADDR']) ? $user_ip_address = $_SERVER['REMOTE_ADDR'] : $user_ip_address = "Error retrieving IP.";
@@ -64,9 +64,9 @@ function tsapress_process_contact_form() {
 		
 		$tsapress_contact_error = false;
 		
-		$user_name 		= stripslashes_deep(trim($_POST['name']));	//strips slashes because WordPress automatically adds them
-		$user_email 	= stripslashes_deep(trim($_POST['email']));
-		$user_message 	= stripslashes_deep($_POST['message']);		
+		$user_name 		= stripslashes_deep(trim($_POST['tsapress_contact_name']));	//strips slashes because WordPress automatically adds them
+		$user_email 	= stripslashes_deep(trim($_POST['tsapress_contact_email']));
+		$user_message 	= stripslashes_deep($_POST['tsapress_contact_message']);		
 		
 				
 		if(strlen($user_name) < 2) $tsapress_contact_error = "We're sorry, it seems that the name provided is incomplete. Please provide your name and try again.";
