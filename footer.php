@@ -88,7 +88,7 @@
 				
 				foreach($months as $month_number => $posts_exist_in_month){
 				
-					$datetime = new DateTime();
+					$datetime = new DateTime_52(); //extended for compatability with PHP 5.2
 					$datetime->setTimestamp(mktime(0, 0, 0, $month_number, 1, $year));
 	
 					$out = '<time datetime="' . $datetime->format('Y-m') . '">'. $datetime->format('M') . '</time>';

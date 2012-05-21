@@ -1,5 +1,8 @@
 <?php
 
+require_once('inc/php-5_2-fixes.php'); //Extends PHP 5.2 functionality to lower TSAPress PHP version requirements (from 5.3 for DateTime class) 
+
+
 require_once('inc/tsapress-cleanup.php'); //cleans urls, wp_head, hides wp_content : derived from Roots HTML5 Boilerplate WordPress Theme
 require_once('inc/tsapress-utils.php'); //functions that should have come with WordPress
 require_once('inc/tsapress-events.php'); //TODO: event post type

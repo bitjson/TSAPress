@@ -70,12 +70,12 @@ function get_tsapress_pretty_time($length, $type, $begin_timestamp, $end_timesta
 	$dtzone = new DateTimeZone($tz_string);
 	 
 	// create a DateTime object
-	$begin = new DateTime();
-	$end = new DateTime();
+	$begin = new DateTime_52();
+	$end = new DateTime_52();
 	
-	// set it to the timestamp (PHP >= 5.3.0) TODO: WARNING: requires PHP 5.3
+	// set it to the timestamp (PHP >= 5.3.0) normally requires PHP 5.3, but using DateTime_52 extended fix, from inc/php-5_2-fixes.php
 	$begin->setTimestamp($begin_timestamp);
-	$end->setTimestamp($end_timestamp);
+	if($end_timestamp != false) $end->setTimestamp($end_timestamp);
 	 
 	// convert to timezone
 	$begin->setTimeZone($dtzone);
