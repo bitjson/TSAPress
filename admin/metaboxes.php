@@ -1,7 +1,10 @@
 <?php
 /*
 
+Hacks:
 MODIFIED: line 186 - Jason Dreyzehner
+MODIFIED: line 242 - Jason Dreyzehner (reduced rows of textarea)
+
 
 
 Script Name: 	Custom Metaboxes and Fields
@@ -239,7 +242,7 @@ class cmb_Meta_Box {
 					echo '<textarea name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="10">', '' !== $meta ? $meta : $field['std'], '</textarea>','<p class="cmb_metabox_description">', $field['desc'], '</p>';
 					break;
 				case 'textarea_small':
-					echo '<textarea name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="4">', '' !== $meta ? $meta : $field['std'], '</textarea>','<p class="cmb_metabox_description">', $field['desc'], '</p>';
+					echo '<textarea name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="2">', '' !== $meta ? $meta : $field['std'], '</textarea>','<p class="cmb_metabox_description">', $field['desc'], '</p>';
 					break;
 				case 'textarea_code':
 					echo '<textarea name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="10" class="cmb_textarea_code">', '' !== $meta ? $meta : $field['std'], '</textarea>','<p class="cmb_metabox_description">', $field['desc'], '</p>';

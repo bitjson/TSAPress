@@ -8,33 +8,34 @@ Template Name: Event Page
 
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-<section id="event-info">
+<?php get_template_part( 'inc/contentheader' ); ?>
+
+<aside id="event-info">
 <?php 
+	//Event Summary
+	$event_summary = get_post_meta($post->ID, '_tsapress_event_summary', true);
+	if ($event_summary != "") echo '<p class="summary">'. $event_summary .'</p>';
+	
+	//Event Date/time
+	echo get_tsapress_event_datetime_string($post->ID);
 
- 
-
-echo get_tsapress_event_datetime_string($post->ID);
-
-	
-	
-	
-	
+	//Event Location
 	$event_location = get_post_meta($post->ID, '_tsapress_event_location', true);
-	$event_location_query = get_post_meta($post->ID, '_tsapress_event_google_maps_query', true);
-	if ($event_location_query == "") $event_location_query = $event_location;
+	if ($event_location != "") {	
+		$event_location_query = get_post_meta($post->ID, '_tsapress_event_google_maps_query', true);
+		if ($event_location_query == "") echo '<span class="location">' . $event_location . '</span>';
+		else echo '<a href="http://maps.google.com/maps?q=' . urlencode($event_location_query) . '" class="location" target="_blank">' . $event_location . '</a>';
+	}
 	
-	echo '<a href="http://maps.google.com/maps?q=' . urlencode($event_location_query) . '" target="_blank">' . $event_location . '</a>';
-	
-	 ?>
-</section>
-
-<?php get_template_part( 'inc/parts/contentheader' ); ?>
+	echo '<p class="clear"></p>';
+?>
+</aside>
 
 			<article id="post-<?php the_ID(); ?>">
 
-<?php get_template_part( 'inc/parts/childnav' ); ?>
+<?php get_template_part( 'inc/childnav' ); ?>
 				
-<?php get_template_part( 'inc/parts/featuredimage' ); ?>
+<?php get_template_part( 'inc/featuredimage' ); ?>
 
 				<section>
 				

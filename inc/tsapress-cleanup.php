@@ -60,8 +60,16 @@ add_filter('gallery_style', 'roots_gallery_style');
 // rewrite [$base_dir]/wp-content/plugins/ to /plugins/
 
 function roots_flush_rewrites() {
-  global $wp_rewrite;
-  $wp_rewrite->flush_rules();
+
+	if(get_transient("was_flushed") === false)
+	{
+	
+		global $wp_rewrite;
+		$wp_rewrite->flush_rules();
+	
+		set_transient("was_flushed", true, 60 * 60 * 24 * 7 );
+	}  
+  
 }
 
 /*

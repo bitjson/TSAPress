@@ -160,7 +160,6 @@ function tsapress_cmb_meta_box_url($url) {
 	 return $url;
 }
 
-
 add_action( 'cmb_render_description', 'render_description', 10, 2 );
 function render_description( $field, $meta ) {
     echo '<p class="cmb_metabox_description">', $field['desc'], '</p>';
@@ -195,7 +194,7 @@ $meta_boxes[] = array(
 								array(
 									'name' => 'Event Options',
 									'desc' => 'The Event template is not enabled. To add event details to this page, please select the "Event Page" template in the Page Attributes box above.',
-									'id'   => $prefix . 'test_title',
+									'id'   => $prefix . 'disabled_title',
 									'type' => 'description',
 									)
 							)
@@ -215,7 +214,12 @@ $meta_boxes[] = array(
 		'priority'   => 'high',
 		'show_names' => true, // Show field names on the left
 		'fields'     => array(
-								
+								array(
+									'name' => 'Event Summary',
+									'desc' => 'A very concise summary of the event- intended to help the user understand the event in 1 sentence. E.g. "Compete in over 60 competitive events, network with other members, and experience a variety of leadership and educational opportunities."',
+									'id'   => $prefix . 'summary',
+									'type' => 'textarea_small',
+								),
 								array(
 									'name' => 'Major Event',
 									'desc' => 'Check this box to add this event to the primary events list, displayed in the events segment of the left sidebar and the events widget at the bottom of the page.',
@@ -303,7 +307,7 @@ $meta_boxes[] = array(
 								
 								array(
 									'name' => 'Google Maps Query',
-									'desc' => 'Refined search term for Google Maps. This can usually be left blank. (Location field will be used.) If the resulting link does not point to the correct location, provide more detail here (city, state) or a GPS coordinate. E.g.: &ldquo;The White House, Washington, D.C.&rdquo; or &ldquo;38.897659,-77.036516&rdquo;',
+									'desc' => 'Search term for Google Maps; in most cases the text from the above field will work. If the resulting link does not point to the correct location, provide more detail like &ldquo;city, state&rdquo; or a GPS coordinate. E.g.: &ldquo;The White House, Washington, D.C.&rdquo; or &ldquo;38.897659,-77.036516&rdquo;. If this field is left blank, the location on the page will remain simple text.',
 									'id'   => $prefix . 'google_maps_query',
 									'type' => 'text',
 								)

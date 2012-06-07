@@ -140,6 +140,7 @@ var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
 <?php wp_footer(); ?>
     
     <script type="text/javascript">window.jQuery || document.write('<script src="<?php bloginfo('template_directory'); ?>/js/libs/jquery-1.7.1.min.js"><\/script>')</script><?php //if jQuery is not loaded from Google CDN, load it from the library ?>
+    <?php /* TODO: AJAXIFY site: <script defer src="<?php bloginfo('template_directory'); ?>/js/plugins.js" type="text/javascript"></script> */ ?>
     <script defer src="<?php bloginfo('template_directory'); ?>/js/script.js" type="text/javascript"></script>
 </body>
 </html>

@@ -103,7 +103,11 @@ body {
 	}
 }
 
-
+#ajax-loader {
+	position: absolute;
+	margin: 40px 357px;
+	opacity: 0;
+}
 
 
 
@@ -118,19 +122,19 @@ html, body, #page-wrap, #basement, #basement > div, #basement > div > div { heig
 //*============================================= */
 
 
-
-a {
-	color: @lightBlue;
-	font-style: italic;
-	font-weight: 700;
-	.transition(text-shadow ease .1s);
-
+#TSA-Bar ul, #about, #category-selector, #content header, #content section, #basement {
+	a {
+		color: @lightBlue;
+		font-style: italic;
+		font-weight: 700;
+		.transition(text-shadow ease .1s);
+	
+	}
+	a:hover {
+		color: @highlightBlue;
+		text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+	}
 }
-a:hover {
-	color: @highlightBlue;
-	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
-}
-
 
 
 
@@ -202,6 +206,7 @@ a:hover {
 		font-family: @copyFont;
 		font-style: normal;
 		font-size: 16px;
+		font-weight: 700;
 		
 		img {
 			vertical-align: middle;
@@ -1586,7 +1591,7 @@ figure {
 	}
 
 	img {	
-		width: 100%;   // /* TODO: responsive images? serve differently to smaller screen sizes via background-image? http://csswizardry.com/2011/07/responsive-images-right-now/ */
+		 // /* TODO: responsive images? serve differently to smaller screen sizes via background-image? http://csswizardry.com/2011/07/responsive-images-right-now/ */
 	}
 	
 	figcaption {
@@ -1647,11 +1652,64 @@ figure {
 
 #event-info {
 	background: @TSABlue;
-	width: 250px;
-	height: 70px;
-	position: absolute;
-	margin-left: 460px;
-	margin-top: -14px;
+	width: 100%;
+	padding: 10px 10px 20px;
+	margin: 0 0 10px -10px;
+	.boxShadow(~"inset 0 1px 5px rgba(0, 0, 0, 0.3)");
+	
+
+	color: white;
+	line-height: 22px;
+	font-size: 16px;
+	
+	
+	.summary {
+		float: right;
+		width: 450px;
+		border-left: 1px dotted @lightBlue;
+		padding: 0 0 10px 20px;
+		position: relative;
+		top: 5px;
+	}
+	
+	.date, .date span {
+		display: block;
+	}
+	.date {
+		font-weight: 700;
+		font-size: 16px;	
+		margin: 10px 0 0 10px;
+			
+		span {
+			font-weight: normal;
+			font-size: 14px;
+		}
+	}
+	
+	
+	.location {
+    	color: white;
+    	font-size: 12px;
+    	font-style: italic;
+    	margin-left: 10px;
+    	position: relative;
+   		top: 3px;  		
+	}
+   	
+   	a {	
+
+		border-bottom: 1px dotted @lightBlue;
+		
+		&:hover {
+			color: @highlightBlue;
+			text-shadow: none;
+		}
+	}
+	
+	.clear {
+		clear: both;
+	}
+	
 }
 
 
