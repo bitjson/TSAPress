@@ -47,8 +47,17 @@ tsapress_process_contact_form();
 		<link rel="alternate" type="text/xml" title="<?php bloginfo('name'); ?> RSS 0.92 Feed" href="<?php bloginfo('rss_url'); ?>">
 		<link rel="alternate" type="application/atom+xml" title="<?php bloginfo('name'); ?> Atom Feed" href="<?php bloginfo('atom_url'); ?>">
 		<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS 2.0 Feed" href="<?php bloginfo('rss2_url'); ?>">
-		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
-		
+		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">	
+<?php
+	if(strstr($_SERVER['HTTP_USER_AGENT'],'iPhone') || strstr($_SERVER['HTTP_USER_AGENT'],'iPod') || strstr($_SERVER['HTTP_USER_AGENT'],'iPad')) //if user agent is iPod or iPhone - saves bandwidth for other devices
+	{
+?>		
+		<link rel="apple-touch-icon" sizes="144x144" href="<?php bloginfo('template_directory'); ?>/img/os/apple-touch-icon-144x144.png" />
+		<link rel="apple-touch-icon" sizes="114x114" href="<?php bloginfo('template_directory'); ?>/img/os/apple-touch-icon-114x114.png" />
+		<link rel="apple-touch-icon" sizes="72x72" href="<?php bloginfo('template_directory'); ?>/img/os/apple-touch-icon-72x72.png" />
+		<link rel="apple-touch-icon" sizes="57x57" href="<?php bloginfo('template_directory'); ?>/img/os/apple-touch-icon-57x57.png" />
+		<link rel="apple-touch-icon" href="<?php bloginfo('template_directory'); ?>/img/os/apple-touch-icon.png" />
+<?php } ?>
 		
 		<script src="<?php bloginfo('template_directory'); ?>/js/libs/modernizr-2.5.3-respond-1.1.0.min.js" type="text/javascript"></script>
 
