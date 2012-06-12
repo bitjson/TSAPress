@@ -16,32 +16,28 @@
 		if ( has_nav_menu('primary-nav') ) : ?>
 			<h1><?php echo $primary_nav_menu[ 'name' ]; ?></h1>
 				<ul>
-<li<?php if ( is_home() ) { echo ' class="current_page_item"'; }?>><a href="<?php bloginfo('url'); ?>/" title="<?php bloginfo('name'); ?> News">News</a></li>
+<li<?php if ( is_home() ) echo ' class="current_page_item"'; ?>><a href="<?php echo home_url(); ?>" title="<?php bloginfo('name'); ?> News">News</a></li>
 <?php wp_nav_menu( array( 'items_wrap' => '%3$s', 'theme_location' => 'primary-nav', 'container' => '', 'depth' => 1, ) ); ?>
 				</ul>	
-		<? else : ?>
-				<h1><?php bloginfo('name'); ?> (auto)</h1>			
+		<? else : /* displayed if no menu is selected: */ ?>
+				<h1><?php bloginfo('name'); ?></h1>			
 <?php wp_page_menu( array ('depth' => '1', 'title_li' => '', 'show_home' => 'News' ) ); ?>								
 		<? endif; ?>
 				
 <?php 
 
-$querystr = "SELECT wposts.*
-FROM ".$wpdb->posts." AS wposts
-INNER JOIN ".$wpdb->postmeta." AS wpostmeta
-ON wpostmeta.post_id = wposts.ID
-AND wpostmeta.meta_key = '_tsapress_event_major_event'
-AND wpostmeta.meta_value = 'on'";
+$primary_events = tsapress_get_major_events();
 
- $primary_events = $wpdb->get_results($querystr, OBJECT);
-		
+global $tsapress_primary_post_id;
+global $tsapress_primary_parent_id;
+
  if ($primary_events): ?>
  <h1>Events</h1>		
 	<ul>
   <?php global $post; ?>
   <?php foreach ($primary_events as $post): ?>
-    <?php setup_postdata($post); ?>
-<li><a href="<?php the_permalink() ?>"><?php the_title(); ?><span><?php echo get_tsapress_event_datetime_string($post->ID); ?></span></a></li>
+    <?php setup_postdata($post); ?>    
+<li<?php if(isset($tsapress_primary_post_id)) if( $post->ID == $tsapress_primary_post_id OR $post->ID == $tsapress_primary_parent_id) echo ' class="current_page_item"'; ?>><a href="<?php the_permalink() ?>"><?php the_title(); ?><span><?php echo get_tsapress_event_datetime_string($post->ID); ?></span></a></li>
   <?php endforeach; ?>
   	</ul>
   <?php else : ?>

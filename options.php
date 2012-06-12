@@ -75,12 +75,6 @@ function optionsframework_options() {
 						"class" => "mini",
 						"type" => "text");	
 							
-	
-	$options[] = array( "name" => "State Emblem",
-						"desc" => "The 175&times;105 pixel PNG image of the " . get_bloginfo('name') . " Emblem.",
-						"id" => "state_emblem",
-						"type" => "upload");
-
 						
 	$options[] = array( "name" => "Members",
 						"desc" => "The total number of members in " . get_bloginfo('name') . ". This number is displayed at the top of the theme. <br /> E.g. &ldquo;10,000&rdquo;" ,
@@ -116,6 +110,31 @@ function optionsframework_options() {
 
 	$options[] = array( "name" => "Advanced Settings",
 						"type" => "heading");
+	
+	$options[] = array( "name" => "Our Story URL",
+						"desc" => "The URL pointing to an introduction to TSA. I.e. " . get_bloginfo('url'). "/our-story \nLink is displayed below the introduction to TSA at the very top of every page. If left empty, the link will not be Displayed." ,
+						"id" => "our_story_url",
+						"std" => "",
+						"type" => "text");
+	
+	$options[] = array( "name" => "Calendar of Events URL",
+						"desc" => "The URL pointing to a Calendar of Events. I.e. " . get_bloginfo('url'). "/our-story \nLink is displayed below the events menu on the left sidebar and below the Conferences & Events widget in the footer. If left empty, the link will not be Displayed." ,
+						"id" => "cal_events_url",
+						"std" => "",
+						"type" => "text");
+
+	$options[] = array( "name" => "News Archives URL",
+						"desc" => "The URL pointing to a full news archive. I.e. " . get_bloginfo('url'). "/our-story \nLink is displayed below the News Archives widget in the footer. If left empty, the link will not be Displayed." ,
+						"id" => "archives_url",
+						"std" => "",
+						"type" => "text");
+							
+		
+	$options[] = array( "name" => "State Emblem",
+						"desc" => "The 175&times;105 pixel PNG image of the " . get_bloginfo('name') . " Emblem.",
+						"id" => "state_emblem",
+						"type" => "upload");
+
 	
 	$options[] = array( "name" => "Google Fusion Table Numeric ID",
 						"desc" => "The numeric ID of the State TSA Region Map overlay. To find the a map&rsquo;s Numeric ID, open the map in Google Fusion Tables, and select &ldquo;About&rdquo; from the File menu. The Numeric ID is listed in the About modal.",

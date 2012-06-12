@@ -1,53 +1,54 @@
 <?php
 
-/* TODO: theme event system- including custom fields, map location, categorize -> regions, google calendar sync?
-*	
-*	nice start? : http://www.noeltock.com/web-design/wordpress/custom-post-types-events-pt1/ 
-*	and: http://www.noeltock.com/web-design/wordpress/how-to-custom-post-types-for-events-pt-2/
-*/
-
-
-
 /*
 
-Event System:
+TODO?: location field: Like youtube "video location" field- on select, display dropdown map with result of geolocation call using current input
 
-(summary)
-
-
-Posts and Pages can be marked as "events"
-
-Once marked as events, event options are enabled
-
-Event Options include:
-
-
-
-
--Location	
-	-Name
-	-Google Map? Link? Like youtube "video location" field- on select, display dropdown map with result of geolocation call
-
--Upload
-	-Name (Default: Registration Packet)
-	-Upload field 
-
-Possible?:
--Dress
--Contact
--Registration Link
-
-
-
-
-
-
+TODO?: Cache events database query
 
 */
 
+function tsapress_is_event($post_id){
+	if (get_post_meta($post_id, '_tsapress_event_is_event', true) == "on") return true;
+	return false;
+}
 
-//TODO: Cache events database query
+function tsapress_display_eventinfo($post_id){ ?>
+	<aside id="event-info">
+	<?php 
+		//Event Summary
+		$event_summary = get_post_meta($post_id, '_tsapress_event_summary', true);
+		if ($event_summary != "") echo '<p class="summary">'. $event_summary .'</p>';
+		
+		//Event Date/time
+		echo get_tsapress_event_datetime_string($post_id);
+	
+		//Event Location
+		$event_location = get_post_meta($post_id, '_tsapress_event_location', true);
+		if ($event_location != "") {	
+			$event_location_query = get_post_meta($post_id, '_tsapress_event_google_maps_query', true);
+			if ($event_location_query == "") echo '<span class="location">' . $event_location . '</span>';
+			else echo '<a href="http://maps.google.com/maps?q=' . urlencode($event_location_query) . '" class="location" target="_blank">' . $event_location . '</a>';
+		}
+		
+		echo '<p class="clear"></p>';
+	?>
+	</aside>
+<?php 
+}
 
+function tsapress_get_major_events(){
+	$args = array(
+	    'numberposts'     => 99,
+	    'orderby'         => 'menu_order',	//order by page order (in pages listing)
+	    'order'           => 'DESC',		//descending
+	    'meta_key'        => '_tsapress_event_major_event',
+	    'meta_value'      => 'on',			//major event option checked
+	    'post_type'       => 'any',			//pages or posts
+	    'post_status'     => 'publish');	//published only
+	
+	return get_posts( $args );
+}
 
 
 function is_same_day($begin, $end){ if ($begin->format('Y-m-d') == $end->format('Y-m-d')) return true;
@@ -177,43 +178,25 @@ function cmb_event_metaboxes( array $meta_boxes ) {
 	// Start with an underscore to hide fields from custom fields list
 	$prefix = '_tsapress_event_';
 
-
-
-// Display "Event Options Disabled" message on Default Page template
-
-
-$meta_boxes[] = array(
-		'id'         => 'make_event_metabox',
-		'title'      => 'Event Details',
-		'pages'      => array('page'), // Post type
-		'show_on'    => array( 'key' => 'page-template', 'value' => 'default' ), // only display for default page-template
-		'context'    => 'normal',
-		'priority'   => 'high',
-		'show_names' => true, // Show field names on the left
-		'fields'     => array(
-								array(
-									'name' => 'Event Options',
-									'desc' => 'The Event template is not enabled. To add event details to this page, please select the "Event Page" template in the Page Attributes box above.',
-									'id'   => $prefix . 'disabled_title',
-									'type' => 'description',
-									)
-							)
-					);
-
-
-// Display Event Options on Event Page template
-
-
+// Display Event Options in Custom Metabox
 $meta_boxes[] = array(
 		'id'         => 'event_metabox',
-		'title'      => 'Event Details',
+		'title'      => 'Event Options',
 		'pages'      => array('page'), // Post type
-		'show_on'    => array( 'key' => 'page-template', 'value' => 'page-event.php' ), // only display for event page-template
+//		'show_on'    => array( 'key' => 'page-template', 'value' => 'page-event.php' ), // only display for event page-template
 		'page-template' => 'event',
 		'context'    => 'normal',
 		'priority'   => 'high',
 		'show_names' => true, // Show field names on the left
 		'fields'     => array(
+								
+								array(
+									'name' => 'Event',
+									'desc' => 'Check this box if this page describes a specific event. I.e. Annual State Leadership Conference, State Leadership Academy, etc.',
+									'id'   => $prefix . 'is_event',
+									'type' => 'checkbox',
+								),
+								
 								array(
 									'name' => 'Event Summary',
 									'desc' => 'A very concise summary of the event- intended to help the user understand the event in 1 sentence. E.g. "Compete in over 60 competitive events, network with other members, and experience a variety of leadership and educational opportunities."',
@@ -300,7 +283,7 @@ $meta_boxes[] = array(
 								
 								array(
 									'name' => 'Location',
-									'desc' => 'Name of the event location. This text be displayed as the link to a Google Map. E.g.: &ldquo;The White House&rdquo;',
+									'desc' => 'Name of the event location. This text be displayed as the link to a Google Map. E.g.: &ldquo;The White House&rdquo;. If this field is left blank, no location will be shown.',
 									'id'   => $prefix . 'location',
 									'type' => 'text',
 								),

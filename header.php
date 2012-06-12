@@ -21,12 +21,24 @@ tsapress_process_contact_form();
 		
 		<title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
 		<meta name="description" content="<?php bloginfo('description'); ?>">
-
 		<?php //TODO: more meta? ?>
-		
+<?php 
+
+$developing = false;
+//$developing = true;
+
+ if($developing) { ?>
 
 		<link rel="stylesheet/less" href="<?php bloginfo('template_directory'); ?>/css/style.less">    
 	    <script src="<?php bloginfo('template_directory'); ?>/js/libs/less-1.2.1.min.js" type="text/javascript"></script>
+ 
+<?php } else { ?>
+ 		
+ 		<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/css/style.css" />
+ 		 
+<?php } ?>
+
+		
 		<?php /*
 		
 		Render and minify CSS and replace LESS with:
@@ -38,7 +50,7 @@ tsapress_process_contact_form();
 		   <!-- todo: rel="prev" & rel="next" -->
 		   <!-- todo: feedburner feeds -->
 		   <!-- todo: apple icons, windows pin, favicon -->
-		   <!-- todo: copy Jason Dreyzehner's smooth scroll from s184.neoarx.com -->
+		   <!-- todo: smooth scroll to # links -->
 		
 		
 		*/ ?>
@@ -77,11 +89,11 @@ tsapress_process_contact_form();
     <span class="full-wrap">
     
     
-        <a href="<?php bloginfo('url'); ?>/" title="Home" id="root"><img src="<?php bloginfo('template_directory'); ?>/img/TSA-emblem-icon.png" alt="Technology Student Association Emblem">Technology Student Association</a> <!-- TODO: on hover, background more opaque image? -->
+        <a href="<?php echo home_url(); ?>" title="Home" id="root"><img src="<?php bloginfo('template_directory'); ?>/img/TSA-emblem-icon.png" alt="Technology Student Association Emblem">Technology Student Association</a> <!-- TODO: on hover, background more opaque image? -->
 			<ul>
 			
-			
-            
+<?php			
+/*    TODO: Sharing Options        
             <li id="share">
             
                 <a href="#">Share</a>
@@ -91,8 +103,11 @@ tsapress_process_contact_form();
                     </div>
                 </div>
             </li>
+*/        
+?>
 
-<?php get_template_part( 'inc/stateselect' ); ?>
+<?php // TODO: develop state select menu updater, deploy after several states have launched
+	// get_template_part( 'inc/stateselect' ); ?>
 
 <?php get_search_form(); ?>       	
             	            
@@ -106,7 +121,7 @@ tsapress_process_contact_form();
     
    <div class="full-wrap">
     <aside id="about">
-       <div><a href="<?php bloginfo('url'); ?>" id="emblem">
+       <div><a href="<?php echo home_url(); ?>" id="emblem">
        <img src="<?php
        	
        	$state_emblem_url = tsapress_clean_uploads(of_get_option('state_emblem'));
@@ -120,7 +135,14 @@ tsapress_process_contact_form();
         ?>" alt="State TSA Emblem"></a></div> <!-- TODO: emblem hover effect - glow fade in/out? -->
        <div id="callout">
         <h1>We are <em><?php echo of_get_option('total_members', '5,000'); ?> students</em>, in <em><?php echo of_get_option('total_schools', '100'); ?> schools</em> across <?php echo of_get_option('state_name', 'the state'); ?> who believe that technology is the key to a better world.</h1>
-        <p>We prepare our members to thrive in a technical world through competitive events, networking, and leadership opportunities.</p><a href="#">Check out our story</a>
+        <p>We prepare our members to thrive in a technical world through competitive events, networking, and leadership opportunities.</p>
+<?php
+
+$our_story_url = of_get_option('our_story_url');
+
+if ($our_story_url != false) { ?>
+        <a href="<?php echo $our_story_url; ?>">Check out our story</a>
+<?php } ?>
         </div>
     </aside>
 

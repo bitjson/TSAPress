@@ -12,19 +12,12 @@
 	    <ol>
 	    <?php wp_get_archives(array ('type' => 'postbypost', 'limit' => 5, 'before' => '<li>', 'after' => '</li>')); ?>
    		</ol>
-    	<a href="#">Previous updates</a>
+    	<?php // TODO: is this neccessary? : <a href="#">Previous updates</a> ?>
     </section>
     
     <section class="events"><?php 
-
-			$querystr = "SELECT wposts.*
-			FROM ".$wpdb->posts." AS wposts
-			INNER JOIN ".$wpdb->postmeta." AS wpostmeta
-			ON wpostmeta.post_id = wposts.ID
-			AND wpostmeta.meta_key = '_tsapress_event_major_event'
-			AND wpostmeta.meta_value = 'on'";
 			
-			 $primary_events = $wpdb->get_results($querystr, OBJECT);
+			 $primary_events = tsapress_get_major_events();
 					
 			 if ($primary_events): ?>
 		 <h1>Conferences &amp; Events</h1>
@@ -41,10 +34,10 @@
    			<p class="center">Sorry, there are no events yet.</p>
  		<?php endif; ?>
 
-
-
-
-    	<a href="#">More important dates</a> <!-- TODO:reveal -->
+    <?php if (of_get_option('cal_events_url', false)){ ?>
+    <a href="#">More important dates</a> <!-- TODO:reveal more years via slide down? rather than separate archive page? --> 
+    <?php  }?>
+    
     </section>
     
    
@@ -105,11 +98,15 @@
     </section>
         
 <?php tsapress_display_contact_form(); ?>
-    	    
+
+<?php
+$partners_exist = false;
+if ($partners_exist) { ?>
     <section id="partners">
     <h1>National TSA Partners</h1>
     <img src="<?php bloginfo('template_directory'); ?>/mock-content/national-tsa-partners.png" alt="National TSA Partners" height="100px" />
     </section>    
+<?php } ?>
     
     <footer>
         <small class="copyright">&copy; <?php echo date('Y'); ?> <a href="<?php bloginfo('url'); ?>/" title="<?php bloginfo('description'); ?>"><?php bloginfo('name'); ?></a><br>

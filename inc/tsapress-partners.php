@@ -1,6 +1,8 @@
 <?php
 
+$partners_disabled = true;
 
+if ($partners_disabled != true):
 //create partner post type
 
 add_action( 'init', 'register_cpt_partner' );
@@ -86,4 +88,4 @@ function cmb_partners_metaboxes( array $meta_boxes ) {
 	return $meta_boxes;
 }
 
-
+endif;

@@ -15,17 +15,67 @@ jQuery(document).ready(function ($) {
 
 	var formfield;
 	
+	//events enabled
+	var $is_event;
+	var $is_event_checkbox;
+	
+	//event options
+	var $event_summary;
+	var $event_major_event;
+	var $event_datetime_range;
+	var $event_location;
+	var $event_google_maps_query;
+	
 	var $datetime_range;
-
 	var $datetime_options;
 	var $date_options;
 	var $deadline_options;
 
-	$datetime_range = $('.' + $prefix + 'datetime_range input');
+	$is_event = $('.' + $prefix + 'is_event');
+	$is_event_checkbox = $('#' + $prefix + 'is_event')
 	
+	$event_summary = $('.' + $prefix + 'summary');
+	$event_major_event = $('.' + $prefix + 'major_event');
+	$event_datetime_range = $('.' + $prefix + 'datetime_range');
+	$event_location = $('.' + $prefix + 'location');
+	$event_google_maps_query = $('.' + $prefix + 'google_maps_query');
+
+	$datetime_range = $('.' + $prefix + 'datetime_range input');
 	$datetime_options = $('.' + $prefix + 'datetime_begin, .' + $prefix + 'datetime_end');
 	$date_options = $('.' + $prefix + 'date_begin, .' + $prefix + 'date_end');
 	$deadline_options = $('.' + $prefix + 'deadline_datetime');
+	
+	
+	
+	function eventHider(){
+		var checked;
+		checked = $is_event_checkbox.is(':checked');
+	
+		if(checked == true){	
+			$event_summary.slideDown('200');
+			$event_major_event.slideDown('200');
+			$event_datetime_range.slideDown('200');
+			$event_location.slideDown('200');
+			$event_google_maps_query.slideDown('200');
+			datetimeShowHider();	
+		}
+		else {
+			$event_summary.slideUp('200');
+			$event_major_event.slideUp('200');
+			$event_datetime_range.slideUp('200');
+			$event_location.slideUp('200');
+			$event_google_maps_query.slideUp('200');
+			$datetime_options.slideUp('200');
+			$date_options.slideUp('200');
+			$deadline_options.slideUp('200');
+		}
+	}
+	
+	$is_event.bind('click', eventHider);
+	eventHider();
+	
+	
+	
 	
 	function datetimeShowHider(){
 		var checked;

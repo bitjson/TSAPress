@@ -5,10 +5,12 @@ require_once('inc/php-5_2-fixes.php'); //Extends PHP 5.2 functionality to lower 
 
 require_once('inc/tsapress-cleanup.php'); //cleans urls, wp_head, hides wp_content : derived from Roots HTML5 Boilerplate WordPress Theme
 require_once('inc/tsapress-utils.php'); //functions that should have come with WordPress
-require_once('inc/tsapress-events.php'); //TODO: event post type
-require_once('inc/tsapress-partners.php'); //TODO: event post type
-require_once('inc/tsapress-contact.php'); //TODO: built-in contact form
+require_once('inc/tsapress-events.php');
+require_once('inc/tsapress-partners.php'); //TODO: partner post type
+require_once('inc/tsapress-contact.php');
 require_once('inc/tsapress-widgets.php');
+require_once('inc/tsapress-shortcodes.php');
+
 
 
 //TODO: init function, runnable from theme options or something - set the category base to "regions", and wp-uploads to "assets"
