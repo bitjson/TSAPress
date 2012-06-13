@@ -111,8 +111,10 @@ if ($partners_exist) { ?>
     <footer>
         <small class="copyright">&copy; <?php echo date('Y'); ?> <a href="<?php bloginfo('url'); ?>/" title="<?php bloginfo('description'); ?>"><?php bloginfo('name'); ?></a><br>
         All Rights Reserved.</small>
-        <a href="#" class="engine" title="Powered by WordPress, state-of-the-art semantic personal publishing platform"><small>Proudly powered by WordPress. <img src="<?php bloginfo('template_directory'); ?>/img/wordpress.png" alt="WordPress Logo"></small></a>
-         <a href="#" class="developer" title="Developed by the Technology Advisory Group, TSA's cutting-edge, volunteer, technology taskforce"><small>Developed by the TAG. <img src="<?php bloginfo('template_directory'); ?>/img/TSA-TAG-monogram.png" alt="TSA:TAG Monogram"></small></a>
+        <aside class="technical">
+        <a href="#" class="engine" title="Powered by WordPress, state-of-the-art semantic personal publishing platform">Proudly powered by WordPress.</a>
+        <a href="#" class="developer" title="Developed by the Technology Advisory Group, TSA's cutting-edge, volunteer, technology taskforce">Developed by the TAG.</a>
+        </aside>
     </footer>
     </div>
   </div>

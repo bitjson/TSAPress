@@ -2,6 +2,9 @@
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
 body{background:#000000 url("http://localhost/virginiatsa/css/../img/bg/bg-tile.png") repeat;font-family:'Open Sans','Gill Sans',Tahoma,Geneva,Verdana,sans-serif;color:#3d3d3d;}
 #content {font-size: 13px;}
+
+#root, #RSS a, #search input[type="text"], .developer, .engine {background:url("http://localhost/virginiatsa/img/sprite.png") no-repeat;}
+
 #page-wrap{background:url("http://localhost/virginiatsa/css/../img/bg/bg-spotlight.png") no-repeat}
 .full-wrap,.basement-line,#basement>div>div{margin:0px auto;text-align:left;display:block}
 .full-wrap,#basement>div>div{width:960px}
@@ -20,10 +23,8 @@ body{background:#000000 url("http://localhost/virginiatsa/css/../img/bg/bg-tile.
 .hover-box{-moz-transition:opacity 0.2s ease-in-out;-o-transition:opacity 0.2s ease-in-out;-webkit-transition:opacity 0.2s ease-in-out;-ms-transition:opacity 0.2s ease-in-out;transition:opacity 0.2s ease-in-out;opacity:0;padding:10px;background:url("http://localhost/virginiatsa/css/../img/bg/stripe-tile-opacity40.png") repeat;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;z-index:500}
 .hover-box-inner{background-color:#FFF;border:3px solid #003366;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}
 .hover-box>div{background-color:#FFF;border:3px solid #003366;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}
-#root{top:8px;position:relative;text-transform:uppercase;color:white;font-family:'Open Sans','Gill Sans',Tahoma,Geneva,Verdana,sans-serif;font-style:normal;font-size:16px;font-weight:700}
-#root img{vertical-align:middle;margin:0 5px 5px 0}
+#root{top:8px;position:relative;text-transform:uppercase;color:white;font-family:'Open Sans','Gill Sans',Tahoma,Geneva,Verdana,sans-serif;font-style:normal;font-size:16px;font-weight:700; padding-left: 40px;}
 #root:hover{text-shadow:0 0 3px rgba(255,255,255,0.4)}
-#root:hover img{box-shadow:0 0 2px rgba(255,255,255,0.4);background:rgba(255,255,255,0.4)}
 #TSA-Bar{width:100%;height:39px;background:url("http://localhost/virginiatsa/css/../img/bg/bg-darker-tile-opacity50.png") repeat-x;text-align:center;border-bottom:1px solid #3d3d3d;border-bottom:1px solid rgba(169,169,169,0.3) !important;box-shadow:0 0 4px rgba(0,0,0,0.5)}
 #TSA-Bar span>ul{float:right;border-left:1px solid #131313;border-right:1px solid #222222;border-left:1px solid rgba(0,0,0,0.2) !important;border-right:1px solid rgba(255,255,255,0.2) !important}
 #TSA-Bar span>ul>li{float:left;border-color:#222222 #131313 #131313 #222222;border-color:rgba(255,255,255,0.2) rgba(0,0,0,0.2) rgba(0,0,0,0.2) rgba(255,255,255,0.2) !important;border-style:solid;border-width:0 1px 0 1px;display:block;height:39px}
@@ -49,11 +50,11 @@ body{background:#000000 url("http://localhost/virginiatsa/css/../img/bg/bg-tile.
 #stateSelect>div ul li a img{margin:-4px 10px 0 3px;vertical-align:middle;border:1px solid #d3d3d3}
 #stateSelect>div ul:last-child li a{width:100%}
 #search form{margin:4px 10px 0}
-#search input[type="text"]{-moz-border-radius:15px;-webkit-border-radius:15px;border-radius:15px;height:21px;padding:5px 5px 5px 28px;width:100px;-moz-transition:width .2s ease-in-out,box-shadow .2s ease-in-out;-o-transition:width .2s ease-in-out,box-shadow .2s ease-in-out;-webkit-transition:width .2s ease-in-out,box-shadow .2s ease-in-out;-ms-transition:width .2s ease-in-out,box-shadow .2s ease-in-out;transition:width .2s ease-in-out,box-shadow .2s ease-in-out;border:0;box-shadow:inset 1px 1px 1px #777;outline:none;background:#ffffff url("http://localhost/virginiatsa/css/../img/icons/search.png") no-repeat 9px 8px;font-size:14px}
+#search input[type="text"]{-moz-border-radius:15px;-webkit-border-radius:15px;border-radius:15px;height:21px;padding:5px 5px 5px 28px;width:100px;-moz-transition:width .2s ease-in-out,box-shadow .2s ease-in-out;-o-transition:width .2s ease-in-out,box-shadow .2s ease-in-out;-webkit-transition:width .2s ease-in-out,box-shadow .2s ease-in-out;-ms-transition:width .2s ease-in-out,box-shadow .2s ease-in-out;transition:width .2s ease-in-out,box-shadow .2s ease-in-out;border:0;box-shadow:inset 1px 1px 1px #777;outline:none;background-color:#ffffff; background-position: 10px -33px;font-size:14px}
 #search input[type="text"]:focus{box-shadow:1px 1px 1px #777777 inset,0 0 5px rgba(65,143,191,0.8);width:240px}
 #search input[type="submit"]{-moz-border-radius:15px;-webkit-border-radius:15px;border-radius:15px;width:25px;height:25px}
-#RSS a{text-indent:-99999px;background:url("http://localhost/virginiatsa/css/../img/icons/rss-icon-opacity40.png") no-repeat 5px 5px;width:20px}
-#RSS a:hover{background-image:url("http://localhost/virginiatsa/css/../img/icons/rss-icon-opacity70.png")}
+#TSA-Bar #RSS a{text-indent:-99999px;background-position: 5px -71px; width:20px; height: 30px;}
+#TSA-Bar #RSS a:hover{background-position:5px -121px;}
 #emblem{width:173px;height:105px;padding:20px 10px;display:block}
 #about{height:150px;clear:both}
 #about div{float:left}
@@ -166,13 +167,15 @@ section#content #sub-nav li:first-child a{margin:0 10px 0 0}
 #basement section>a:hover{text-shadow:2px 2px 2px #000}
 #basement section>a:after{content:"…"}
 #basement footer{clear:both;color:#777777;padding-top:15px}
-#basement footer a{color:#777777;font-style:normal;font-weight:400;margin:5px;padding:5px;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;border:1px solid transparent}
-#basement footer a:hover{border:1px solid rgba(119,119,119,0.25)}
-#basement footer a:active{-moz-box-shadow:inset 0 1px 5px rgba(0,0,0,0.15),0 1px 0 rgba(255,255,255,0.15);-webkit-box-shadow:inset 0 1px 5px rgba(0,0,0,0.15),0 1px 0 rgba(255,255,255,0.15);box-shadow:inset 0 1px 5px rgba(0,0,0,0.15),0 1px 0 rgba(255,255,255,0.15)}
-#basement footer small{font-size:.5em}
-#basement footer small.copyright{float:left;width:45%}
-#basement footer .developer,#basement footer .engine{float:right;display:block}
-#basement footer small img{vertical-align:middle;height:20px;padding:0 0 5px 5px}
+#basement footer small, #basement footer a {font-size:10px}
+#basement small.copyright{float:left;width:45%}
+#basement .technical {float: right;}
+#basement .developer, #basement .engine{float:right;display:block; height: 30px;color:#777777;font-style:normal;font-weight:400;margin:5px;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;border:1px solid transparent;}
+#basement .developer:hover, #basement .engine:hover{border:1px solid rgba(119,119,119,0.25)}
+#basement .developer:active, #basement .engine:active{-moz-box-shadow:inset 0 1px 5px rgba(0,0,0,0.15),0 1px 0 rgba(255,255,255,0.15);-webkit-box-shadow:inset 0 1px 5px rgba(0,0,0,0.15),0 1px 0 rgba(255,255,255,0.15);box-shadow:inset 0 1px 5px rgba(0,0,0,0.15),0 1px 0 rgba(255,255,255,0.15)}
+.engine, .developer {padding: 15px 10px 0;}
+.engine {background-position: 6px -167px; padding-left: 40px;}
+.developer {background-position: 5px -210px; padding-left: 70px;}
 #content ul li{margin-left:20px;list-style-position:inside}
 #content ol li{list-style-type:decimal; list-style-position: outside;margin-left: 30px;line-height: 1.55em;}
 #content ol li ol li{list-style-type:lower-latin}

@@ -54,8 +54,6 @@ $developing = false;
 		
 		
 		*/ ?>
-		
-		
 		<link rel="alternate" type="text/xml" title="<?php bloginfo('name'); ?> RSS 0.92 Feed" href="<?php bloginfo('rss_url'); ?>">
 		<link rel="alternate" type="application/atom+xml" title="<?php bloginfo('name'); ?> Atom Feed" href="<?php bloginfo('atom_url'); ?>">
 		<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS 2.0 Feed" href="<?php bloginfo('rss2_url'); ?>">
@@ -69,27 +67,18 @@ $developing = false;
 		<link rel="apple-touch-icon" sizes="72x72" href="<?php bloginfo('template_directory'); ?>/img/os/apple-touch-icon-72x72.png" />
 		<link rel="apple-touch-icon" sizes="57x57" href="<?php bloginfo('template_directory'); ?>/img/os/apple-touch-icon-57x57.png" />
 		<link rel="apple-touch-icon" href="<?php bloginfo('template_directory'); ?>/img/os/apple-touch-icon.png" />
-<?php } ?>
-		
-		<script src="<?php bloginfo('template_directory'); ?>/js/libs/modernizr-2.5.3-respond-1.1.0.min.js" type="text/javascript"></script>
-
-
+<?php } ?>		
+		<script src="<?php bloginfo('template_directory'); ?>/js/libs/modernizr.min.01276.js" type="text/javascript"></script>
 <?php wp_head(); ?>
-
-
 	</head>
 	<body <?php body_class(); ?>>
 	<div id="page-wrap">
-
-
    <!--[if lt IE 9]><p class=chromeframe><em>Oh no!</em> Your browser is outdated. <a href="http://www.google.com/chromeframe/">Get Chromeframe</a> <em>in just seconds</em> to view the internet <em>faster</em>, <em>safer</em>, and in all its <em>glory</em>.</p><![endif]-->
-
-    <div id="TSA-Bar"> <!-- TODO: snap bar to top with larger window dimensions (past certain height) -->
-    
+    <div id="TSA-Bar">  
     <span class="full-wrap">
     
     
-        <a href="<?php echo home_url(); ?>" title="Home" id="root"><img src="<?php bloginfo('template_directory'); ?>/img/TSA-emblem-icon.png" alt="Technology Student Association Emblem">Technology Student Association</a> <!-- TODO: on hover, background more opaque image? -->
+        <a href="<?php echo home_url(); ?>" title="Home" id="root"><?php /* <img src="<?php bloginfo('template_directory'); ?>/img/TSA-emblem-icon.png" alt="Technology Student Association Emblem"> */ ?>Technology Student Association</a> <!-- TODO: on hover, background more opaque image? -->
 			<ul>
 			
 <?php			
@@ -111,12 +100,9 @@ $developing = false;
 
 <?php get_search_form(); ?>       	
             	            
-            <li id="RSS"><a title="<?php bloginfo('name'); ?> RSS 2.0 Feed" href="<?php bloginfo('rss2_url'); ?>">&nbsp;</a></li> <!-- TODO: sprite this -->
-            
+            <li id="RSS"><a title="<?php bloginfo('name'); ?> RSS 2.0 Feed" href="<?php bloginfo('rss2_url'); ?>">&nbsp;</a></li>      
         </ul>
-        
-        </span>
-        
+     </span>   
     </div>
     
    <div class="full-wrap">
