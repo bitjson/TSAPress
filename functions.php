@@ -22,7 +22,6 @@ if ( function_exists( 'register_nav_menu' ) ) {
 	register_nav_menus(
     array(
       'primary-nav' => 'Primary Navigation',
-      'events-nav' => 'Featured Events'
     )
   );
 	

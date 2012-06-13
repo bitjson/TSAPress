@@ -5,10 +5,9 @@
 	
 	<?php
 	
-	//create reference to menus (to grap menu titles)
+	//create reference to menu (to grab menu title)
 	$all_menu_locations = (array) get_nav_menu_locations();
 	$primary_nav_menu = get_term_by( 'id', (int) $all_menu_locations[ 'primary-nav' ], 'nav_menu', ARRAY_A );
-	$events_nav_menu = get_term_by( 'id', (int) $all_menu_locations[ 'events-nav' ], 'nav_menu', ARRAY_A );
 	
 	 ?>
 	

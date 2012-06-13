@@ -1,6 +1,7 @@
-/* Gen:2012-06-09 1:06 */@import url(http://fonts.googleapis.com/css?family=Ubuntu:700|Open+Sans:400italic,300italic,400,700,300|Open+Sans+Condensed:700,300italic,300); html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;vertical-align:baseline;background:transparent;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;text-decoration:none;list-style:none}
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:700|Open+Sans:400italic,300italic,400,700,300|Open+Sans+Condensed:700,300italic,300); html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;vertical-align:baseline;background:transparent;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;text-decoration:none;list-style:none}
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
-body{background:#000000 url("http://localhost/virginiatsa/css/../img/bg/bg-tile.png") repeat;font-family:'Open Sans','Gill Sans',Tahoma,Geneva,Verdana,sans-serif;color:#3d3d3d}
+body{background:#000000 url("http://localhost/virginiatsa/css/../img/bg/bg-tile.png") repeat;font-family:'Open Sans','Gill Sans',Tahoma,Geneva,Verdana,sans-serif;color:#3d3d3d;}
+#content {font-size: 13px;}
 #page-wrap{background:url("http://localhost/virginiatsa/css/../img/bg/bg-spotlight.png") no-repeat}
 .full-wrap,.basement-line,#basement>div>div{margin:0px auto;text-align:left;display:block}
 .full-wrap,#basement>div>div{width:960px}
@@ -13,7 +14,7 @@ body{background:#000000 url("http://localhost/virginiatsa/css/../img/bg/bg-tile.
 .chromeframe a:active{position:relative;top:1px}
 #ajax-loader{position:absolute;margin:40px 357px;opacity:0}
 #TSA-Bar ul a,#about a,#category-selector a,#content header a,#content section a,#basement a, #content article a {color:#418fbf;font-style:italic;font-weight:700;-moz-transition:text-shadow ease 0.1s;-o-transition:text-shadow ease 0.1s;-webkit-transition:text-shadow ease 0.1s;-ms-transition:text-shadow ease 0.1s;transition:text-shadow ease 0.1s}
-#TSA-Bar ul a:hover,#about a:hover,#category-selector a:hover,#content header a:hover,#content section a:hover,#basement a:hover{color:#71b5e5;text-shadow:2px 2px 2px rgba(0,0,0,0.3)}
+#TSA-Bar ul a:hover,#about a:hover,#category-selector a:hover,#basement a:hover{color:#71b5e5;text-shadow:2px 2px 2px rgba(0,0,0,0.3)}
 .hide{display:none}
 .time{border:1px solid rgba(30,30,30,0.1);-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;-moz-box-shadow:inset 0 1px 5px rgba(0,0,0,0.15),0 1px 0 rgba(255,255,255,0.15);-webkit-box-shadow:inset 0 1px 5px rgba(0,0,0,0.15),0 1px 0 rgba(255,255,255,0.15);box-shadow:inset 0 1px 5px rgba(0,0,0,0.15),0 1px 0 rgba(255,255,255,0.15);padding:.05em 1em;vertical-align:middle;font-size:80%}
 .hover-box{-moz-transition:opacity 0.2s ease-in-out;-o-transition:opacity 0.2s ease-in-out;-webkit-transition:opacity 0.2s ease-in-out;-ms-transition:opacity 0.2s ease-in-out;transition:opacity 0.2s ease-in-out;opacity:0;padding:10px;background:url("http://localhost/virginiatsa/css/../img/bg/stripe-tile-opacity40.png") repeat;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;z-index:500}
@@ -173,7 +174,7 @@ section#content #sub-nav li:first-child a{margin:0 10px 0 0}
 #basement footer .developer,#basement footer .engine{float:right;display:block}
 #basement footer small img{vertical-align:middle;height:20px;padding:0 0 5px 5px}
 #content ul li{margin-left:20px;list-style-position:inside}
-#content ol li{list-style-type:decimal; list-style-position: outside;margin-left: 30px;}
+#content ol li{list-style-type:decimal; list-style-position: outside;margin-left: 30px;line-height: 1.55em;}
 #content ol li ol li{list-style-type:lower-latin}
 #content ol li ol li ol li{list-style-type:lower-roman}
 #content ol li ol li ol li ol li{list-style-type:upper-latin}
@@ -182,9 +183,9 @@ section#content #sub-nav li:first-child a{margin:0 10px 0 0}
 #content article .jumbotext,#content aside .jumbotext{font-weight:700;font-size:18px;margin-bottom:1em;padding-left:15px;border-left:3px solid #005dab}
 #content article h1,#content aside h1,#content article h2,#content aside h2,#content article h3,#content aside h3,#content article h4,#content aside h4,#content article h5,#content aside h5,#content article h6,#content aside h6{font-weight:700;font-family:'Open Sans','Gill Sans',Tahoma,Geneva,Verdana,sans-serif;text-transform:uppercase;margin:.75em 0 .35em}
 #content article h1,#content aside h1,#content article h3,#content aside h3,#content article h5,#content aside h5{color:#005dab}
-#content article h2,#content aside h2,#content article h4,#content aside h4,#content article h6,#content aside h6{color:#418fbf}
+#content article h2,#content aside h2,#content article h4,#content aside h4,#content article h6,#content aside h6{color:#3D3D3D}
 #content article h1,#content aside h1{font-size:1.25em}
-#content article h2,#content aside h2{font-size:1.15em}
+#content article h2,#content aside h2{font-size:1em}
 #content article h3,#content aside h3{font-size:.9em}
 #content article h4,#content aside h4{font-size:.85em}
 #content article h5,#content aside h5{font-size:.7em}
@@ -230,7 +231,7 @@ blockquote.right{margin-left:20px;text-align:left;margin-right:0;width:33%;float
 mark{background-color:#005dab;color:white;padding:0 5px}
 #content article img{border:1px solid #d3d3d3}
 figure{display:block;position:relative;overflow:hidden;float:left;margin:10px 20px 10px 0}
-figure.featured-image{width:100%;margin:0}
+figure.featured-image{width:100%;}
 figure figcaption{position:absolute;background-color:black;background-color:rgba(0,0,0,0.75);color:white;padding:10px 2%;-moz-transition:bottom 0.6s ease,opacity 0.6s ease;-o-transition:bottom 0.6s ease,opacity 0.6s ease;-webkit-transition:bottom 0.6s ease,opacity 0.6s ease;-ms-transition:bottom 0.6s ease,opacity 0.6s ease;transition:bottom 0.6s ease,opacity 0.6s ease;left:1px;bottom:-30%;width:96%;opacity:0;border:1px solid transparent}
 figure.wp-caption:before{content:"▲";position:absolute;background:rgba(0,0,0,0.8);font-weight:800;text-shadow:0 0 5px black;color:white;width:16px;height:16px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px;text-align:center;font-size:8px;line-height:16px;-moz-transition:opacity 0.6s ease;-o-transition:opacity 0.6s ease;-webkit-transition:opacity 0.6s ease;-ms-transition:opacity 0.6s ease;transition:opacity 0.6s ease;opacity:0.75;left:10px;bottom:15px}
 figure:hover figcaption{opacity:1;bottom:5px}
