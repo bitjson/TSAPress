@@ -1,10 +1,10 @@
 		<?php 
 			
-			$displayFor = "normal";
-	//		$displayFor = "mobile"; 
+			
+			$region_selector_is_on = of_get_option('region_selector', 1); //defaults to on		
+			$region_gmap_is_on = of_get_option('region_gmap', 0); //defaults to off
 			
 			$mapID = of_get_option('google_fusion_table_numeric_id', '3332626'); //defaults to Virginia TSA Google Fusion Table Numeric ID (working example)
-			
 			
 			global $wp_query;
 			
@@ -27,10 +27,8 @@
 			
 
 		
-			if ($displayFor == "mobile") { ?>
+			if ($region_selector_is_on == true && $region_gmap_is_on == 0) { ?>
 	
-	<?php // For mobile devices: ?>
-
 	<?php //TODO: clean category-selector urls 	?>	
 	
 	<span class="category-selector">Viewing news from:<form action="<?php bloginfo('url'); ?>/" method="get">
@@ -49,7 +47,7 @@
 		</select><?php //TODO: implement noscript capability: <noscript><input type="submit" value="View" /></noscript> ?>
 	</form></span>
 	
-	<?php }	else { //display for full browsers ?>
+	<?php }	elseif ($region_selector_is_on == true && $region_gmap_is_on == true) { ?>
 	
 	<span id="category-selector" class="category-selector">Viewing news from: <a href="<?php echo $current_category_link ?>" title="<?php echo $current_category_name ?>"><?php echo $current_category_name ?></a>
 	  <div class="hover-box">
@@ -71,8 +69,8 @@
 						  	$geoDataArray = explode(',', $temp);
 							 
 							  // Standard:
-							  //	$geoDataArray[0] = Latitude of map center (on hover)
-							  //	$geoDataArray[1] = Longitude of map center (on hover)
+							  //	$geoDataArray[0] = Latitude of map center (on hover) :: required- fires warning if not given
+							  //	$geoDataArray[1] = Longitude of map center (on hover) :: required- fires warning if not given
 							  //	$geoDataArray[2] = Zoom Level of map center (to view whole region)
 							  //	$geoDataArray[3] = Fusion Table Row ID (for region highlighting)					  	
 						  	

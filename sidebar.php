@@ -7,7 +7,7 @@
 	
 	//create reference to menu (to grab menu title)
 	$all_menu_locations = (array) get_nav_menu_locations();
-	$primary_nav_menu = get_term_by( 'id', (int) $all_menu_locations[ 'primary-nav' ], 'nav_menu', ARRAY_A );
+	if ( has_nav_menu('primary-nav') ) $primary_nav_menu = get_term_by( 'id', (int) $all_menu_locations[ 'primary-nav' ], 'nav_menu', ARRAY_A );
 	
 	 ?>
 	
@@ -15,7 +15,7 @@
 		if ( has_nav_menu('primary-nav') ) : ?>
 			<h1><?php echo $primary_nav_menu[ 'name' ]; ?></h1>
 				<ul>
-<li<?php if ( is_home() ) echo ' class="current_page_item"'; ?>><a href="<?php echo home_url(); ?>" title="<?php bloginfo('name'); ?> News">News</a></li>
+<?php if(have_posts()): ?><li<?php if ( is_home() ) echo ' class="current_page_item"'; ?>><a href="<?php echo home_url(); ?>" title="<?php bloginfo('name'); ?> News">News</a></li><?php endif; ?>
 <?php wp_nav_menu( array( 'items_wrap' => '%3$s', 'theme_location' => 'primary-nav', 'container' => '', 'depth' => 1, ) ); ?>
 				</ul>	
 		<? else : /* displayed if no menu is selected: */ ?>
@@ -40,8 +40,7 @@ global $tsapress_primary_parent_id;
   <?php endforeach; ?>
   	</ul>
   <?php else : ?>
-    <h1 class="center">No Events</h1>
-    <p class="center">Sorry, there are no events yet.</p>
+  <?php /* Display nothing */ ?>
  <?php endif; ?>
 
 			

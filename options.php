@@ -8,7 +8,10 @@
 
 function optionsframework_option_name() {
 	// This gets the theme name from the stylesheet (lowercase and without spaces)
-	$themename = get_theme_data(STYLESHEETPATH . '/style.css');
+	if (function_exists('wp_get_theme')) $themename = wp_get_theme(); //New WP >= 3.4.0
+	else $themename = wp_get_theme_(STYLESHEETPATH . '/style.css'); //Depreciated WP 3.4.0
+
+	
 	$themename = $themename['Name'];
 	$themename = preg_replace("/\W/", "", strtolower($themename) );
 	
@@ -110,6 +113,13 @@ function optionsframework_options() {
 
 	$options[] = array( "name" => "Advanced Settings",
 						"type" => "heading");
+						
+		
+	$options[] = array( "name" => "About TSA Area",
+						"desc" => 'The description of the state delegation given at the top of the website. Replaces default behavior if set. Content is HTML. Recommended tags: &lt;h1&gt;,&lt;em&gt;, and &lt;p&gt;.',
+						"id" => "our_story_content",
+						"std" => '',
+						"type" => "textarea"); 
 	
 	$options[] = array( "name" => "Our Story URL",
 						"desc" => "The URL pointing to an introduction to TSA. I.e. " . get_bloginfo('url'). "/our-story \nLink is displayed below the introduction to TSA at the very top of every page. If left empty, the link will not be Displayed." ,
@@ -134,7 +144,20 @@ function optionsframework_options() {
 						"desc" => "The 175&times;105 pixel PNG image of the " . get_bloginfo('name') . " Emblem.",
 						"id" => "state_emblem",
 						"type" => "upload");
-
+	
+	$options[] = array( "name" => "Enable Region Menu",
+						"desc" => "Check this box to enable the Region Selector while viewing news. (Default is on.)",
+						"id" => "region_selector",
+						"std" => "1", //defaults to on
+						"type" => "checkbox");
+	
+	$options[] = array( "name" => "Activate Region Google Map",
+						"desc" => "Check this box to activate the Google region map. The Region Google Map replaces the dropdown menu in the &ldquo;view news from:&rdquo; fliter.",
+						"id" => "region_gmap",
+						"std" => "0", //defaults to off
+						"type" => "checkbox");
+						
+	//activate google map
 	
 	$options[] = array( "name" => "Google Fusion Table Numeric ID",
 						"desc" => "The numeric ID of the State TSA Region Map overlay. To find the a map&rsquo;s Numeric ID, open the map in Google Fusion Tables, and select &ldquo;About&rdquo; from the File menu. The Numeric ID is listed in the About modal.",
@@ -142,6 +165,12 @@ function optionsframework_options() {
 						"std" => "3332626", //defaults to Virginia TSA Google Fusion Table Numeric ID (working example)
 						"class" => "mini",
 						"type" => "text");
+						
+	$options[] = array( "name" => "Flush .htaccess",
+						"desc" => "Flush .htaccess each time the admin panel is refreshed. <b>Warning: slow, possibly destructive.</b> If the &ldquo;/img/&rdquo; &ldquo;/css/&rdquo; and &ldquo;/js/&rdquo; folders are not redirecting to the correct theme files, there is likely a problem with the .htaccess file. Flip this on, save the settings, then flip it off. Repeat as necessary.",
+						"id" => "flush_htaccess",
+						"std" => "0", 
+						"type" => "checkbox");
 	
 	
 	/**

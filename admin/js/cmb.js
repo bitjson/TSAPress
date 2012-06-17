@@ -30,6 +30,7 @@ jQuery(document).ready(function ($) {
 	var $datetime_options;
 	var $date_options;
 	var $deadline_options;
+	var $custom_options;
 
 	$is_event = $('.' + $prefix + 'is_event');
 	$is_event_checkbox = $('#' + $prefix + 'is_event')
@@ -44,7 +45,8 @@ jQuery(document).ready(function ($) {
 	$datetime_options = $('.' + $prefix + 'datetime_begin, .' + $prefix + 'datetime_end');
 	$date_options = $('.' + $prefix + 'date_begin, .' + $prefix + 'date_end');
 	$deadline_options = $('.' + $prefix + 'deadline_datetime');
-	
+	$custom_options = $('.' + $prefix + 'custom_one, .' + $prefix + 'custom_two, .' + $prefix + 'custom_abbr');
+
 	
 	
 	function eventHider(){
@@ -52,22 +54,23 @@ jQuery(document).ready(function ($) {
 		checked = $is_event_checkbox.is(':checked');
 	
 		if(checked == true){	
-			$event_summary.slideDown('200');
-			$event_major_event.slideDown('200');
-			$event_datetime_range.slideDown('200');
-			$event_location.slideDown('200');
-			$event_google_maps_query.slideDown('200');
+			$event_summary.show();
+			$event_major_event.show();
+			$event_datetime_range.show();
+			$event_location.show();
+			$event_google_maps_query.show();
 			datetimeShowHider();	
 		}
 		else {
-			$event_summary.slideUp('200');
-			$event_major_event.slideUp('200');
-			$event_datetime_range.slideUp('200');
-			$event_location.slideUp('200');
-			$event_google_maps_query.slideUp('200');
-			$datetime_options.slideUp('200');
-			$date_options.slideUp('200');
-			$deadline_options.slideUp('200');
+			$event_summary.hide();
+			$event_major_event.hide();
+			$event_datetime_range.hide();
+			$event_location.hide();
+			$event_google_maps_query.hide();
+			$datetime_options.hide();
+			$date_options.hide();
+			$deadline_options.hide();
+			$custom_options.hide();
 		}
 	}
 	
@@ -86,31 +89,43 @@ jQuery(document).ready(function ($) {
 		case 'datetime':
 			$datetime_options.show();
 			$date_options.hide();
-			$deadline_options.hide();	
+			$deadline_options.hide();
+			$custom_options.hide();
 			break;
 		
 		case 'date':
 			$datetime_options.hide();
 			$date_options.show();
 			$deadline_options.hide();
+			$custom_options.hide();
 			break;
 		
 		case 'deadline':
 			$datetime_options.hide();
 			$date_options.hide();
 			$deadline_options.show();
+			$custom_options.hide();
 			break;
 			
 		case 'tbd':
 			$datetime_options.hide();
 			$date_options.hide();
 			$deadline_options.hide();
+			$custom_options.hide();
+			break;
+			
+		case 'custom':
+			$datetime_options.hide();
+			$date_options.hide();
+			$deadline_options.hide();
+			$custom_options.show();
 			break;
 			
 		default:
 			$datetime_options.hide();
 			$date_options.hide();
 			$deadline_options.hide();
+			$custom_options.hide();
 			break;
 		}
 		

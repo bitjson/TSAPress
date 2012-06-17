@@ -61,16 +61,15 @@ add_filter('gallery_style', 'roots_gallery_style');
 
 function roots_flush_rewrites() {
 
-	if(get_transient("was_flushed") === false)
-	{
+if(of_get_option('flush_htaccess', false) == 1 || get_transient("was_flushed") === false) {
 	
 		global $wp_rewrite;
 		$wp_rewrite->flush_rules();
 	
 		set_transient("was_flushed", true, 60 * 60 * 24 * 7 );
-	}  
-  
-}
+	}
+}  
+
 
 /*
 * returns the base directory in which wordpress is aternatively installed followed by a trailing "/"

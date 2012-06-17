@@ -35,7 +35,7 @@
 				<h1>Not Found</h1>
 				<aside>
 					<h1>Sorry, but we can't seem to find what you're looking for.</h1>
-					<p>You could make your search less specific, or you could try searching for <a href="<?php echo 'http://www.google.com/search?q=' . get_search_query() . '&sitesearch=' . urlencode (get_home_url()); ?>">&ldquo;<?php the_search_query(); ?>&rdquo; on Google</a>.</p>
+					<p>You could make your search less specific, or you could search this site for <a href="<?php echo 'http://www.google.com/search?q=' . get_search_query() . '&sitesearch=' . urlencode (get_home_url()); ?>">&ldquo;<?php the_search_query(); ?>&rdquo; using Google</a>.</p>
 					<?php get_search_form(); ?>
 				</aside>
 			</article>

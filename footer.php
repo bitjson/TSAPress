@@ -7,14 +7,14 @@
        <div class="basement-line">
        <a href="#TSA-Bar" class="back-to-top">Back to Top</a>    
     
+    <?php if(have_posts()): ?>
      <section class="updates">
     	<h1>Latests Updates</h1>
 	    <ol>
 	    <?php wp_get_archives(array ('type' => 'postbypost', 'limit' => 5, 'before' => '<li>', 'after' => '</li>')); ?>
    		</ol>
-    	<?php // TODO: is this neccessary? : <a href="#">Previous updates</a> ?>
     </section>
-    
+    <?php endif; ?>
     <section class="events"><?php 
 			
 			 $primary_events = tsapress_get_major_events();
@@ -30,18 +30,19 @@
  				<?php endforeach; ?>
   			</ol>
   		<?php else : ?>
-   		<h1 class="center">No Events</h1>
-   			<p class="center">Sorry, there are no events yet.</p>
+   		<? /* No Events */ ?>
  		<?php endif; ?>
-
-    <?php if (of_get_option('cal_events_url', false)){ ?>
-    <a href="#">More important dates</a> <!-- TODO:reveal more years via slide down? rather than separate archive page? --> 
-    <?php  }?>
-    
-    </section>
+<?php
+$cal_events_url = of_get_option('cal_events_url');
+if ($cal_events_url != false) { ?>
+        <a href="<?php echo $cal_events_url; ?>">More important dates</a>
+<?php } 
+	// TODO:reveal more years via slide down? rather than separate archive page?
+?>
+  </section>
     
    
-    
+    <?php if(have_posts()): ?> 
     <section  class="archives">
      <h1>News Archives</h1>
 <?    
@@ -94,8 +95,13 @@
 			}
 		}	   
 ?>
-		<a href="#">Full Archives</a>
+<?php
+$archives_url = of_get_option('archives_url');
+if ($archives_url != false) { ?>
+        <a href="<?php echo $archives_url; ?>">Full Archives</a>
+<?php } ?>
     </section>
+    <?php endif; ?>
         
 <?php tsapress_display_contact_form(); ?>
 
@@ -112,8 +118,8 @@ if ($partners_exist) { ?>
         <small class="copyright">&copy; <?php echo date('Y'); ?> <a href="<?php bloginfo('url'); ?>/" title="<?php bloginfo('description'); ?>"><?php bloginfo('name'); ?></a><br>
         All Rights Reserved.</small>
         <aside class="technical">
-        <a href="#" class="engine" title="Powered by WordPress, state-of-the-art semantic personal publishing platform">Proudly powered by WordPress.</a>
-        <a href="#" class="developer" title="Developed by the Technology Advisory Group, TSA's cutting-edge, volunteer, technology taskforce">Developed by the TAG.</a>
+        <a href="http://wordpress.org/" class="engine" title="Powered by WordPress, state-of-the-art semantic personal publishing platform">Proudly powered by WordPress.</a>
+        <a href="http://tsatag.org/" class="developer" title="Developed by the Technology Advisory Group, TSA's cutting-edge, volunteer, technology taskforce">Developed by the TAG.</a>
         </aside>
     </footer>
     </div>
@@ -141,5 +147,41 @@ var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
     <script type="text/javascript">window.jQuery || document.write('<script src="<?php bloginfo('template_directory'); ?>/js/libs/jquery-1.7.1.min.js"><\/script>')</script><?php //if jQuery is not loaded from Google CDN, load it from the library ?>
     <?php /* TODO: AJAXIFY site: <script defer src="<?php bloginfo('template_directory'); ?>/js/plugins.js" type="text/javascript"></script> */ ?>
     <script defer src="<?php bloginfo('template_directory'); ?>/js/script.js" type="text/javascript"></script>
+    
+    
+    
+    
+    
+    		
+<?php 
+   if(true) { ?>
+   		
+   		
+    		<script type="text/javascript">
+			jQuery(document).ready(function($) {	
+				$('a').each(function() {
+					var theLink = this.href;
+					var newHref = theLink;
+					
+					if(theLink.search("testing") == -1) {
+						if(theLink.search("http://virginiatsa.org/") != -1)
+							newHref = theLink.substr(0,22) + "/testing" + theLink.substr(22, (theLink.length-1));
+						else if (theLink.search("http://") != -1) newHref = theLink;
+						else newHref = "/testing" + theLink;
+					}
+					$(this).attr('href', newHref);
+					
+				});
+			});
+		</script>
+		
+		
+<?php } ?>
+		
+		
+		
+		
+		
+		
 </body>
 </html>

@@ -13,10 +13,23 @@ require_once('inc/tsapress-shortcodes.php');
 
 
 
-//TODO: init function, runnable from theme options or something - set the category base to "regions", and wp-uploads to "assets"
+//TODO: init function, runnable from theme options or something - set the category base to "regions"
 
 
+//remove "Links" admin menu
+function remove_menus () {
+global $menu;
+	$restricted = array(__('Links'));
+	end ($menu);
+	while (prev($menu)){
+		$value = explode(' ',$menu[key($menu)][0]);
+		if(in_array($value[0] != NULL?$value[0]:"" , $restricted)){unset($menu[key($menu)]);}
+	}
+}
+add_action('admin_menu', 'remove_menus');
 
+
+//register the primary nav menu
 if ( function_exists( 'register_nav_menu' ) ) {
 	
 	register_nav_menus(
@@ -27,17 +40,15 @@ if ( function_exists( 'register_nav_menu' ) ) {
 	
 }
 
+//add thumbnail size for featured images
 if ( function_exists( 'add_theme_support' ) ) { 
   add_theme_support( 'post-thumbnails' ); 
   set_post_thumbnail_size( 690, 255, true ); // 690 pixels wide by 255 pixels tall, crop mode
 }
 
-function register_my_menus() {
-  
-}
-add_action( 'init', 'register_my_menus' );
 
 
+//register widget area below menus
 if (function_exists('register_sidebar')) {
 	register_sidebar(array(
 		'name' => 'Additional Left Menus',
@@ -55,14 +66,17 @@ if ( !function_exists( 'optionsframework_init' ) ) {
 }
 
 
-
 function tsapress_load_scripts() {
+   
+    // Register Modernizr
+    wp_register_script( 'modernizr', get_template_directory_uri() . '/js/libs/modernizr.min.01276.js', false ); //$in_footer = false; place script in wp_head
+    wp_enqueue_script( 'modernizr' );  
    
    /* reregister jquery to use Google CDN */
     wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js');
-    wp_register_script( 'google-maps', 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAnRwiaJO9vIJUSkHQoxqQPGhF4OMCTl68&sensor=true');    
+    wp_register_script( 'jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', true); //$in_footer = true; place script in wp_footer
 
+    wp_register_script( 'google-maps', 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAnRwiaJO9vIJUSkHQoxqQPGhF4OMCTl68&sensor=true', true); //$in_footer = true; place script in wp_footer
     wp_enqueue_script( 'jquery' );
     if(is_home() || is_category()) wp_enqueue_script( 'google-maps' );
     

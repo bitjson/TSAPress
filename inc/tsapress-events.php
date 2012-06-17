@@ -18,7 +18,7 @@ function tsapress_display_eventinfo($post_id){ ?>
 	<?php 
 		//Event Summary
 		$event_summary = get_post_meta($post_id, '_tsapress_event_summary', true);
-		if ($event_summary != "") echo '<p class="summary">'. $event_summary .'</p>';
+		if ($event_summary != "") echo '<span class="summary">'. $event_summary .'</span>';
 		
 		//Event Date/time
 		echo get_tsapress_event_datetime_string($post_id);
@@ -123,32 +123,46 @@ function get_tsapress_pretty_time($length, $type, $begin_timestamp, $end_timesta
 	
 }
 
-/*use "$post->ID" as $post*/
-function get_tsapress_event_datetime_string($post, $length = 'long'){
+function get_tsapress_event_datetime_string($postid, $length = 'long'){
 
 $prefix = '_tsapress_event_';
 
-switch(get_post_meta($post, $prefix.'datetime_range', true)) {
+switch(get_post_meta($postid, $prefix.'datetime_range', true)) {
 
 	case 'datetime':
-		$datetime_begin = get_post_meta($post, $prefix.'datetime_begin', true);
-		$datetime_end = get_post_meta($post, $prefix.'datetime_end', true);
+		$datetime_begin = get_post_meta($postid, $prefix.'datetime_begin', true);
+		$datetime_end = get_post_meta($postid, $prefix.'datetime_end', true);
 		return get_tsapress_pretty_time($length, "datetime", $datetime_begin, $datetime_end, true);
 		break;
 		
 	case 'date':
-		$date_begin = get_post_meta($post, $prefix.'date_begin', true);
-		$date_end = get_post_meta($post, $prefix.'date_end', true);
+		$date_begin = get_post_meta($postid, $prefix.'date_begin', true);
+		$date_end = get_post_meta($postid, $prefix.'date_end', true);
 		return get_tsapress_pretty_time($length, "date", $date_begin, $date_end);
 		break;
 		
 	case 'deadline':
-		$deadline_datetime = get_post_meta($post, $prefix.'deadline_datetime', true);
+		$deadline_datetime = get_post_meta($postid, $prefix.'deadline_datetime', true);
 		return get_tsapress_pretty_time($length, "deadline", $deadline_datetime);
 		break;
+	
+	case 'tbd':	
+			if($length == 'long') return '<time class="date" datetime="TBA">Date To Be Announced</time>';
+			return '<time datetime="TBA">TBA</time>';
+		break;
 		
-	default: //(case 'tbd':)
-			return '<time datetime="TBD">TBD</time>';
+	default: //(case 'custom')	
+			if($length == 'long'){
+				$custom_one = get_post_meta($postid, $prefix.'custom_one', true);
+				$custom_two = get_post_meta($postid, $prefix.'custom_two', true);
+				
+				$output = $custom_one;
+				if($custom_two != "") $output .= '<span>'. $custom_two . '</span>';
+			} else {
+				$output = get_post_meta($postid, $prefix.'custom_abbr', true);
+			}
+			
+			return '<time class="date">' . $output . '</time>';
 		break;
 	}
 
@@ -192,14 +206,14 @@ $meta_boxes[] = array(
 								
 								array(
 									'name' => 'Event',
-									'desc' => 'Check this box if this page describes a specific event. I.e. Annual State Leadership Conference, State Leadership Academy, etc.',
+									'desc' => 'Check this box if this page describes an event. I.e. State Conference, Leadership Academy, etc.',
 									'id'   => $prefix . 'is_event',
 									'type' => 'checkbox',
 								),
 								
 								array(
 									'name' => 'Event Summary',
-									'desc' => 'A very concise summary of the event- intended to help the user understand the event in 1 sentence. E.g. "Compete in over 60 competitive events, network with other members, and experience a variety of leadership and educational opportunities."',
+									'desc' => 'A very concise summary of the event- intended to help the user understand the event in 1 sentence. E.g. &ldquo;Compete in over 60 competitive events, network with other members, and experience a variety of leadership and educational opportunities.&rdquo;',
 									'id'   => $prefix . 'summary',
 									'type' => 'textarea_small',
 								),
@@ -212,20 +226,23 @@ $meta_boxes[] = array(
 								
 								array(
 									'name'    => 'Event Type',
-									'desc'    => 'Date/time range type for the event. Current timezone: ' .date('T') . '. Wordpress Timezone can be changed in Settings > General. <br />
+									'desc'    => 'Date/time range type for the event. Current timezone: ' . date('T') . '. Wordpress Timezone can be changed in Settings > General. <br />
 									  <ul>
 									  <li> <strong>Date/time</strong> events occur between certain times (like a Rally, Expo, or Conference).</li>
-									  <li> <strong>Date</strong> events occur all day for each day within the date range (like Advisor Appreciation Week).</li>
+									  <li> <strong>Date</strong> events occur all day for each day within the date range (like Advisor Appreciation Week or a multi-day Conference).</li>
 									  <li> <strong>Deadline</strong> events occur at a specific moment in time (like submission deadlines for competitive events).</li>
-									  <li> Date/times for <strong>TBD</strong> events are too be determined.</li>
+									  <li> Date/times for <strong>To Be Announced</strong> events can be entered.</li>
+									  <li> <strong>Custom</strong> allows for custom text to be used. (like &ldquo;Late Fall&rdquo; or &ldquo;Early Spring&rdquo;)</li>
 									  </ul> ',
 									'id'      => $prefix . 'datetime_range',
 									'type'    => 'radio_inline',
+									'std'  => 'tbd',
 									'options' => array(
-										array( 'name' => 'Date/time', 'value' => 'datetime', ),
-										array( 'name' => 'Date', 'value' => 'date', ),
-										array( 'name' => 'Deadline', 'value' => 'deadline', ),
-										array( 'name' => 'TBD', 'value' => 'tbd', )
+										array( 'name' => 'Date/time', 'value' => 'datetime'),
+										array( 'name' => 'Date', 'value' => 'date'),
+										array( 'name' => 'Deadline', 'value' => 'deadline'),
+										array( 'name' => 'TBA', 'value' => 'tbd'),
+										array( 'name' => 'Custom', 'value' => 'custom')
 													)
 								),
 								
@@ -253,14 +270,14 @@ $meta_boxes[] = array(
 								
 								array(
 									'name' => 'Begins',
-									'desc' => 'Date at which the event begins.',
+									'desc' => 'Date on which the event begins.',
 									'id'   => $prefix . 'date_begin',
 									'type' => 'text_date_timestamp',
 								),
 								
 								array(
 									'name' => 'Ends',
-									'desc' => 'Date at which the event ends.',
+									'desc' => 'Date on which the event ends.',
 									'id'   => $prefix . 'date_end',
 									'type' => 'text_date_timestamp',
 								),
@@ -277,20 +294,42 @@ $meta_boxes[] = array(
 									'type' => 'text_datetime_timestamp',
 								),
 								
+								// Custom event options
+								
+								array(
+									'name' => 'Field One',
+									'desc' => 'First date/time custom fied. This string will be used &ldquo;as is&rdquo; in all locations where a date/time is displayed.',
+									'id'   => $prefix . 'custom_one',
+									'type' => 'text_medium',
+								),
+								
+								array(
+									'name' => 'Field Two',
+									'desc' => 'Optional second date/time custom field. Displayed at a smaller font size and weight than the first field.',
+									'id'   => $prefix . 'custom_two',
+									'type' => 'text_medium',
+								),
+								
+								array(
+									'name' => 'Abbreviation',
+									'desc' => 'The abreviation for the date/time string used in the Conferences & Events widget at the bottom of the website. E.g. &ldquo;10/21&rdquo; or &ldquo;Oct./Nov.&rdquo;',
+									'id'   => $prefix . 'custom_abbr',
+									'type' => 'text_small',
+								),
 								
 								// Continue options for all event types
 								
 								
 								array(
 									'name' => 'Location',
-									'desc' => 'Name of the event location. This text be displayed as the link to a Google Map. E.g.: &ldquo;The White House&rdquo;. If this field is left blank, no location will be shown.',
+									'desc' => 'Name of the event location. E.g.: &ldquo;The White House&rdquo;. If this field is left blank, no location will be shown.',
 									'id'   => $prefix . 'location',
 									'type' => 'text',
 								),
 								
 								array(
 									'name' => 'Google Maps Query',
-									'desc' => 'Search term for Google Maps; in most cases the text from the above field will work. If the resulting link does not point to the correct location, provide more detail like &ldquo;city, state&rdquo; or a GPS coordinate. E.g.: &ldquo;The White House, Washington, D.C.&rdquo; or &ldquo;38.897659,-77.036516&rdquo;. If this field is left blank, the location on the page will remain simple text.',
+									'desc' => 'Search term to use when displaying the location in Google Maps; in most cases the text from the above field will work. If the resulting link does not point to the correct location, provide more detail like &ldquo;city, state&rdquo; or a GPS coordinate. E.g.: &ldquo;The White House, Washington, D.C.&rdquo; or &ldquo;38.897659,-77.036516&rdquo;. If this field is left blank, the location on the page will remain simple text.',
 									'id'   => $prefix . 'google_maps_query',
 									'type' => 'text',
 								)

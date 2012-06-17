@@ -4,6 +4,33 @@ function tsapress_debug($object){
 	die(print_r($object));
 }
 
+
+//add contact methods to the user profiles
+function tsapress_contactmethods( $contactmethods ) {
+  if ( !isset( $contactmethods['twitter'] ) )
+    $contactmethods['twitter'] = 'Twitter';
+    
+  if ( !isset( $contactmethods['facebook'] ) )
+    $contactmethods['facebook'] = 'Facebook';
+
+  // Remove Yahoo IM
+  if ( isset( $contactmethods['yim'] ) )
+    unset( $contactmethods['yim'] );
+  
+  //Remove AIM
+  if ( isset( $contactmethods['aim'] ) )
+    unset( $contactmethods['aim'] );
+    
+  //Remove Jabber/Google Talk
+  if ( isset( $contactmethods['jabber'] ) )
+    unset( $contactmethods['jabber'] );
+
+  return $contactmethods;
+}
+add_filter( 'user_contactmethods', 'tsapress_contactmethods', 10, 1 );
+
+
+
 /* Set global var $tz_string with correct string from Wordpress settings */
 global $tz_string;
 if(get_option('timezone_string') != ""){ $tz_string = get_option('timezone_string'); }
@@ -113,6 +140,9 @@ function get_post_thumbnail_meta($meta) {
 }
 
 
+
+
+
 /* reregister new wp_caption shortcode to make captions use HTML5*/
 function tsapress_img_caption_shortcode_filter($val, $attr, $content = null) {
   extract(shortcode_atts(array(
@@ -131,6 +161,9 @@ function tsapress_img_caption_shortcode_filter($val, $attr, $content = null) {
 add_filter('img_caption_shortcode', 'tsapress_img_caption_shortcode_filter', 10, 3);
 
 
+
+
+
 /* Nice Search from Roots (the HTML5 Wordpress Boilterplate Theme)*/
 function roots_nice_search_redirect() {
     if (is_search() && strpos($_SERVER['REQUEST_URI'], '/wp-admin/') === false && strpos($_SERVER['REQUEST_URI'], '/search/') === false) {
@@ -139,6 +172,10 @@ function roots_nice_search_redirect() {
     }
 }
 add_action('template_redirect', 'roots_nice_search_redirect');
+
+
+
+
 
 /*wrap search term in <mark> tags (Wordpress does not natively support) */ //TODO: not working?
  
@@ -177,7 +214,6 @@ $uri = explode("/",$_SERVER["REQUEST_URI"]);
 $do_not_highlight = array( "a", "A", "is", "Is", "the", "The", "and", "And" );
  
 $search_term = explode("+",$uri[2]);
- 
         foreach ($search_term as $search_t) {
             if(preg_match_all("/$search_t+/i", $the_excerpt, $matches)){ //must have found matches
 	            foreach ($matches as $match) {
