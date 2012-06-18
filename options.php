@@ -9,7 +9,7 @@
 function optionsframework_option_name() {
 	// This gets the theme name from the stylesheet (lowercase and without spaces)
 	if (function_exists('wp_get_theme')) $themename = wp_get_theme(); //New WP >= 3.4.0
-	else $themename = wp_get_theme_(STYLESHEETPATH . '/style.css'); //Depreciated WP 3.4.0
+	else $themename = get_theme_data(STYLESHEETPATH . '/style.css'); //Depreciated WP 3.4.0
 
 	
 	$themename = $themename['Name'];

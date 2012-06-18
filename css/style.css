@@ -1,13 +1,13 @@
 @import url(http://fonts.googleapis.com/css?family=Ubuntu:700|Open+Sans:400italic,300italic,400,700,300|Open+Sans+Condensed:700,300italic,300); html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;vertical-align:baseline;background:transparent;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;text-decoration:none;list-style:none}
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
-body{background:#000000 url("/img/bg/bg-tile.png") repeat;font-family:'Open Sans','Gill Sans',Tahoma,Geneva,Verdana,sans-serif;color:#3d3d3d;}
+body{background:#000000 url("../img/bg/bg-tile.png") repeat;font-family:'Open Sans','Gill Sans',Tahoma,Geneva,Verdana,sans-serif;color:#3d3d3d;}
 #content {font-size: 13px;}
-#root, #RSS a, #search input[type="text"], .developer, .engine {background:url("/img/sprite.png") no-repeat;}
-#page-wrap{background:url("/img/bg/bg-spotlight.png") no-repeat}
+#root, #RSS a, #search input[type="text"], .developer, .engine {background:url("../img/sprite.png") no-repeat;}
+#page-wrap{background:url("../img/bg/bg-spotlight.png") no-repeat}
 .full-wrap,.basement-line,#basement>div>div{margin:0px auto;text-align:left;display:block}
 .full-wrap,#basement>div>div{width:960px}
 .content-wrap,.basement-line{width:730px;float:right;padding:10px 10px 0 10px}
-.content-wrap{background:url("/img/bg/stripe-tile-opacity20.png") repeat;-moz-border-radius:5px 5px 0 0;-webkit-border-radius:5px 5px 0 0;border-radius:5px 5px 0 0;margin-top:10px}
+.content-wrap{background:url("../img/bg/stripe-tile-opacity20.png") repeat;-moz-border-radius:5px 5px 0 0;-webkit-border-radius:5px 5px 0 0;border-radius:5px 5px 0 0;margin-top:10px}
 .basement-line{width:730px;float:right;padding:30px 10px}
 .chromeframe{background:white;width:100%;z-index:200;padding:20px;text-align:center;top:0;border:1px solid #CCC;font-size:16px}
 .chromeframe a{box-shadow:inset 0px 1px 0px 0px #bbdaf7;filter:progid:dximagetransform.microsoft.gradient(startColorstr='#79bbff',endColorstr='#378de5');background-color:#79bbff;border-radius:6px;border:1px solid #84bbf3;display:inline-block;color:#ffffff;font-size:14px;font-weight:bold;margin:0 5px;padding:4px 8px;text-decoration:none;text-shadow:1px 1px 0px #528ecc}
@@ -16,12 +16,12 @@ body{background:#000000 url("/img/bg/bg-tile.png") repeat;font-family:'Open Sans
 #ajax-loader{position:absolute;margin:40px 357px;opacity:0}
 #TSA-Bar ul a,#about a,#category-selector a,#content header a,#content section a,#basement a, #content article a {color:#418fbf;font-style:italic;font-weight:700;-moz-transition:text-shadow ease 0.1s;-o-transition:text-shadow ease 0.1s;-webkit-transition:text-shadow ease 0.1s;-ms-transition:text-shadow ease 0.1s;transition:text-shadow ease 0.1s}
 #TSA-Bar ul a:hover,#about a:hover,#category-selector a:hover,#basement a:hover{color:#71b5e5;text-shadow:2px 2px 2px rgba(0,0,0,0.3)}
-.hover-box{-moz-transition:opacity 0.2s ease-in-out;-o-transition:opacity 0.2s ease-in-out;-webkit-transition:opacity 0.2s ease-in-out;-ms-transition:opacity 0.2s ease-in-out;transition:opacity 0.2s ease-in-out;opacity:0;padding:10px;background:url("/img/bg/stripe-tile-opacity40.png") repeat;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;z-index:500}
+.hover-box{-moz-transition:opacity 0.2s ease-in-out;-o-transition:opacity 0.2s ease-in-out;-webkit-transition:opacity 0.2s ease-in-out;-ms-transition:opacity 0.2s ease-in-out;transition:opacity 0.2s ease-in-out;opacity:0;padding:10px;background:url("../img/bg/stripe-tile-opacity40.png") repeat;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;z-index:500}
 .hover-box-inner{background-color:#FFF;border:3px solid #003366;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}
 .hover-box>div{background-color:#FFF;border:3px solid #003366;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}
 #root{top:8px;position:relative;text-transform:uppercase;color:white;font-style:normal;font-size:16px;font-weight:700; padding-left: 40px;}
 #root:hover{text-shadow:0 0 3px rgba(255,255,255,0.4)}
-#TSA-Bar{width:100%;height:39px;background:url("/img/bg/bg-darker-tile-opacity50.png") repeat-x;text-align:center;border-bottom:1px solid #3d3d3d;border-bottom:1px solid rgba(169,169,169,0.3) !important;box-shadow:0 0 4px rgba(0,0,0,0.5)}
+#TSA-Bar{width:100%;height:39px;background:url("../img/bg/bg-darker-tile-opacity50.png") repeat-x;text-align:center;border-bottom:1px solid #3d3d3d;border-bottom:1px solid rgba(169,169,169,0.3) !important;box-shadow:0 0 4px rgba(0,0,0,0.5)}
 #TSA-Bar span>ul{float:right;border-left:1px solid #131313;border-right:1px solid #222222;border-left:1px solid rgba(0,0,0,0.2) !important;border-right:1px solid rgba(255,255,255,0.2) !important}
 #TSA-Bar span>ul>li{float:left;border-color:#222222 #131313 #131313 #222222;border-color:rgba(255,255,255,0.2) rgba(0,0,0,0.2) rgba(0,0,0,0.2) rgba(255,255,255,0.2) !important;border-style:solid;border-width:0 1px 0 1px;display:block;height:39px}
 #TSA-Bar span>ul>li>a{display:block;height:100%;padding:8px 10px 0;text-align:center;color:white;font-style:normal;text-transform:uppercase}
@@ -30,7 +30,7 @@ body{background:#000000 url("/img/bg/bg-tile.png") repeat;font-family:'Open Sans
 #TSA-Bar span>ul>li>a:hover{color:#005dab;border-color:#131313 #222 #222 #131313}
 #TSA-Bar span>ul>li>a:hover img{box-shadow:0 0 1px #418fbf;border-color:#005dab}
 #TSA-Bar span>ul>li>div{margin-top:-500px;display:block;position:absolute}
-#TSA-Bar span>ul>li:hover{background-image:url("/img/bg/bg-darker-tile-opacity80.png")}
+#TSA-Bar span>ul>li:hover{background-image:url("../img/bg/bg-darker-tile-opacity80.png")}
 #TSA-Bar span>ul>li:hover>div{margin-top:-10px;opacity:1}
 #TSA-Bar span>ul>li>div>div{padding:10px}
 #share>div{margin-left:-150px}
@@ -125,7 +125,7 @@ section#content #sub-nav li:first-child a{margin:0 10px 0 0}
 .archives time time{float:left;width:48px;padding:8px 0}
 #basement .archives>a{margin:.4em}
 #basement section.contact{background-color:rgba(255,255,255,0.05);padding:15px;width:320px;color:white;font-size:.8em;-moz-box-shadow:1px 1px 3px #131313;-webkit-box-shadow:1px 1px 3px #131313;box-shadow:1px 1px 3px #131313}
-#basement section.contact form{width:308px;background:url("/img/bg/stripe-tile-opacity20.png") repeat;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;margin:10px 0;padding:6px}
+#basement section.contact form{width:308px;background:url("../img/bg/stripe-tile-opacity20.png") repeat;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;margin:10px 0;padding:6px}
 #basement section.contact #name,#basement section.contact #email{float:left;width:131px}
 #basement section.contact #name,#basement section.contact #email,#basement section.contact #message{color:#3d3d3d;padding:10px;border:1px solid #777}
 #basement section.contact #name{color:#3d3d3d;margin-right:1px}
@@ -143,8 +143,8 @@ section#content #sub-nav li:first-child a{margin:0 10px 0 0}
 #basement #partners{width:100%}
 #basement #partners img{width:100%}
 #basement #partners h1{font-size:.8em;color:#777777;text-shadow:none;width:720px;border-bottom:1px solid #777;padding:15px 0;margin:5px 0 13px 0;text-align:center}
-#basement{clear:both;overflow:auto;width:100%;background-color:black;background-image:url("/img/bg/bg-darker-tile.png");border-top:1px solid #1A1A1A;-moz-box-shadow:-1px -1px 3px rgba(0,0,0,0.4);-webkit-box-shadow:-1px -1px 3px rgba(0,0,0,0.4);box-shadow:-1px -1px 3px rgba(0,0,0,0.4);z-index:10;position:relative}
-#basement>div{background:url("/img/bg/bg-darker-spotlight.png") bottom no-repeat;overflow:auto;width:100%}
+#basement{clear:both;overflow:auto;width:100%;background-color:black;background-image:url("../img/bg/bg-darker-tile.png");border-top:1px solid #1A1A1A;-moz-box-shadow:-1px -1px 3px rgba(0,0,0,0.4);-webkit-box-shadow:-1px -1px 3px rgba(0,0,0,0.4);box-shadow:-1px -1px 3px rgba(0,0,0,0.4);z-index:10;position:relative}
+#basement>div{background:url("../img/bg/bg-darker-spotlight.png") bottom no-repeat;overflow:auto;width:100%}
 #basement section{float:left;width:350px}
 #basement section.updates,#basement section.archives{margin-right:30px}
 #basement section.updates,#basement section.archives,#basement section.partners{clear:both}
