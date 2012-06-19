@@ -114,6 +114,11 @@ function optionsframework_options() {
 	$options[] = array( "name" => "Advanced Settings",
 						"type" => "heading");
 						
+	$options[] = array( "name" => "Landing Page URL Text",
+						"desc" => "The text displayed in the primary navigation menu for the site's landing page. Default: &ldquo;News&rdquo;" ,
+						"id" => "landing_page_text",
+						"std" => "News",
+						"type" => "text");
 		
 	$options[] = array( "name" => "About TSA Area",
 						"desc" => 'The description of the state delegation given at the top of the website. Replaces default behavior if set. Content is HTML. Recommended tags: &lt;h1&gt;,&lt;em&gt;, and &lt;p&gt;.',
