@@ -7,7 +7,7 @@
        <div class="basement-line">
        <a href="#TSA-Bar" class="back-to-top">Back to Top</a>    
     
-    <?php if(have_posts()): ?>
+    <?php if(tsapress_uses_news()): ?>
      <section class="updates">
     	<h1>Latests Updates</h1>
 	    <ol>
@@ -42,7 +42,7 @@ if ($cal_events_url != false) { ?>
   </section>
     
    
-    <?php if(have_posts()): ?> 
+    <?php if(tsapress_uses_news()): ?> 
     <section  class="archives">
      <h1>News Archives</h1>
 <?    
@@ -103,7 +103,7 @@ if ($archives_url != false) { ?>
     </section>
     <?php endif; ?>
         
-<?php tsapress_display_contact_form(); ?>
+<?php tsapress_display_contact_section(true); //argument: disable_contact_form (delete "true" to enable the built-in contact form) ?>
 
 <?php
 $partners_exist = false;
@@ -154,9 +154,8 @@ var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
     
     		
 <?php 
-   if(true) { ?>
-   		
-   		
+	$is_testing = false;
+   if($is_testing) { ?>
     		<script type="text/javascript">
 			jQuery(document).ready(function($) {	
 				$('a').each(function() {
@@ -173,9 +172,7 @@ var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
 					
 				});
 			});
-		</script>
-		
-		
+		</script>	
 <?php } ?>
 		
 		

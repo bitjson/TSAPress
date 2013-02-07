@@ -4,6 +4,18 @@ function tsapress_debug($object){
 	die(print_r($object));
 }
 
+function tsapress_uses_news() {
+global $uses_news;
+global $uses_news_is_set;
+
+	if($uses_news_is_set != true){ //don't waste resources reprocessing
+		$uses_news_is_set = true;
+		
+	    $all_news_posts = new WP_Query( array( 'post_type' => 'post' ) ); //grab all news posts
+	   	$uses_news = ($all_news_posts->found_posts != 0) ? true : false; //if not 0, true, else: false
+	}
+	return $uses_news; //return wether or not this installation is using the news features - news archives, latest updates, etc.
+}
 
 //add contact methods to the user profiles
 function tsapress_contactmethods( $contactmethods ) {

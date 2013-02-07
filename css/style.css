@@ -20,7 +20,7 @@ body{background:#000000 url("../img/bg/bg-tile.png") repeat;font-family:'Open Sa
 .hover-box-inner{background-color:#FFF;border:3px solid #003366;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}
 .hover-box>div{background-color:#FFF;border:3px solid #003366;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}
 #root{top:8px;position:relative;text-transform:uppercase;color:white;font-style:normal;font-size:16px;font-weight:700; padding-left: 40px;}
-#root:hover{text-shadow:0 0 3px rgba(255,255,255,0.4)}
+#root:hover{text-shadow:0 0 3px rgba(255,255,255,0.8)}
 #TSA-Bar{width:100%;height:39px;background:url("../img/bg/bg-darker-tile-opacity50.png") repeat-x;text-align:center;border-bottom:1px solid #3d3d3d;border-bottom:1px solid rgba(169,169,169,0.3) !important;box-shadow:0 0 4px rgba(0,0,0,0.5)}
 #TSA-Bar span>ul{float:right;border-left:1px solid #131313;border-right:1px solid #222222;border-left:1px solid rgba(0,0,0,0.2) !important;border-right:1px solid rgba(255,255,255,0.2) !important}
 #TSA-Bar span>ul>li{float:left;border-color:#222222 #131313 #131313 #222222;border-color:rgba(255,255,255,0.2) rgba(0,0,0,0.2) rgba(0,0,0,0.2) rgba(255,255,255,0.2) !important;border-style:solid;border-width:0 1px 0 1px;display:block;height:39px}
@@ -111,7 +111,7 @@ nav#pagination a:hover,#content a.more-link:hover{background-color:#005dab;color
 .prev>a:after{content:"▶";font-size:10px;font-style:normal;padding:0 10px 3px;vertical-align:middle}
 section#content #sub-nav ul{height:20px;margin-bottom:20px}
 section#content #sub-nav li{float:left;margin:0;list-style:none}
-section#content #sub-nav li a{font-size:14px;font-weight:700;font-style:normal;text-transform:uppercase;padding:5px 10px;margin:0 10px;color:#3d3d3d;border:1px solid transparent}
+section#content #sub-nav li a{font-size:13px;font-weight:700;font-style:normal;text-transform:uppercase;padding:5px 10px;margin:0 5px;color:#3d3d3d;border:1px solid transparent}
 section#content #sub-nav li a:hover,section#content #sub-nav li.current_page_item a{background-color:#005dab;color:white;border:1px solid #777777}
 section#content #sub-nav li:first-child a{margin:0 10px 0 0}
 .back-to-top{float:right;margin:5px;font-size:.7em;position:relative;top:-25px;display:block;padding:5px;border:1px solid transparent}
@@ -125,7 +125,8 @@ section#content #sub-nav li:first-child a{margin:0 10px 0 0}
 .archives time time{float:left;width:48px;padding:8px 0}
 #basement .archives>a{margin:.4em}
 #basement section.contact{background-color:rgba(255,255,255,0.05);padding:15px;width:320px;color:white;font-size:.8em;-moz-box-shadow:1px 1px 3px #131313;-webkit-box-shadow:1px 1px 3px #131313;box-shadow:1px 1px 3px #131313}
-#basement section.contact form{width:308px;background:url("../img/bg/stripe-tile-opacity20.png") repeat;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;margin:10px 0;padding:6px}
+#basement section.contact form{width:318px;background:url("../img/bg/stripe-tile-opacity20.png") repeat;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;margin:10px 0 10px -5px;padding: 6px 0 6px 12px;}
+#recaptcha_widget_div{margin-left: -5px;}
 #basement section.contact #name,#basement section.contact #email{float:left;width:131px}
 #basement section.contact #name,#basement section.contact #email,#basement section.contact #message{color:#3d3d3d;padding:10px;border:1px solid #777}
 #basement section.contact #name{color:#3d3d3d;margin-right:1px}
@@ -152,7 +153,7 @@ section#content #sub-nav li:first-child a{margin:0 10px 0 0}
 #basement section ol li a{display:block;border:1px solid transparent;padding:2px 0 2px 8px;margin:5px 0;color:white;font-style:normal;font-weight:400;border-bottom:1px dotted #3d3d3d}
 #basement section ol li a:hover{color:white;}
 #basement section ol li a:hover span{background-color:white;color:#005dab;text-shadow:none}
-#basement section ol li:last-child a{border-bottom:none}
+#basement section ol li:last-child a{border-bottom:1px transparent}
 #basement section ol li:last-child a:hover{border:1px solid #418fbf}
 #basement section>a{font-size:.8em;float:right;margin:-1.5em 0.4em 1em 0}
 #basement section>a:hover{text-shadow:2px 2px 2px #000}
