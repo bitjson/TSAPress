@@ -1,4 +1,3 @@
-
 </div> <?php //close div class="full-wrap" ?>
 
  <div id="basement">
@@ -30,7 +29,7 @@
  				<?php endforeach; ?>
   			</ol>
   		<?php else : ?>
-   		<? /* No Events */ ?>
+   		<?php /* No Events */ ?>
  		<?php endif; ?>
 <?php
 $cal_events_url = of_get_option('cal_events_url');
@@ -45,7 +44,7 @@ if ($cal_events_url != false) { ?>
     <?php if(tsapress_uses_news()): ?> 
     <section  class="archives">
      <h1>News Archives</h1>
-<?    
+<?php    
 		$archive_query = "SELECT YEAR(post_date) AS `year`, MONTH(post_date) AS `month`, count(ID) as posts FROM $wpdb->posts WHERE post_type = 'post' AND post_status = 'publish' GROUP BY YEAR(post_date), MONTH(post_date) ORDER BY post_date DESC";
 	
 		$key = md5($archive_query);
