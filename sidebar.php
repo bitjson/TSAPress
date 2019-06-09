@@ -12,16 +12,16 @@
 	 ?>
 	
 	<nav id="left-nav"><?php 
-		if ( has_nav_menu('primary-nav') ) : ?>
+		if ( has_nav_menu('primary-nav') ) { ?>
 			<h1><?php echo $primary_nav_menu[ 'name' ]; ?></h1>
 				<ul>
-<?php if(have_posts()): ?><li<?php if ( is_home() OR is_front_page() ) echo ' class="current_page_item"'; ?>><a href="<?php echo home_url(); ?>" title="<?php bloginfo('name'); ?> News"><?php echo of_get_option('landing_page_text', 'News'); ?></a></li><?php endif; ?>
-<?php wp_nav_menu( array( 'items_wrap' => '%3$s', 'theme_location' => 'primary-nav', 'container' => '', 'depth' => 1, ) ); ?>
+<?php if(have_posts()) { ?><li <?php if ( is_home() || is_front_page() ) echo ' class="current_page_item"'; ?> ><a href="<?php echo home_url(); ?>" title="<?php bloginfo('name'); ?> News"><?php echo of_get_option('landing_page_text', 'News'); ?></a></li><?php } ?>
+<?php wp_nav_menu( array( 'items_wrap' => '%3$s', 'theme_location' => 'primary-nav', 'container' => '', 'depth' => 1 ) ); ?>
 				</ul>	
-		<? else : /* displayed if no menu is selected: */ ?>
+		<?php } else { /* displayed if no menu is selected: */ ?>
 				<h1><?php bloginfo('name'); ?></h1>			
 <?php wp_page_menu( array ('depth' => '1', 'title_li' => '', 'show_home' => 'News' ) ); ?>								
-		<? endif; ?>
+		<?php } ?>
 				
 <?php 
 
